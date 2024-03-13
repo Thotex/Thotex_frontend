@@ -1,3 +1,6 @@
+# Thotex_frontend
+Frontend de Thotex hecho en vue
+
 # thotex
 
 ## Project setup
