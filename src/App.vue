@@ -5,16 +5,9 @@
   <router-view/>
 </template>
 
-<script>
+<script lang="ts" setup>
 
 import NavBarHomepage from '@/components/NavBarHomepage.vue';
-
-export default {
-  name: 'App',
-  components: {
-    NavBarHomepage
-  }
-}
 
 </script>
 
