@@ -2,7 +2,6 @@
   <nav>
     <NavBarHomepage />
   </nav>
-  <router-view/>
 </template>
 
 <script>
@@ -43,5 +42,10 @@ nav {
 
 body {
   margin: 0;
+  font-family: 'Roboto';
+}
+
+:root {
+  --custom-blue: #203B70;
 }
 </style>
