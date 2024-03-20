@@ -7,10 +7,10 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'Button',
+    name: 'CustomRoundedButton',
     props: {
         msg: String
-    }
+    },
 });
 </script>
 <style scoped lang="scss">
