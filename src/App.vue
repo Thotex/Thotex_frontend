@@ -1,30 +1,49 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <NavBarHomepage />
+  <div class="content">
+    <HelloWorld />
+  </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-nav {
-  padding: 30px;
+import NavBarHomepage from '@/components/NavBarHomepage.vue';
+// import FooterHomepage from '@/components/FooterHomepage.vue';
+import HelloWorld from './components/HelloWorld.vue';
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+export default {
+  name: 'App',
+  components: {
+    NavBarHomepage,
+    HelloWorld
+    // FooterHomepage
   }
 }
+
+</script>
+
+<style lang="scss">
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
+
+  :root {
+    --custom-blue: #203B70;
+    --custom-gray: #5D6473;
+    --nav-bar-height: 100px;
+  }
+
+  div.content {
+    margin-top: var(--nav-bar-height);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto';
+  }
 </style>
