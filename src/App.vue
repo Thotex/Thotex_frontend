@@ -1,42 +1,26 @@
 <template>
-  <nav>
-    <NavBarHomepage />
-    <router-link to="/">Home</router-link> |
-    <router-link to="/login">Login</router-link>
-  </nav>
-  <FooterHomepage />
+  <NavBarHomepage />
+  <div class="content">
+    <HelloWorld />
+  </div>
 </template>
 
 <script>
 
 import NavBarHomepage from '@/components/NavBarHomepage.vue';
-import FooterHomepage from '@/components/FooterHomepage.vue'; 
+// import FooterHomepage from '@/components/FooterHomepage.vue';
+import HelloWorld from './components/HelloWorld.vue';
 
 export default {
   name: 'App',
   components: {
     NavBarHomepage,
-    FooterHomepage
+    HelloWorld
+    // FooterHomepage
   }
 }
 
 </script>
-
-<style lang="scss" scoped>
-  nav {
-    padding: 0px;
-    a {
-      font-weight: bold;
-      color: #2c3e50;
-
-      &.router-link-exact-active {
-        color: #42b983;
-      }
-    }
-  }
-
-
-</style>
 
 <style lang="scss">
   #app {
@@ -49,10 +33,17 @@ export default {
 
   :root {
     --custom-blue: #203B70;
+    --custom-gray: #5D6473;
+    --nav-bar-height: 100px;
+  }
+
+  div.content {
+    margin-top: var(--nav-bar-height);
   }
 
   body {
     margin: 0;
+    padding: 0;
     font-family: 'Roboto';
   }
 </style>

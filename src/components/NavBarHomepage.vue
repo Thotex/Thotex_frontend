@@ -14,168 +14,206 @@
 				<li class="item"><router-link to="/about">About</router-link></li>
 				<li class="item"><router-link to="/conocenos">Conocenos</router-link></li>
 			</ul>
-			<ul class="right">
-				<li class="item button-container"><button @click="toggleLoginView">Ingresar</button></li>
-				<li class="item button-container"><button @click="$router.push('/register')">Registrarse</button></li>
+			<ul class="right item-container">
+				<li class=" button-container"><button class="login-button" @click="toggleLoginView">Ingresar</button></li>
+				<li class=" button-container"><button class="register-button" @click="toggleRegisterView">Registrarse</button></li>
 			</ul>
 		</nav>
-		<div class="modal" v-if="showLogin">
-			<div class="modal-overlay" @click="$emit('toggleLoginView')">
-				<div class="modal-background"></div>
-				<div class="modal-content">
-					<LoginView v-if="showLogin" @close="toggleLoginView" />
-					<div class="modal-close" @click="toggleLoginView">X</div>
-				</div>
-			</div>
-		</div>
+	</div>
+	<div class="form-container">
+		<LoginForm v-if="showLogin" @closeFormLogin="closeFormLogin"/>
+		<RegistrationForm v-if="showRegister" @closeFormRegister="closeFormRegister"/>
 	</div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import LoginView from '@/views/LoginView.vue';
+<script setup lang="ts">
+import { Ref, ref } from 'vue';
+import RegistrationForm from '@/views/RegistrationForm.vue';
+import LoginForm from '@/views/LoginForm.vue';
+import { useRouter } from 'vue-router';
 
-export default defineComponent({
-	name: 'NavBarHomepage',
-	components: {
-		LoginView,
-	},
-	data() {
-		return {
-			showLogin: false,
-		};
-	},
-	methods: {
-		toggleLoginView() {
-			this.showLogin = !this.showLogin;
-		}
-	}
-});
+const router = useRouter();
+
+const showLogin : Ref<boolean> = ref(false);
+const showRegister : Ref<boolean> = ref(false);
+
+const toggleRegisterView = () => {
+	showRegister.value = !showRegister.value;
+	router.push('/register')
+};
+
+const toggleLoginView = () => {
+	showLogin.value = !showLogin.value;
+	router.push('/login')
+};
+
+const closeFormLogin = () => {
+	toggleLoginView()
+	router.push('/')
+}
+
+const closeFormRegister = () => {
+	toggleRegisterView()
+	router.push('/')
+}
+
+
 </script>
 
 <style scoped lang="scss">
-h1 span {
-	color: var(--custom-blue);
-}
+	div.header {
+		width: 100%;
+		height: var(--nav-bar-height);
+		background-color: white;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-nav {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px 0;
-}
+	}
 
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  .right {
-	justify-content: flex-end;
+	nav.nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
 
-  }
-  button {
-	text-transform: uppercase;
-	outline: 0;
-	background: var(--custom-blue);
-	width: 100%;
-	border: 0;
-	padding: 15px;
-	color: #FFFFFF;
-	font-size: 14px;
-	border-radius:15px;
-	-webkit-transition: all 0.3 ease;
-	transition: all 0.3 ease;
-	cursor: pointer;
-  }
+	ul.item-container {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
 
-}
+	.item-container li.item {
+		margin: 0.1rem;
+		:hover {
+			display: block flex;			
+			border-radius: 5px;
+			color: var(--custom-blue);
+			background-color: #F9F9F9;
+		}
+		a {
+			font-weight: bold;
+			display: block;
+			padding-top: calc(var(--nav-bar-height)	/ 4);
+			padding-bottom: calc(var(--nav-bar-height)	/ 4);
+			padding-left: 1rem;
+			padding-right: 1rem;
+			text-decoration: none;
+			color: var(--custom-gray);
+		}
 
-nav ul .right li {
-  margin-left: 10px;
-}
+		a.router-link-exact-active {
+			text-decoration: none;
+			color: var(--custom-blue);
+			background-color: #F9F9F9;
+			border-radius: 5px;
+		}
+	}
 
-nav li {
-  display: inline-block;
-  
-}
+	.logo-container {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
 
-nav li a {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: #333;
+		.logo {
+			display: block flex;
+			border-radius: 5px;
+			align-items: center;
+			justify-content: center;
+			text-decoration: none;
+			padding-right: 10px;
 
-}
+			img {
+				width: 65px;
+				height: 60px;
+				margin-right: 5px;
+			}
+		}
+		:hover {
+				background-color: #F9F9F9;
+				border-radius: 5px;
 
-nav li a.router-link-exact-active {
-  color: var(--custom-blue);
-}
+			}
+		a.router-link-exact-active {
+			text-decoration: none;
+			color: var(--custom-blue);
+			border-radius: 5px;
+		}
+		a {
+			text-decoration: none;
+		}
+	}
 
-nav li a:hover {
-  background-color: #f5f5f5;
-}
+	.logo-text {
+		//no underline
+		font-style: normal;
+		text-decoration: none !important;
+		color: var(--custom-gray);
+		font-weight: bold;
+		font-size: 1.5rem;
+		padding: 0;
+		a {
+			text-decoration: none !important;
+		}
+		span {
+			color: var(--custom-blue);
+		}
+		
+	}
 
-.logo {
-  display: flex;
-  align-items: center;
-}
+	.login-button {
+		margin-top: 10px;
+		text-transform: uppercase;
+		outline: 0;
+		background: var(--custom-blue);
+		border: 0;
+		padding: 15px;
+		padding-left: 20px;	
+		padding-right: 20px;
+		color: #FFFFFF;
+		font-size: 14px;
+		border-radius: 5px;
+		margin-right: 4px;
+		//make the text bold
+		font-weight: bold;
+		
+		:hover {
+			background-color: #2957d6;
+		}
+		
+	}
 
-.logo img {
-  height: 40px;
-  margin-right: 10px;
-}
+	.button-container {
+		.register-button:hover {
+			background-color: #F9F9F9;
+			cursor: pointer;
+		}
+		.login-button:hover {
+			cursor: pointer;
+		}
+	}
 
-.logo h1 {
-  font-size: 24px;
-  margin: 0;
-}
-
-.modal-overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 9999; /* Ensure modal is on top of other content */
-}
-
-.modal-background {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-	backdrop-filter: blur(5px); /* Apply blur effect */
-	z-index: -1; /* Place behind modal content */
-}
-
-.modal-content {
-	background-color: white;
-	padding: 20px;
-	border-radius: 5px;
-	z-index: 1; /* Place above background */
-}
-
-
-.login-modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+	.register-button {
+		margin-top: 10px;
+		text-transform: uppercase;
+		outline: 0;
+		background: white;
+		border: 0;
+		padding: 15px;
+		padding-left: 20px;	
+		padding-right: 20px;
+		color: var(--custom-gray);
+		font-size: 14px;
+		border-radius:5px;
+		margin-right: 4px;
+		//make the text bold
+		font-weight: bold;
+	}
+	
+	
 
 </style>
