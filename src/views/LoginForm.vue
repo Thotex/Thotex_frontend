@@ -5,16 +5,16 @@
       </div>
       <div class="login-box">
           <div class="form" @click.stop>
-              <form class="login-form" @submit.prevent="onSubmit">   
+              <form class="login-form">   
                   <h1>Iniciar sesión</h1>   
                   <h2>Correo electrónico</h2>
-                  <input required type="text" placeholder="Correo electrónico" v-model="userForm.email" @input="errors.email = false; error_messages.email = ''"/>
+                  <input required type="email" placeholder="Correo electrónico" v-model="userForm.email" @input="errors.email = false; error_messages.email = ''"/>
                   <p class="error" v-if="errors.email">{{ error_messages.email }}</p>
                   <h2>Contraseña</h2>
                   <input required type="password" placeholder="Contraseña" v-model="userForm.password" @input="errors.password = false; error_messages.password = ''"/>
                   <p class="error" v-if="errors.password">{{ error_messages.password }}</p>
                   <p class="message">Olvidaste tu contraseña? <a href="#">Recuperar contraseña</a></p>
-                  <button @click="verifyForm" >Iniciar sesión</button>
+                  <button @click.prevent="authUser" >Iniciar sesión</button>
               </form>
           </div>
       </div>
@@ -24,12 +24,14 @@
 <script setup lang="ts">
   import { Ref, ref } from 'vue';
   import { defineEmits } from 'vue';
-  interface UserForm {
+  import AuthService from '@/services/AuthService';
+
+  interface IUserForm {
     email: string,
     password: string,
   }
 
-  const userForm: Ref<UserForm> = ref({
+  const userForm: Ref<IUserForm> = ref({
     email: '',
     password: '',
   })
@@ -68,7 +70,7 @@
   }
 
   const checkNonEmptyInputs = () : boolean => {
-      const defaultValues : UserForm = {
+      const defaultValues : IUserForm = {
           email: '',
           password: '',
       }
@@ -89,12 +91,6 @@
 
       return isFormValid
       
-  }
-
-  const onSubmit = () => {
-      if (verifyForm()) {
-          console.log(userForm.value)
-      }
   }
 
   const verifyForm = () : boolean => {
@@ -119,6 +115,25 @@
   const closeComponent = () => {
       emits('closeFormLogin')
   }
+
+  const authUser = async () : Promise<boolean> => {
+    if (verifyForm()) {
+      const auth : AuthService = new AuthService();
+      //TODO : MOVER A UNA INTERFAZ APARTE Y MODIFICAR EL AUTH PARA RECIBIR OBJETO USER
+      const response : boolean = await auth.login(userForm.value.email, userForm.value.password);
+      if (response) {
+        alert('Login correcto');
+        return true;
+      } else {
+        alert('Login incorrecto');
+        return false;
+      } 
+    }
+    else {
+      return false
+    }
+  }
+      
 
 </script>
 
@@ -156,7 +171,7 @@
   position: relative;
   text-align: left;
   font-size: 12px;
-  color: #203B70;
+  color: var(--custom-dark-blue);
 
 }
 .form input {
@@ -174,7 +189,7 @@
   margin-top: 10px;
   text-transform: uppercase;
   outline: 0;
-  background: #3324be;
+  background: var(--custom-blue);
   width: 100%;
   border: 0;
   padding: 15px;
@@ -185,8 +200,9 @@
   transition: all 0.3 ease;
   cursor: pointer;
 }
+
 .form button:hover,.form button:active,.form button:focus {
-  background: #2957d6;
+  background: var(--custom-dark-blue);
 }
 .form .message {
   margin: 15px 0 0;
@@ -194,7 +210,7 @@
   font-size: 12px;
 }
 .form .message a {
-  color: #3324be;
+  color: var(--custom-dark-blue);
   text-decoration: none;
 }
 
@@ -203,7 +219,7 @@
   display: block;
   text-align: left;
   font-size: 12px;
-  color: #203B70;
+  color: --custom-dark-blue;
 }
 
 input[type=checkbox] {
@@ -218,7 +234,7 @@ input[type=checkbox] {
 }
 
 input[type=number] {
--moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 input[type=number]::-webkit-outer-spin-button,

@@ -30,6 +30,7 @@ export default {
         background-color: var(--custom-blue);
         box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
         padding: 10px 0;
+        z-index: auto;
     }
 
     ul{
