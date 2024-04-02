@@ -1,10 +1,11 @@
 <template>
   <!-- TODO: meter el navbar y el footer en el componente Homepage-->
+  <FooterHomepage class="footer"/>
   <NavBarHomepage class="navbar" />
   <div class="content">
     <HelloWorld />
   </div>
-  <FooterHomepage/>
+  
 </template>
 
 <script>
@@ -47,5 +48,9 @@ export default {
     margin: 0;
     padding: 0;
     font-family: 'Roboto';
+  }
+
+  .footer {
+    z-index: 1;
   }
 </style>

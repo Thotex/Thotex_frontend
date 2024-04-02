@@ -23,6 +23,8 @@ export default {
 
 <style lang="scss" scoped>
     div {
+        position: fixed;
+        bottom: 0;
         display: flex;
         align-items: center;
         width: 100%;
