@@ -11,7 +11,12 @@
             </li>
         </ul>
         <ul class="footer-right">
-            <h1>Footer</h1>
+            <li>
+                wdsa
+            </li>
+            <li>
+                <router-link to="/precios">Precios</router-link>
+            </li>
         </ul>
     </div>
 </template>
@@ -56,16 +61,17 @@ export default {
         display: flex;
         justify-content: flex-start; // Aligns items to the left
     }
+
     .footer-right {
         display: flex;
         justify-content: flex-end; // Aligns items to the right
+        background-color: red; // Add this for testing
 
-        h1 {
+        li {
             color: white;
             margin-right: 10px;
         }
     }
-
     .logo {
         display: flex;
         align-items: center;

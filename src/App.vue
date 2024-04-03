@@ -1,27 +1,11 @@
 <template>
-  <!-- TODO: meter el navbar y el footer en el componente Homepage-->
-  <FooterHomepage class="footer"/>
-  <NavBarHomepage class="navbar" />
-  <div class="content">
-    <HelloWorld />
+  <div>
+    <HomePage/>
   </div>
-  
 </template>
 
-<script>
-import NavBarHomepage from '@/components/NavBarHomepage.vue';
-import FooterHomepage from '@/components/FooterHomepage.vue';
-import HelloWorld from './components/HelloWorld.vue';
-
-export default {
-  name: 'App',
-  components: {
-    NavBarHomepage,
-    HelloWorld,
-    FooterHomepage
-  }
-}
-
+<script setup lang="ts">
+  import HomePage from '@/views/HomePage.vue';
 </script>
 
 <style lang="scss">
@@ -40,17 +24,9 @@ export default {
     --custom-dark-blue: #1D2F56;
   }
 
-  div.content {
-    margin-top: var(--nav-bar-height);
-  }
-
   body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto';
-  }
-
-  .footer {
-    z-index: 1;
   }
 </style>

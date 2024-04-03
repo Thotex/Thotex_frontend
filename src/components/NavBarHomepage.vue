@@ -10,9 +10,9 @@
 						</div>
 					</router-link>
 				</li>
-				<li class="item"><router-link to="/">Home</router-link></li>
-				<li class="item"><router-link to="/about">About</router-link></li>
+				<li class="item"><router-link to="/">Inicio</router-link></li>
 				<li class="item"><router-link to="/conocenos">Conocenos</router-link></li>
+				<li class="item"><router-link to="/precios">Precios</router-link></li>
 			</ul>
 			<ul class="right item-container">
 				<li class=" button-container"><button class="login-button" @click="toggleLoginView">Ingresar</button></li>

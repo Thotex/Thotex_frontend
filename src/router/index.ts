@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import RegistrationForm from '@/views/RegistrationForm.vue'
-import LoginForm from '@/views/LoginForm.vue'
+// import RegistrationForm from '@/views/RegistrationForm.vue'
+// import LoginForm from '@/views/LoginForm.vue'
+import HomeView from '@/views/HomeView.vue'
+import AboutView from '@/views/AboutView.vue'
+import PricesView from '@/views/PricesView.vue'
+
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -10,18 +13,23 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView
   },
   {
-    path: '/about',
+    path: '/conocenos',
     name: 'about',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    // component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: AboutView,
   },
   {
-    path: '/conocenos',
-    name: 'conocenos',
-    component: () => import( '../views/ConocenosView.vue')
-  },
+    path: '/precios',
+    name: 'prices',
+    component: PricesView
+  }
+  /*
+
+  //Tocó quitar las rutas dado que dan conflictos con el router
+
   //Direccion al login
   {
     path: '/login',
@@ -33,7 +41,8 @@ const routes: Array<RouteRecordRaw> = [
     path: '/register',
     name: 'register',
     component: RegistrationForm
-  }
+  },
+  */
 ]
 
 const router = createRouter({

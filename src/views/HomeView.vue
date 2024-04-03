@@ -1,18 +1,49 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+    <div class="container">
+        <div class="content">
+            <h1 class="title">SOFTWARE PARA LA ADMINISTRACIÓN DE TU NEGOCIO</h1>
+            <p>Factura Electrónica, Nómina, Documento Soporte, Contabilidad, Cartera, Cotizaciones, Inventarios y más, todo en un solo lugar, <span>sin costos ocultos ni cláusulas de permanencia.</span></p>
+        </div>
+    </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+<script setup lang="ts">
 
-export default defineComponent({
-  name: 'HomeView',
-  components: {
-    HelloWorld,
-  },
-});
 </script>
+
+<style scoped lang="scss">
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: 20px 0;
+    text-align: center;
+    overflow: hidden;
+    max-width: 400px;
+    padding-left: 10%;
+    padding: auto;
+    .title {
+      text-align: left;
+      width: 100%;
+      color: var(--custom-dark-blue);
+    }
+    p {
+      text-align: left;
+      font-size: large;
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+
+</style>
