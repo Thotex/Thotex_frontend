@@ -25,11 +25,7 @@
   import { Ref, ref } from 'vue';
   import { defineEmits } from 'vue';
   import AuthService from '@/services/AuthService';
-
-  interface IUserForm {
-    email: string,
-    password: string,
-  }
+  import { IUserForm } from '@/interfaces/Users';
 
   const userForm: Ref<IUserForm> = ref({
     email: '',
@@ -120,7 +116,7 @@
     if (verifyForm()) {
       const auth : AuthService = new AuthService();
       //TODO : MOVER A UNA INTERFAZ APARTE Y MODIFICAR EL AUTH PARA RECIBIR OBJETO USER
-      const response : boolean = await auth.login(userForm.value.email, userForm.value.password);
+      const response : boolean = await auth.login(userForm.value);
       if (response) {
         alert('Login correcto');
         return true;

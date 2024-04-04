@@ -25,7 +25,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/precios',
     name: 'prices',
     component: PricesView
-  }
+  },
   /*
 
   //Tocó quitar las rutas dado que dan conflictos con el router

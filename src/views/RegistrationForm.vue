@@ -23,7 +23,7 @@
                     <input required type="password" placeholder="Contraseña" v-model="userForm.password" @input="errors.password = false; error_messages.password = ''"/>
                     <p class="error" v-if="errors.password">{{ error_messages.password }}</p>
                     <h2>Confirmar contraseña</h2>
-                    <input required type="password" placeholder="Confirmar contraseña" v-model="userForm.confirmPassword" />
+                    <input required type="password" placeholder="Confirmar contraseña" v-model="confirmPassword" />
                     <p class="error" v-if="errors.confirmPassword">{{ error_messages.confirmPassword }}</p>
                     <div>
                         <label class="terms">
@@ -32,7 +32,7 @@
                         </label>
                     </div>
                     <p class="message">Ya tienes una cuenta? <a href="#">Iniciar sesión</a></p>
-                    <button @click.prevent="verifyForm" >Registrarse</button>
+                    <button @click.prevent="registerUser" >Registrarse</button>
                 </form>
             </div>
         </div>
@@ -42,7 +42,11 @@
   <script setup lang="ts">
     import { Ref, ref } from 'vue';
     import { defineEmits } from 'vue';
-    interface UserForm {
+    import AuthService from '@/services/AuthService';
+    import { IUserFormRegister } from '@/interfaces/Users';
+
+    /*
+    interface IUserFormRegister {
       name: string,
       lastName: string,
       phoneNumber: number | null,
@@ -51,16 +55,18 @@
       confirmPassword: string,
       checkedTerms: boolean
     }
+    */
   
-    const userForm: Ref<UserForm> = ref({
+    const userForm: Ref<IUserFormRegister> = ref({
       name: '',
       lastName: '',
       phoneNumber: null,
       email: '',
       password: '',
-      confirmPassword: '',
       checkedTerms: false
     })
+
+    let confirmPassword: Ref<string> = ref('')
 
     const errors : Ref<{name: boolean, lastName: boolean, phoneNumber: boolean, email: boolean, password: boolean, confirmPassword: boolean, checkedTerms: boolean}> = ref({
         name: false,
@@ -96,7 +102,7 @@
     const verifyPassword = () : boolean => {
         // Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character
         if (userForm.value.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
-            if (userForm.value.password === userForm.value.confirmPassword) {
+            if (userForm.value.password === confirmPassword.value) {
                 return true
             }
             else {
@@ -129,7 +135,7 @@
     }
 
     const checkNonEmptyInputs = () : boolean => {
-        const defaultValues : UserForm = {
+        const defaultValues : {name: string, lastName: string, phoneNumber: number | null, email: string, password: string, confirmPassword: string, checkedTerms: boolean} = {
             name: '',
             lastName: '',
             phoneNumber: null,
@@ -171,7 +177,7 @@
             isFormValid = false
         }
 
-        if (userForm.value.confirmPassword === defaultValues.confirmPassword) {
+        if (confirmPassword.value === defaultValues.confirmPassword) {
             errors.value.confirmPassword = true
             error_messages.value.confirmPassword = 'La contraseña es obligatoria'
             isFormValid = false
@@ -207,6 +213,24 @@
             return false
         }
     }
+
+    const registerUser = async () : Promise<boolean> => {
+    if (verifyForm()) {
+      const auth : AuthService = new AuthService();
+      //TODO : MOVER A UNA INTERFAZ APARTE Y MODIFICAR EL AUTH PARA RECIBIR OBJETO USER
+      const response : boolean = await auth.register(userForm.value);
+      if (response) {
+        alert('Registro correcto');
+        return true;
+      } else {
+        alert('Registro incorrecto');
+        return false;
+      } 
+    }
+    else {
+      return false
+    }
+  }
 
     const emits = defineEmits(['closeFormRegister'])
 
