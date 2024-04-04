@@ -5,7 +5,7 @@
         </div>
         <div class="registration-box">
             <div class="form" @click.stop>
-                <form class="registration-form" @submit.prevent="onSubmit">   
+                <form class="registration-form">   
                     <h1>Registrarse</h1>   
                     <h2>Nombre</h2>
                     <input required type="text" placeholder="Nombre" v-model="userForm.name" @input="errors.name = false; error_messages.name = ''"/>
@@ -17,7 +17,7 @@
                     <input required type="number" placeholder="Número de telefónico" v-model="userForm.phoneNumber" @input="errors.phoneNumber = false; error_messages.phoneNumber = ''"/>
                     <p class="error" v-if="errors.phoneNumber">{{ error_messages.phoneNumber }}</p>
                     <h2>Correo electrónico</h2>
-                    <input required type="text" placeholder="Correo electrónico" v-model="userForm.email" @input="errors.email = false; error_messages.email = ''"/>
+                    <input required type="email" placeholder="Correo electrónico" v-model="userForm.email" @input="errors.email = false; error_messages.email = ''"/>
                     <p class="error" v-if="errors.email">{{ error_messages.email }}</p>
                     <h2>Contraseña</h2>
                     <input required type="password" placeholder="Contraseña" v-model="userForm.password" @input="errors.password = false; error_messages.password = ''"/>
@@ -32,7 +32,7 @@
                         </label>
                     </div>
                     <p class="message">Ya tienes una cuenta? <a href="#">Iniciar sesión</a></p>
-                    <button @click="verifyForm" >Registrarse</button>
+                    <button @click.prevent="verifyForm" >Registrarse</button>
                 </form>
             </div>
         </div>
@@ -187,11 +187,6 @@
         
     }
 
-    const onSubmit = () => {
-        if (verifyForm()) {
-            console.log(userForm.value)
-        }
-    }
 
     const verifyForm = () : boolean => {
         if (checkNonEmptyInputs()) {
@@ -255,7 +250,7 @@
     position: relative;
     text-align: left;
     font-size: 12px;
-    color: #203B70;
+    color: var(--custom-dark-blue);
   
   }
   .form input {
@@ -273,7 +268,7 @@
     margin-top: 10px;
     text-transform: uppercase;
     outline: 0;
-    background: #3324be;
+    background: var(--custom-blue);
     width: 100%;
     border: 0;
     padding: 15px;
@@ -285,7 +280,7 @@
     cursor: pointer;
   }
   .form button:hover,.form button:active,.form button:focus {
-    background: #2957d6;
+    background: var(--custom-dark-blue);
   }
   .form .message {
     margin: 15px 0 0;
@@ -293,7 +288,7 @@
     font-size: 12px;
   }
   .form .message a {
-    color: #3324be;
+    color: var(--custom-dark-blue);
     text-decoration: none;
   }
 
@@ -302,7 +297,7 @@
     display: block;
     text-align: left;
     font-size: 12px;
-    color: #203B70;
+    color: var(--custom-dark-blue);
   }
 
   input[type=checkbox] {
