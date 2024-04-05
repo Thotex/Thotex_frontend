@@ -26,6 +26,10 @@
   import { defineEmits } from 'vue';
   import AuthService from '@/services/AuthService';
   import { IUserForm } from '@/interfaces/Users';
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter();
+
 
   const userForm: Ref<IUserForm> = ref({
     email: '',
@@ -89,6 +93,11 @@
       
   }
 
+  /**
+   * Verify the form by checking non-empty inputs, email, and password validity.
+   *
+   * @return {boolean} the validity of the form inputs
+   */
   const verifyForm = () : boolean => {
       if (checkNonEmptyInputs()) {
           //Verify at a time
@@ -118,10 +127,12 @@
       //TODO : MOVER A UNA INTERFAZ APARTE Y MODIFICAR EL AUTH PARA RECIBIR OBJETO USER
       const response : boolean = await auth.login(userForm.value);
       if (response) {
-        alert('Login correcto');
+        // alert('Login correcto');
+        router.push('/profile'); // Redirect to ProfileView.vue
         return true;
       } else {
-        alert('Login incorrecto');
+        // alert('Login incorrecto');
+        router.push('/profile'); // Redirect to ProfileView.vue
         return false;
       } 
     }

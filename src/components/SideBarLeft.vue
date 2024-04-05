@@ -68,7 +68,7 @@
 
 </template>
 
-<style>
+<style lang="scss" scoped>
 
     .sidebar{
         position: absolute;

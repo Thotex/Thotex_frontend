@@ -44,6 +44,11 @@
     import { defineEmits } from 'vue';
     import AuthService from '@/services/AuthService';
     import { IUserFormRegister } from '@/interfaces/Users';
+    import { useRouter } from 'vue-router';
+
+    const router = useRouter();
+
+
 
     /*
     interface IUserFormRegister {
@@ -220,10 +225,12 @@
       //TODO : MOVER A UNA INTERFAZ APARTE Y MODIFICAR EL AUTH PARA RECIBIR OBJETO USER
       const response : boolean = await auth.register(userForm.value);
       if (response) {
-        alert('Registro correcto');
+        // alert('Registro correcto');
+        router.push('/profile'); // Redirect to ProfileView.vue
         return true;
       } else {
-        alert('Registro incorrecto');
+        // alert('Registro incorrecto');
+        router.push('/profile'); // Redirect to ProfileView.vue
         return false;
       } 
     }
