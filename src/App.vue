@@ -1,11 +1,10 @@
 <template>
   <div>
-    <HomePage/>
+    <router-view/>
   </div>
 </template>
 
 <script setup lang="ts">
-  import HomePage from '@/views/HomePage.vue';
 </script>
 
 <style lang="scss">

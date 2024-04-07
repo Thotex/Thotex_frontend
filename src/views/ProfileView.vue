@@ -131,7 +131,7 @@ button:hover{
 
 .formulario{
     position: absolute;
-    top: 0;
+    top: flex;
     box-sizing: border-box;
     border: 0; 
     background-color: white;
@@ -201,19 +201,19 @@ h2{
 
 .encabezado{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 200px;
 }
 
 .etiqueta1{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 420px;
 }
 
 .campo1{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 235px;
 }
 
@@ -229,13 +229,13 @@ input[type=number] {
 
   .etiqueta2{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 285px;
   }
 
   .campo2{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 232px;
   }
 </style>

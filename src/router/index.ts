@@ -5,32 +5,44 @@ import HomeView from '@/views/HomeView.vue'
 import AboutView from '@/views/AboutView.vue'
 import PricesView from '@/views/PricesView.vue'
 import ProfileView from '@/views/ProfileView.vue'
+import HomePage from '@/views/HomePage.vue'
 
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomePage,
+    children: [
+      {
+        path: '/',
+        name: 'home',
+        component: HomeView
+      },
+      {
+        path: '/conocenos',
+        name: 'about',
+        component: AboutView,
+      },
+      {
+        path: '/precios',
+        name: 'prices',
+        component: PricesView
+      },
+    ]
   },
   {
-    path: '/conocenos',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-    component: AboutView,
-  },
-  {
-    path: '/precios',
-    name: 'prices',
-    component: PricesView
-  },
-  {
-    path: '/profile',
-    name: 'profile',
-    component: ProfileView
+    path: '/portal',
+    name: 'portal',
+    component: ProfileView,
+    children: [
+      {
+        path: '/profile',
+        name: 'profile',
+        component: ProfileView
+      }
+      // Children of /portal
+    ]
   }
   /*
 

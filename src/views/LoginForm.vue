@@ -26,10 +26,6 @@
   import { defineEmits } from 'vue';
   import AuthService from '@/services/AuthService';
   import { IUserForm } from '@/interfaces/Users';
-  import { useRouter } from 'vue-router';
-
-  const router = useRouter();
-
 
   const userForm: Ref<IUserForm> = ref({
     email: '',
@@ -127,12 +123,10 @@
       //TODO : MOVER A UNA INTERFAZ APARTE Y MODIFICAR EL AUTH PARA RECIBIR OBJETO USER
       const response : boolean = await auth.login(userForm.value);
       if (response) {
-        // alert('Login correcto');
-        router.push('/profile'); // Redirect to ProfileView.vue
+        alert('Login correcto');
         return true;
       } else {
-        // alert('Login incorrecto');
-        router.push('/profile'); // Redirect to ProfileView.vue
+        alert('Login incorrecto');
         return false;
       } 
     }
