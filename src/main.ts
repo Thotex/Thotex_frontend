@@ -4,4 +4,9 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 
-createApp(App).use(store).use(router).mount('#app')
+import { Icon } from '@iconify/vue'
+
+const app = createApp(App)
+app.component('IconifyIcon', Icon)
+
+app.use(store).use(router).mount('#app')

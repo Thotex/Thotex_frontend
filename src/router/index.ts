@@ -39,12 +39,12 @@ const routes: Array<RouteRecordRaw> = [
     component: PortalView,
     children: [
       {
-        path: '/tablero',
+        path: '/portal/tablero',
         name: 'dashboard',
         component: BoardView
       },
       {
-        path: '/perfil',
+        path: '/portal/perfil',
         name: 'profile',
         component: ProfileView
       }

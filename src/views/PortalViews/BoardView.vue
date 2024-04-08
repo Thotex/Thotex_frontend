@@ -9,7 +9,7 @@
         <section>
             
         <h1>Tableroaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h1>
-            
+        <IconifyIcon icon="ion:arrow-undo" color="black" />
             
         </section>
 

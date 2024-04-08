@@ -25,7 +25,7 @@
            
             <li>
                 <label>Nominas</label>
-                <ion-icon name="id-card-outline"></ion-icon>
+                <IconifyIcon icon="ion:id-card-outline" color="black"></IconifyIcon>
             </li>
 
             <li>
