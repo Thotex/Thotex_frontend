@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 // import RegistrationForm from '@/views/RegistrationForm.vue'
 // import LoginForm from '@/views/LoginForm.vue'
-import HomeView from '@/views/HomeView.vue'
-import AboutView from '@/views/AboutView.vue'
-import PricesView from '@/views/PricesView.vue'
-import ProfileView from '@/views/ProfileView.vue'
+import HomeView from '@/views/HomePageViews/HomeView.vue'
+import AboutView from '@/views/HomePageViews/AboutView.vue'
+import PricesView from '@/views/HomePageViews/PricesView.vue'
+import ProfileView from '@/views/PortalViews/ProfileView.vue'
 import HomePage from '@/views/HomePage.vue'
+import PortalView from '@/views/PortalView.vue'
+import BoardView from '@/views/PortalViews/BoardView.vue'
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -34,10 +36,15 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/portal',
     name: 'portal',
-    component: ProfileView,
+    component: PortalView,
     children: [
       {
-        path: '/profile',
+        path: '/tablero',
+        name: 'dashboard',
+        component: BoardView
+      },
+      {
+        path: '/perfil',
         name: 'profile',
         component: ProfileView
       }

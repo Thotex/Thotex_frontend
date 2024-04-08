@@ -1,7 +1,7 @@
 <template>
     <div class="registration modal" @click="closeComponent">
         <div class="logo">
-            <img src="../assets/LogoThotex.png" alt="logo">
+            <img src="@/assets/LogoThotex.png" alt="logo">
         </div>
         <div class="registration-box">
             <div class="form" @click.stop>
@@ -43,7 +43,7 @@
     import { Ref, ref } from 'vue';
     import { defineEmits } from 'vue';
     import AuthService from '@/services/AuthService';
-    import { IUserFormRegister } from '@/interfaces/Users';
+    import { IUserFormRegister } from '@/interfaces/IUsers';
 
     /*
     interface IUserFormRegister {

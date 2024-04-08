@@ -4,7 +4,7 @@
             <li>
                 <router-link to="/">
                     <div class="logo">
-                        <img src="../assets/logoamarillo.png" alt="logo">
+                        <img src="@/assets/logoamarillo.png" alt="logo">
                         <h1>Thot<span>ex</span></h1>
                     </div>
                 </router-link>
@@ -20,10 +20,8 @@
         </ul>
     </div>
 </template>
-<script lang="ts">
-export default {
-    
-}
+<script setup lang="ts">
+
 </script>
 
 <style lang="scss" scoped>

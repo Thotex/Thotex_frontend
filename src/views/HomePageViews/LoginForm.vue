@@ -1,7 +1,7 @@
 <template>
   <div class="login modal" @click="closeComponent">
       <div class="logo">
-          <img src="../assets/LogoThotex.png" alt="logo">
+          <img src="@/assets/LogoThotex.png" alt="logo">
       </div>
       <div class="login-box">
           <div class="form" @click.stop>
@@ -25,7 +25,7 @@
   import { Ref, ref } from 'vue';
   import { defineEmits } from 'vue';
   import AuthService from '@/services/AuthService';
-  import { IUserForm } from '@/interfaces/Users';
+  import { IUserForm } from '@/interfaces/IUsers';
 
   const userForm: Ref<IUserForm> = ref({
     email: '',

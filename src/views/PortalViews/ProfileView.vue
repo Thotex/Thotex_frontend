@@ -5,15 +5,9 @@
         <meta charset=”utf-8”>
         <link rel="icon" type="image/png" href="../assets/LogoThotex.png">
         <meta name="viewport" content="width=device-width">
-        
-        
-        
     </head>
     
     <body>
-        <div>
-            <SideBarLeft></SideBarLeft>
-        </div>
         <main>
             <header>
                 <h1>Perfil</h1>
@@ -69,10 +63,7 @@
                 
                 
                 <div class="contenedor">
-                    
-                    
-                    
-                    
+ 
                     <div>
                         <label class="descripcion" for="social">Razón social / Nombre completo</label>
                         <input class="campo-entrada" type="text" id="social" name="social">
@@ -100,7 +91,6 @@
 </template>
 
 <script setup lang="ts">
-    import SideBarLeft from '../components/SideBarLeft.vue';
 </script>
 
 <style scoped lang="scss">

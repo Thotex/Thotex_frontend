@@ -1,8 +1,8 @@
 // import { AxiosInstance } from 'axios'
 import { Ref, ref } from 'vue'
-import { IUserForm } from '@/interfaces/Users';
-import { IUserFormRegister } from '@/interfaces/Users';
-import { IResponse } from '@/interfaces/Users';
+import { IUserForm } from '@/interfaces/IUsers';
+import { IUserFormRegister } from '@/interfaces/IUsers';
+import { IResponse } from '@/interfaces/IUsers';
 
 //Interfaz de lo que esperamos de la API
 /*

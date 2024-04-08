@@ -5,14 +5,12 @@
 				<li class="logo-container">
 					<router-link to="/">
 						<div class="logo">
-							<img src="../assets/logoamarillo.png" alt="logo">
+							<img src="@/assets/logoamarillo.png" alt="logo">
 							<h1 class="logo-text">Thot<span>ex</span></h1>
 						</div>
 					</router-link>
 				</li>
-				<li class="item"><router-link to="/">Inicio</router-link></li>
-				<li class="item"><router-link to="/conocenos">Conocenos</router-link></li>
-				<li class="item"><router-link to="/precios">Precios</router-link></li>
+				<li class="item" v-for="item in props.navBarRouterNames" :key="item.name"><router-link :to="{name: item.name}">{{ item.shownName }}</router-link></li>
 			</ul>
 			<ul class="right item-container">
 				<li class=" button-container"><button class="login-button" @click="toggleLoginView">Ingresar</button></li>
@@ -27,15 +25,25 @@
 </template>
 
 <script setup lang="ts">
-import { Ref, ref } from 'vue';
-import RegistrationForm from '@/views/RegistrationForm.vue';
-import LoginForm from '@/views/LoginForm.vue';
+import { Ref, ref, defineProps } from 'vue';
+import RegistrationForm from '@/views/HomePageViews/RegistrationForm.vue';
+import LoginForm from '@/views/HomePageViews/LoginForm.vue';
 import { useRouter } from 'vue-router';
+import IRouterShownName from '@/interfaces/IRouter';
 
 const router = useRouter();
 
 const showLogin : Ref<boolean> = ref(false);
 const showRegister : Ref<boolean> = ref(false);
+
+
+const props = defineProps({
+	navBarRouterNames: {
+		type: Array as () => IRouterShownName[],
+		},
+	})
+
+
 
 const toggleRegisterView = () => {
 	showRegister.value = !showRegister.value;
