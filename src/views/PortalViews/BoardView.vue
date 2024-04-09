@@ -9,7 +9,7 @@
         <section>
             
         <h1>Tableroaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h1>
-            
+        <IconifyIcon icon="ion:arrow-undo" color="black" />
             
         </section>
 
@@ -17,10 +17,10 @@
 </template>
 
 <script setup lang="ts">
-    import SideBarLeft from '../components/SideBarLeft.vue';
+    import SideBarLeft from '@/components/PortalComponents/SideBarLeft.vue';
 </script>
 
-<style>
+<style scoped>
 
     body{
         background-color: #E6E3E5;

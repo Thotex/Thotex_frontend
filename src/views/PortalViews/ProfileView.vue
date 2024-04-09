@@ -5,33 +5,27 @@
         <meta charset=”utf-8”>
         <link rel="icon" type="image/png" href="../assets/LogoThotex.png">
         <meta name="viewport" content="width=device-width">
-        
-        
-
     </head>
-
+    
     <body>
-        <div>
-            <SideBarLeft></SideBarLeft>
-        </div>
         <main>
             <header>
                 <h1>Perfil</h1>
             </header>
             <form method="post" action="/" class="formulario">
-
+                
                 <section class="encabezado">
                     <h2>Información personal</h2>
                     <h2>Información de contacto</h2>
                 </section>
-               
+                
                 
                 <section class="etiqueta1">
                     <label class="descripcion" >Rol</label>
                     <label class="descripcion" for="email">Email<span>*</span></label>
-
+                    
                 </section>
-
+                
                 <section class="campo1">
                     
                     <select name="why" class="rol">
@@ -40,39 +34,36 @@
                     </select>
                     
                     <input class="campo-entrada" type="email" id="email" name="email" required>
-
+                    
                 </section>  
-
+                
                 <section class="etiqueta2">
                     <label class="descripcion" >Tipo de identificación</label>
                     <label class="descripcion" for="telefono">Teléfono</label>
                 </section>
-
+                
                 <section class="campo2">
                     <div class="div-identificacion">
                         <section class="">
                             <select class="selec-identificacion">
-                            <option value="1">Número identificación tributar</option>
-                            <option value="2">xxxxxxxxx</option>  
+                                <option value="1">Número identificación tributar</option>
+                                <option value="2">xxxxxxxxx</option>  
                             </select>
                         </section>
                         <label class="descripcion" for="iden">Numero de indetificación<span>*</span></label>
                         <input class="campo-entrada" type="number" id="iden" name="iden" required>
                     </div>
-
+                    
                     <div>
-                    
-                    <input class="campo-entrada" type="tel" id="telefono" name="telefono" >
+                        
+                        <input class="campo-entrada" type="tel" id="telefono" name="telefono" >
                     </div>
-
+                    
                 </section>
-
-
+                
+                
                 <div class="contenedor">
-
-                    
-                    
-                    
+ 
                     <div>
                         <label class="descripcion" for="social">Razón social / Nombre completo</label>
                         <input class="campo-entrada" type="text" id="social" name="social">
@@ -82,32 +73,33 @@
                         <label class="descripcion" for="ubi">Municipio / Departamento</label>
                         <input class="campo-entrada" type="text" id="ubi" name="ubi">
                     </div>
-                
-
-                <div>
-                    <button type="submit" id="guardar">Guardar información</button>
+                    
+                    
+                    <div>
+                        <button type="submit" id="guardar">Guardar información</button>
+                    </div>
                 </div>
-            </div>
-            
-            </form>
                 
-
-
+            </form>
+            
+            
+            
         </main>
-
+        
     </body>
     
 </template>
 
 <script setup lang="ts">
-    import SideBarLeft from '../components/SideBarLeft.vue';
 </script>
 
-<style>
+<style scoped lang="scss">
 body {
     background-color:rgb(211, 208, 203) ;
     font-family: "roboto";
     position: flex;
+    height: 100%;
+    width: 100%;
 }
 
 button {
@@ -129,16 +121,21 @@ button:hover{
 
 .formulario{
     position: absolute;
+    top: flex;
+    box-sizing: border-box;
     border: 0; 
     background-color: white;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     top: 10px;
-    height: 85%;
-    width: 90%;
-    margin-left: 95px;
-    margin-top: 65px;
+    height: 100%;
+    width: 100%;
+    margin-left: 85px;
     text-align: justify;
-    
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
 }
 .campo-entrada{
     position: relative;
@@ -194,19 +191,19 @@ h2{
 
 .encabezado{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 200px;
 }
 
 .etiqueta1{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 420px;
 }
 
 .campo1{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 235px;
 }
 
@@ -222,13 +219,13 @@ input[type=number] {
 
   .etiqueta2{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 285px;
   }
 
   .campo2{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 232px;
   }
 </style>

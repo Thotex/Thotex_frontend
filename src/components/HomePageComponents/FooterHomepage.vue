@@ -4,25 +4,30 @@
             <li>
                 <router-link to="/">
                     <div class="logo">
-                        <img src="../assets/logoamarillo.png" alt="logo">
+                        <img src="@/assets/logoamarillo.png" alt="logo">
                         <h1>Thot<span>ex</span></h1>
                     </div>
                 </router-link>
             </li>
         </ul>
         <ul class="footer-right">
-            <h1>Footer</h1>
+            <li>
+                wdsa
+            </li>
+            <li>
+                <router-link to="/precios">Precios</router-link>
+            </li>
         </ul>
     </div>
 </template>
-<script lang="ts">
-export default {
-    
-}
+<script setup lang="ts">
+
 </script>
 
 <style lang="scss" scoped>
     div {
+        position: fixed;
+        bottom: 0;
         display: flex;
         align-items: center;
         width: 100%;
@@ -30,7 +35,6 @@ export default {
         background-color: var(--custom-blue);
         box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
         padding: 10px 0;
-        z-index: auto;
     }
 
     ul{
@@ -54,16 +58,17 @@ export default {
         display: flex;
         justify-content: flex-start; // Aligns items to the left
     }
+
     .footer-right {
         display: flex;
         justify-content: flex-end; // Aligns items to the right
+        background-color: red; // Add this for testing
 
-        h1 {
+        li {
             color: white;
             margin-right: 10px;
         }
     }
-
     .logo {
         display: flex;
         align-items: center;

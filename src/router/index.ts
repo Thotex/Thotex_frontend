@@ -1,27 +1,60 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import RegistrationForm from '@/views/RegistrationForm.vue'
-import LoginForm from '@/views/LoginForm.vue'
+// import RegistrationForm from '@/views/RegistrationForm.vue'
+// import LoginForm from '@/views/LoginForm.vue'
+import HomeView from '@/views/HomePageViews/HomeView.vue'
+import AboutView from '@/views/HomePageViews/AboutView.vue'
+import PricesView from '@/views/HomePageViews/PricesView.vue'
+import ProfileView from '@/views/PortalViews/ProfileView.vue'
+import HomePage from '@/views/HomePage.vue'
+import PortalView from '@/views/PortalView.vue'
+import BoardView from '@/views/PortalViews/BoardView.vue'
+
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomePage,
+    children: [
+      {
+        path: '/',
+        name: 'home',
+        component: HomeView
+      },
+      {
+        path: '/conocenos',
+        name: 'about',
+        component: AboutView,
+      },
+      {
+        path: '/precios',
+        name: 'prices',
+        component: PricesView
+      },
+    ]
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  },
-  {
-    path: '/conocenos',
-    name: 'conocenos',
-    component: () => import( '../views/ConocenosView.vue')
-  },
+    path: '/portal',
+    name: 'portal',
+    component: PortalView,
+    children: [
+      {
+        path: '/portal/tablero',
+        name: 'dashboard',
+        component: BoardView
+      },
+      {
+        path: '/portal/perfil',
+        name: 'profile',
+        component: ProfileView
+      }
+      // Children of /portal
+    ]
+  }
+  /*
+
+  //Tocó quitar las rutas dado que dan conflictos con el router
+
   //Direccion al login
   {
     path: '/login',
@@ -33,7 +66,8 @@ const routes: Array<RouteRecordRaw> = [
     path: '/register',
     name: 'register',
     component: RegistrationForm
-  }
+  },
+  */
 ]
 
 const router = createRouter({

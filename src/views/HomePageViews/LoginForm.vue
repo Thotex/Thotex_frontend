@@ -1,7 +1,7 @@
 <template>
   <div class="login modal" @click="closeComponent">
       <div class="logo">
-          <img src="../assets/LogoThotex.png" alt="logo">
+          <img src="@/assets/LogoThotex.png" alt="logo">
       </div>
       <div class="login-box">
           <div class="form" @click.stop>
@@ -25,11 +25,7 @@
   import { Ref, ref } from 'vue';
   import { defineEmits } from 'vue';
   import AuthService from '@/services/AuthService';
-
-  interface IUserForm {
-    email: string,
-    password: string,
-  }
+  import { IUserForm } from '@/interfaces/IUsers';
 
   const userForm: Ref<IUserForm> = ref({
     email: '',
@@ -93,6 +89,11 @@
       
   }
 
+  /**
+   * Verify the form by checking non-empty inputs, email, and password validity.
+   *
+   * @return {boolean} the validity of the form inputs
+   */
   const verifyForm = () : boolean => {
       if (checkNonEmptyInputs()) {
           //Verify at a time
@@ -120,7 +121,7 @@
     if (verifyForm()) {
       const auth : AuthService = new AuthService();
       //TODO : MOVER A UNA INTERFAZ APARTE Y MODIFICAR EL AUTH PARA RECIBIR OBJETO USER
-      const response : boolean = await auth.login(userForm.value.email, userForm.value.password);
+      const response : boolean = await auth.login(userForm.value);
       if (response) {
         alert('Login correcto');
         return true;

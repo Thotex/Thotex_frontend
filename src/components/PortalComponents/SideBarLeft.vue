@@ -3,20 +3,20 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
         <meta charset=”utf-8”>
-        <link rel="icon" type="image/png" href="../assets/LogoThotex.png">
+        <link rel="icon" type="image/png" href="@/assets/LogoThotex.png">
         <meta name="viewport" content="width=device-width">
     </head>
     <body>
         
-        <ul class="sidebar">
+        <nav class="sidebar">
             <li class="logo-container">
                 <header>
-                    <img src="../assets/LogoThotex.png" alt="Logo de la empresa">
+                    <img src="@/assets/LogoThotex.png" alt="Logo de la empresa">
                 </header>
             </li>
 
             <li class="tablero">
-                <RouterLink to="/tablero" class="table">
+                <RouterLink :to="{name: 'dashboard'}" class="table">
                     <label>Tablero</label>
                     <ion-icon name="clipboard-outline"></ion-icon>
                 </RouterLink>
@@ -25,7 +25,7 @@
            
             <li>
                 <label>Nominas</label>
-                <ion-icon name="id-card-outline"></ion-icon>
+                <IconifyIcon icon="ion:id-card-outline" color="black"></IconifyIcon>
             </li>
 
             <li>
@@ -59,16 +59,18 @@
             </li>
 
             <li>
-                <label>Perfil</label>
-                <ion-icon name="person-outline"></ion-icon>
+                <RouterLink :to="{name: 'profile'}" class="table">
+                    <label>Perfil</label>
+                    <ion-icon name="person-outline"></ion-icon>
+                </RouterLink>
             </li>
-        </ul>
+        </nav>
     </body>
 
 
 </template>
 
-<style>
+<style lang="scss" scoped>
 
     .sidebar{
         position: absolute;
