@@ -19,13 +19,14 @@
                 <RouterLink :to="{name: 'dashboard'}" class="table">
                     <label>Tablero</label>
                     <ion-icon name="clipboard-outline"></ion-icon>
-                </RouterLink>
-                
+                </RouterLink>        
             </li>
            
             <li>
-                <label>Nominas</label>
-                <IconifyIcon icon="ion:id-card-outline" color="black"></IconifyIcon>
+                <router-link :to="{name: 'payroll'}">
+                    <label>Nominas</label>
+                    <IconifyIcon icon="ion:id-card-outline" color="black"></IconifyIcon>
+                </router-link>
             </li>
 
             <li>
@@ -84,6 +85,8 @@
         box-sizing: border-box;  
         margin-top: 0;
     }
+
+    
             
     li{
                 

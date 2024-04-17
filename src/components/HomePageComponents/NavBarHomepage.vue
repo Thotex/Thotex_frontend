@@ -28,10 +28,10 @@
 import { Ref, ref, defineProps } from 'vue';
 import RegistrationForm from '@/views/HomePageViews/RegistrationForm.vue';
 import LoginForm from '@/views/HomePageViews/LoginForm.vue';
-import { useRouter } from 'vue-router';
+// import { useRouter } from 'vue-router';
 import IRouterShownName from '@/interfaces/IRouter';
 
-const router = useRouter();
+// const router = useRouter()
 
 const showLogin : Ref<boolean> = ref(false);
 const showRegister : Ref<boolean> = ref(false);
@@ -47,22 +47,22 @@ const props = defineProps({
 
 const toggleRegisterView = () => {
 	showRegister.value = !showRegister.value;
-	router.push('/register')
+	// router.push('/register')
 };
 
 const toggleLoginView = () => {
 	showLogin.value = !showLogin.value;
-	router.push('/login')
+	// router.push('/login')
 };
 
 const closeFormLogin = () => {
 	toggleLoginView()
-	router.push('/')
+	// router.push('/')
 }
 
 const closeFormRegister = () => {
 	toggleRegisterView()
-	router.push('/')
+	// router.push('/')
 }
 
 
@@ -71,7 +71,7 @@ const closeFormRegister = () => {
 <style scoped lang="scss">
 	div.header {
 		width: 100%;
-		height: var(--nav-bar-height);
+		height: $nav-bar-height;
 		background-color: white;
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
@@ -100,23 +100,23 @@ const closeFormRegister = () => {
 		:hover {
 			display: block flex;			
 			border-radius: 5px;
-			color: var(--custom-blue);
+			color: $custom-blue;
 			background-color: #F9F9F9;
 		}
 		a {
 			font-weight: bold;
 			display: block;
-			padding-top: calc(var(--nav-bar-height)	/ 4);
-			padding-bottom: calc(var(--nav-bar-height)	/ 4);
+			padding-top: calc($nav-bar-height	/ 4);
+			padding-bottom: calc($nav-bar-height	/ 4);
 			padding-left: 1rem;
 			padding-right: 1rem;
 			text-decoration: none;
-			color: var(--custom-gray);
+			color: $custom-gray;
 		}
 
 		a.router-link-exact-active {
 			text-decoration: none;
-			color: var(--custom-blue);
+			color: $custom-blue;
 			background-color: #F9F9F9;
 			border-radius: 5px;
 		}
@@ -148,7 +148,7 @@ const closeFormRegister = () => {
 			}
 		a.router-link-exact-active {
 			text-decoration: none;
-			color: var(--custom-blue);
+			color: $custom-blue;
 			border-radius: 5px;
 		}
 		a {
@@ -160,7 +160,7 @@ const closeFormRegister = () => {
 		//no underline
 		font-style: normal;
 		text-decoration: none !important;
-		color: var(--custom-gray);
+		color: $custom-gray;
 		font-weight: bold;
 		font-size: 1.5rem;
 		padding: 0;
@@ -168,7 +168,7 @@ const closeFormRegister = () => {
 			text-decoration: none !important;
 		}
 		span {
-			color: var(--custom-blue);
+			color: $custom-blue;
 		}
 		
 	}
@@ -177,7 +177,7 @@ const closeFormRegister = () => {
 		margin-top: 10px;
 		text-transform: uppercase;
 		outline: 0;
-		background: var(--custom-blue);
+		background: $custom-blue;
 		border: 0;
 		padding: 15px;
 		padding-left: 20px;	
@@ -214,7 +214,7 @@ const closeFormRegister = () => {
 		padding: 15px;
 		padding-left: 20px;	
 		padding-right: 20px;
-		color: var(--custom-gray);
+		color: $custom-gray;
 		font-size: 14px;
 		border-radius:5px;
 		margin-right: 4px;

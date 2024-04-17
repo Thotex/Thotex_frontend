@@ -172,7 +172,7 @@
   position: relative;
   text-align: left;
   font-size: 12px;
-  color: var(--custom-dark-blue);
+  color: $custom-dark-blue;
 
 }
 .form input {
@@ -190,7 +190,7 @@
   margin-top: 10px;
   text-transform: uppercase;
   outline: 0;
-  background: var(--custom-blue);
+  background: $custom-blue;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -203,7 +203,7 @@
 }
 
 .form button:hover,.form button:active,.form button:focus {
-  background: var(--custom-dark-blue);
+  background: $custom-dark-blue;
 }
 .form .message {
   margin: 15px 0 0;
@@ -211,7 +211,7 @@
   font-size: 12px;
 }
 .form .message a {
-  color: var(--custom-dark-blue);
+  color: $custom-dark-blue;
   text-decoration: none;
 }
 
@@ -220,7 +220,7 @@
   display: block;
   text-align: left;
   font-size: 12px;
-  color: --custom-dark-blue;
+  color: $custom-dark-blue;
 }
 
 input[type=checkbox] {
