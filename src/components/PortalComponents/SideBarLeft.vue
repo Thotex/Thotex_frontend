@@ -74,11 +74,11 @@
 <style lang="scss" scoped>
 
     .sidebar{
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         background-color: #203B70;
-        height: 100%;
+        height: 100vh;
         display: flex;
         flex-direction: column;  
         padding-left: 0;   
@@ -90,7 +90,7 @@
             
     li{
                 
-        width: 85px;
+        width: $sidebar-left-width;
         height: 70px;
         background-color: #203B70;
         font-size: 12px;

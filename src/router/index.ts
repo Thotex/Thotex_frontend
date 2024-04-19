@@ -53,6 +53,11 @@ const routes: Array<RouteRecordRaw> = [
         path: '/portal/nomina',
         name: 'payroll',
         component: PayrollView
+      },
+      {
+        path: '/portal/nomina/crear',
+        name: 'createEmployee',
+        component: () => import('@/views/PortalViews/PayrollViews/CreateEmployeeView.vue')
       }
       // Children of /portal
     ]

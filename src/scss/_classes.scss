@@ -1,0 +1,102 @@
+.card-global {
+    border: 1px solid #E6E3E5;
+    border-radius: 10px;
+    padding: 10px;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+}
+
+.form-global {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    margin: 10px;
+    
+    @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+
+    .column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+        column-gap: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+
+        @media screen and (max-width: 368px) {
+            grid-template-columns: 1fr;
+        }
+    }
+    .label {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        margin: 0;
+    }
+    .input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #E6E3E5;
+        border-radius: 10px;
+        width: 100%;
+        height: 40px;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        -moz-appearance: textfield;
+    }
+}
+
+.button-global-light {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: white;
+    color: $custom-blue;
+
+    border: 1px solid $custom-blue;
+    border-radius: 10px;
+    width: 100%;
+    height: 40px;
+
+    font-family: "roboto";
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 17px;
+
+    &:hover {
+        background-color: $custom-blue;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.button-global {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $custom-blue;
+    color: white;
+
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    height: 40px;
+
+    font-family: "roboto";
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 17px;
+
+    &:hover {
+        background-color: $custom-dark-blue;
+        cursor: pointer;
+    }
+}
