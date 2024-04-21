@@ -36,7 +36,7 @@
     .title {
       text-align: left;
       width: 100%;
-      color: var(--custom-dark-blue);
+      color: $custom-dark-blue;
     }
     p {
       text-align: left;

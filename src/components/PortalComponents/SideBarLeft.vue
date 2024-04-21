@@ -19,13 +19,14 @@
                 <RouterLink :to="{name: 'dashboard'}" class="table">
                     <label>Tablero</label>
                     <ion-icon name="clipboard-outline"></ion-icon>
-                </RouterLink>
-                
+                </RouterLink>        
             </li>
            
             <li>
-                <label>Nominas</label>
-                <IconifyIcon icon="ion:id-card-outline" color="black"></IconifyIcon>
+                <router-link :to="{name: 'payroll'}">
+                    <label>Nominas</label>
+                    <IconifyIcon icon="ion:id-card-outline" color="black"></IconifyIcon>
+                </router-link>
             </li>
 
             <li>
@@ -73,21 +74,23 @@
 <style lang="scss" scoped>
 
     .sidebar{
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         background-color: #203B70;
-        height: 100%;
+        height: 100vh;
         display: flex;
         flex-direction: column;  
         padding-left: 0;   
         box-sizing: border-box;  
         margin-top: 0;
     }
+
+    
             
     li{
                 
-        width: 85px;
+        width: $sidebar-left-width;
         height: 70px;
         background-color: #203B70;
         font-size: 12px;

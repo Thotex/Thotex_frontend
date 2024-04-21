@@ -1,7 +1,9 @@
 <template>
     <div>
         <SideBarLeft/>
-        <router-view/>
+        <div class="content">
+            <router-view/>
+        </div>
     </div>
 </template>
 
@@ -10,6 +12,9 @@
 
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+    .content{
+        margin-left: $sidebar-left-width;
+        padding: 10px;
+    }
 </style>
