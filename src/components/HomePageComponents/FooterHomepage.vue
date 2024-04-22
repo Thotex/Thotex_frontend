@@ -32,7 +32,7 @@
         align-items: center;
         width: 100%;
         height: 100px;
-        background-color: var(--custom-blue);
+        background-color: $custom-blue;
         box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
         padding: 10px 0;
     }

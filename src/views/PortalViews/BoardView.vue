@@ -31,7 +31,6 @@
        color: black;
        font-weight: bold; 
        margin-left: 95px; 
-
     }
 
 </style>
