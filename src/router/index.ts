@@ -8,6 +8,7 @@ import ProfileView from '@/views/PortalViews/ProfileView.vue'
 import HomePage from '@/views/HomePage.vue'
 import PortalView from '@/views/PortalView.vue'
 import BoardView from '@/views/PortalViews/BoardView.vue'
+import InventoryView from '@/views/PortalViews/InventoryView.vue'
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -47,6 +48,12 @@ const routes: Array<RouteRecordRaw> = [
         path: '/portal/perfil',
         name: 'profile',
         component: ProfileView
+      },
+      {
+        path: '/portal/inventario',
+        name: 'inventario',
+        component: InventoryView
+
       }
       // Children of /portal
     ]

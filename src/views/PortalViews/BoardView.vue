@@ -8,8 +8,8 @@
         <SideBarLeft></SideBarLeft>
         <section>
             
-        <h1>Tableroaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h1>
-        <IconifyIcon icon="ion:arrow-undo" color="black" />
+        <h1>Tablero</h1>
+        <IconifyIcon icon="ion:arrow-undo" color="w" />
             
         </section>
 
