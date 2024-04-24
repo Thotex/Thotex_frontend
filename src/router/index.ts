@@ -9,6 +9,12 @@ import HomePage from '@/views/HomePage.vue'
 import PortalView from '@/views/PortalView.vue'
 import BoardView from '@/views/PortalViews/BoardView.vue'
 import PayrollView from '@/views/PortalViews/PayrollView.vue'
+import InventoryView from '@/views/PortalViews/InventoryView.vue'
+import SaleView from '@/views/PortalViews/SaleView.vue'
+import ShoppingView from '@/views/PortalViews/ShoppingView.vue'
+import TercerosView from '@/views/PortalViews/TercerosView.vue'
+import AccountingView from '@/views/PortalViews/AccountingView.vue'
+import CalendarView from '@/views/PortalViews/CalendarView.vue'
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -45,11 +51,6 @@ const routes: Array<RouteRecordRaw> = [
         component: BoardView
       },
       {
-        path: '/portal/perfil',
-        name: 'profile',
-        component: ProfileView
-      },
-      {
         path: '/portal/nomina',
         name: 'payroll',
         component: PayrollView
@@ -58,7 +59,44 @@ const routes: Array<RouteRecordRaw> = [
         path: '/portal/nomina/crear',
         name: 'createEmployee',
         component: () => import('@/views/PortalViews/PayrollViews/CreateEmployeeView.vue')
+      },
+      {
+        path: '/portal/ventas',
+        name: 'sale',
+        component: SaleView
+      },
+      {
+        path: '/portal/compras',
+        name: 'shopping',
+        component: ShoppingView
+      },
+      {
+        path: '/portal/inventario',
+        name: 'inventory',
+        component: InventoryView
+
+      },
+      {
+        path: '/portal/terceros',
+        name: 'third',
+        component: TercerosView
+      },
+      {
+        path: '/portal/contabilidad',
+        name: 'accounting',
+        component: AccountingView
+      },
+      {
+        path: '/portal/calendario',
+        name: 'calendar',
+        component: CalendarView
+      },
+      {
+        path: '/portal/perfil',
+        name: 'profile',
+        component: ProfileView
       }
+      
       // Children of /portal
     ]
   }

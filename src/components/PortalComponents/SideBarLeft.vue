@@ -16,53 +16,66 @@
             </li>
 
             <li class="tablero">
-                <RouterLink :to="{name: 'dashboard'}" class="table">
+                <RouterLink :to="{name: 'dashboard'}" class="button-side">
                     <label>Tablero</label>
-                    <ion-icon name="clipboard-outline"></ion-icon>
+                    <IconifyIcon class="iconos" icon="ant-design:book-outlined" color="white" width="50px" heigth="50px"></IconifyIcon >
                 </RouterLink>        
             </li>
            
             <li>
-                <router-link :to="{name: 'payroll'}">
+                <router-link :to="{name: 'payroll'}" class="button-side">
                     <label>Nominas</label>
-                    <IconifyIcon icon="ion:id-card-outline" color="black"></IconifyIcon>
+                    <IconifyIcon class="iconos" icon="ion:id-card-outline" color="white" width="50px" heigth="50px"></IconifyIcon>
                 </router-link>
             </li>
 
             <li>
-                <label>Ventas</label>
-                <ion-icon name="pricetag-outline"></ion-icon>
+                <RouterLink :to="{name: 'sale'}" class="button-side">
+                    <label>Ventas</label>
+                    <IconifyIcon class="iconos" icon="ion:pricetag-outline" color="white" width="50px" heigth="50px"></IconifyIcon>
+                </RouterLink>
             </li>
 
             <li>
-                <label>Compras</label>
-                <ion-icon name="cart-outline"></ion-icon>
+                <RouterLink :to="{name: 'shopping'}" class="button-side">
+                    <label>Compras</label>
+                    <IconifyIcon class="iconos" icon="ion:cart-outline" color="white" width="50px" heigth="50px"></IconifyIcon>
+                </RouterLink>
+
             </li>
 
             <li>
-                <label>Inventario</label>
-                <ion-icon name="reader-outline"></ion-icon>
+                <RouterLink :to="{name: 'inventory'}" class="button-side">
+                    <label>Inventario</label>
+                    <IconifyIcon class="iconos" icon="ion:file-tray-full-outline" color="white" width="50px" heigth="50px"></IconifyIcon>
+                </RouterLink>
             </li>
 
             <li>
-                <label>Terceros</label>
-                <ion-icon name="person-add-outline"></ion-icon>
+                <RouterLink :to="{name: 'third'}" class="button-side">
+                    <label>Terceros</label>
+                    <IconifyIcon class="iconos" icon="material-symbols:supervisor-account-outline-rounded" color="white" width="50px" heigth="50px"></IconifyIcon>
+                </RouterLink>
             </li>
 
             <li>
-                <label>Contabilidad</label>
-                <ion-icon name="calculator-outline"></ion-icon>
+                <RouterLink :to="{name: 'accounting'}" class="button-side">
+                    <label>Contabilidad</label>
+                    <IconifyIcon class="iconos" icon="material-symbols:android-calculator" color="white" width="50px" heigth="50px"></IconifyIcon>
+                </RouterLink>
             </li>
 
             <li>
-                <label>Calendario</label>
-                <ion-icon name="calendar-outline"></ion-icon>
+                <RouterLink :to="{name: 'calendar'}" class="button-side">
+                    <label>Calendario</label>
+                    <IconifyIcon class="iconos" icon="ion:calendar-outline" color="white" width="50px" heigth="50px"></IconifyIcon>
+                </RouterLink>
             </li>
 
             <li>
-                <RouterLink :to="{name: 'profile'}" class="table">
+                <RouterLink :to="{name: 'profile'}" class="button-side">
                     <label>Perfil</label>
-                    <ion-icon name="person-outline"></ion-icon>
+                    <IconifyIcon class="iconos" icon="ion:person-circle-outline" color="white" width="50px" heigth="50px"></IconifyIcon>
                 </RouterLink>
             </li>
         </nav>
@@ -104,23 +117,21 @@
             }
             li:hover{
                 background-color: #4D6FB3;
+                
             }
-            
+        
 
             img{
                 width: 80px;
                 align-items: center;
             }
 
-    ion-icon{
-        margin-top: 3px;
-        font-size: 45px;
-    }
-
-    .table{
+    .button-side{
         text-decoration: none;
         color: white;
-        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     } 
     
     .logo-container:hover{
@@ -128,5 +139,8 @@
 
     }
     
+
+   
+
 
 </style>

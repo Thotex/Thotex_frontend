@@ -21,6 +21,7 @@
     --custom-blue: #203B70;
     --custom-gray: #5D6473;
     --custom-dark-blue: #1D2F56;
+    --custom-light-blue: #E3ECFF;
   }
 
   body {
