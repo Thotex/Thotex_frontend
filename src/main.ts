@@ -5,7 +5,11 @@ import router from './router'
 
 import { Icon } from '@iconify/vue'
 
+//PINIA
+import { createPinia } from 'pinia'
+const pinia = createPinia()
+
 const app = createApp(App)
 app.component('IconifyIcon', Icon)
 
-app.use(router).mount('#app')
+app.use(pinia).use(router).mount('#app')
