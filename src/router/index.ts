@@ -77,6 +77,11 @@ const routes: Array<RouteRecordRaw> = [
 
       },
       {
+        path: '/portal/inventario/registrarProducto',
+        name: 'registrarProducto',
+        component: () => import('@/views/PortalViews/InventoryViews/RegistrarProductosView.vue')
+      },
+      {
         path: '/portal/terceros',
         name: 'third',
         component: TercerosView
