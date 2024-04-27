@@ -1,4 +1,4 @@
-interface IEmployee {
+export interface IEmployee {
     name: string
     lastName: string
     id: number | null
@@ -7,5 +7,3 @@ interface IEmployee {
     email: string
     salary: number | null
 }
-
-export default IEmployee
