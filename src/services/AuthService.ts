@@ -3,6 +3,7 @@ import { Ref, ref } from 'vue'
 import { IUserForm } from '@/interfaces/IUsers';
 import { IUserFormRegister } from '@/interfaces/IUsers';
 import { IResponse } from '@/interfaces/IUsers';
+import { useCookies } from 'vue3-cookies';
 
 //Interfaz de lo que esperamos de la API
 /*
@@ -78,6 +79,8 @@ class AuthService {
             else if (response.jwt) {
                 // Esta es porque la api tiene un data que contiene el token
                 this.jwt.value = response.jwt 
+                const {cookies} = useCookies();
+                cookies.set('jwt', response.jwt)
                 return true
             }
     

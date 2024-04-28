@@ -125,6 +125,14 @@ const router = createRouter({
   routes
 })
 
-
+import { useCookies } from 'vue3-cookies'
+router.beforeEach((to, from, next) => {
+  const { cookies } = useCookies();
+  if (to.meta.requiresAuth && !cookies.isKey('jwt')) {
+    next('/');
+  } else {
+    next();
+  }
+})
 
 export default router
