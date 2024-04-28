@@ -44,6 +44,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/portal',
     name: 'portal',
     component: PortalView,
+    meta: { requiresAuth: true },
     children: [
       {
         path: '/portal/tablero',
@@ -123,5 +124,7 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+
 
 export default router

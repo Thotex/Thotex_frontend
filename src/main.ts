@@ -9,7 +9,15 @@ import { Icon } from '@iconify/vue'
 import { createPinia } from 'pinia'
 const pinia = createPinia()
 
+//COOKIES
+import { globalCookiesConfig } from 'vue3-cookies';
+globalCookiesConfig({
+    expireTimes: '1m',
+})
+
+
 const app = createApp(App)
 app.component('IconifyIcon', Icon)
-
-app.use(pinia).use(router).mount('#app')
+app.use(pinia)
+app.use(router)
+app.mount('#app')
