@@ -53,7 +53,10 @@ class AuthService {
                 },
                 body: JSON.stringify(
                     //Se puede dejar solo la variable, esta toma el nombre de la variable
-                    userForm
+                    {
+                        correo: userForm.email,
+                        contrasena: userForm.password
+                    }
                 )
             })
             
@@ -64,17 +67,17 @@ class AuthService {
             
             // Para tener buenas comparaciones
             // if (response.errors !== undefined && response.errors.length > 0) {
-            if (response.errors && response.errors.length > 0) {
+            if (response.mensaje) {
                 //this.error = "Login failed"
-                this.error.value = response.errors[0].message
+                this.error.value = response.mensaje
                 return false
             }
             
             // Para tener buenas comparaciones
             // if (response.data !== undefined) {
-            else if (response.data) {
+            else if (response.jwt) {
                 // Esta es porque la api tiene un data que contiene el token
-                this.jwt.value = response.data.access_token 
+                this.jwt.value = response.jwt 
                 return true
             }
     
@@ -105,7 +108,14 @@ class AuthService {
                 },
                 body: JSON.stringify(
                     //Se puede dejar solo la variable, esta toma el nombre de la variable
-                    userForm
+                    {
+                        nombre: userForm.name,
+                        apellido: userForm.lastName,
+                        telefono: userForm.phoneNumber,
+                        correo: userForm.email,
+                        contrasena: userForm.password,
+                        terminos: userForm.checkedTerms
+                    }
                 )
             })
             
@@ -116,17 +126,17 @@ class AuthService {
             
             // Para tener buenas comparaciones
             // if (response.errors !== undefined && response.errors.length > 0) {
-            if (response.errors && response.errors.length > 0) {
+            if (response.mensaje) {
                 //this.error = "Login failed"
-                this.error.value = response.errors[0].message
+                this.error.value = response.mensaje
                 return false
             }
             
             // Para tener buenas comparaciones
             // if (response.data !== undefined) {
-            else if (response.data) {
+            else if (response.jwt) {
                 // Esta es porque la api tiene un data que contiene el token
-                this.jwt.value = response.data.access_token 
+                this.jwt.value = response.jwt
                 return true
             }
     
