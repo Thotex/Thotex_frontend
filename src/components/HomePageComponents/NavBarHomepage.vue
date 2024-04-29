@@ -24,7 +24,7 @@
 	</div>
 	<div class="form-container">
 		<LoginForm v-if="showLogin" @closeFormLogin="closeFormLogin"/>
-		<RegistrationForm v-if="showRegister" @closeFormRegister="closeFormRegister"/>
+		<RegistrationForm v-if="showRegister" @closeFormRegister="closeFormRegister" @successRegister="successRegister"/>
 	</div>
 </template>
 
@@ -35,6 +35,7 @@ import LoginForm from '@/views/HomePageViews/LoginForm.vue';
 // import { useRouter } from 'vue-router';
 import IRouterShownName from '@/interfaces/IRouter';
 import { useCookies } from 'vue3-cookies';
+import swal from 'sweetalert';
 
 // const router = useRouter()
 const { cookies } = useCookies();
@@ -43,6 +44,11 @@ const isAuthenticated : Ref<boolean> = ref(cookies.isKey('jwt'))
 const showLogin : Ref<boolean> = ref(false);
 const showRegister : Ref<boolean> = ref(false);
 
+
+const successRegister = () => {
+	swal("¡Genial!", "Se ha registrado exitosamente", "success");
+	closeFormRegister();
+};
 
 const props = defineProps({
 	navBarRouterNames: {
@@ -75,6 +81,8 @@ const closeFormRegister = () => {
 const logout = () => {
 	cookies.remove('jwt')
 	isAuthenticated.value = false
+	swal("Hello world!");
+	//reload page
 	// router.push('/')
 }
 

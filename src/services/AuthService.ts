@@ -46,7 +46,7 @@ class AuthService {
         
         try {
             // Cambiar localhost por localhost:8081 y desplegar la API
-            const res : Response = await fetch('http://localhost:8081/api/v.1.0/login', {
+            const res : Response = await fetch('https://dramirezroc.pythonanywhere.com/api/v1.0/login', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -103,7 +103,7 @@ class AuthService {
         
         try {
             // Cambiar localhost por localhost:8081 y desplegar la API
-            const res : Response = await fetch('http://localhost:8081/auth/register', {
+            const res : Response = await fetch('https://dramirezroc.pythonanywhere.com/api/v1.0/register', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -112,12 +112,11 @@ class AuthService {
                 body: JSON.stringify(
                     //Se puede dejar solo la variable, esta toma el nombre de la variable
                     {
-                        nombre: userForm.name,
-                        apellido: userForm.lastName,
+                        first_name: userForm.name,
+                        last_name: userForm.lastName,
                         telefono: userForm.phoneNumber,
                         correo: userForm.email,
                         contrasena: userForm.password,
-                        terminos: userForm.checkedTerms
                     }
                 )
             })
@@ -131,17 +130,23 @@ class AuthService {
             // if (response.errors !== undefined && response.errors.length > 0) {
             if (response.mensaje) {
                 //this.error = "Login failed"
-                this.error.value = response.mensaje
-                return false
+                if (response.mensaje == 'Registro exitoso') {
+                    return true
+                } else {
+                    this.error.value = response.mensaje
+                    return false
+                }
             }
             
             // Para tener buenas comparaciones
             // if (response.data !== undefined) {
+            /*
             else if (response.jwt) {
                 // Esta es porque la api tiene un data que contiene el token
                 this.jwt.value = response.jwt
                 return true
             }
+            */
     
             return false
         

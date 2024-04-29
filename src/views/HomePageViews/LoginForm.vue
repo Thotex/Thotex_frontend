@@ -26,7 +26,8 @@
   import { defineEmits } from 'vue';
   import AuthService from '@/services/AuthService';
   import { IUserForm } from '@/interfaces/IUsers';
-import router from '@/router';
+  import router from '@/router';
+  import swal from 'sweetalert';
 
   const userForm: Ref<IUserForm> = ref({
     email: '',
@@ -127,7 +128,7 @@ import router from '@/router';
         router.push({ name: 'portal' })
         return true;
       } else {
-        alert('Login incorrecto');
+        swal("¡Login fallido!", auth.getError().value , "error");
         return false;
       } 
     }

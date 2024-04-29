@@ -44,6 +44,9 @@
     import { defineEmits } from 'vue';
     import AuthService from '@/services/AuthService';
     import { IUserFormRegister } from '@/interfaces/IUsers';
+    import swal from 'sweetalert';
+
+    const emits = defineEmits(['closeFormRegister', 'successRegister'])
 
     /*
     interface IUserFormRegister {
@@ -220,10 +223,10 @@
       //TODO : MOVER A UNA INTERFAZ APARTE Y MODIFICAR EL AUTH PARA RECIBIR OBJETO USER
       const response : boolean = await auth.register(userForm.value);
       if (response) {
-        alert('Registro correcto');
+        emits('successRegister')
         return true;
       } else {
-        alert('Registro incorrecto');
+        swal("¡Registro fallido!", auth.getError().value , "error");
         return false;
       } 
     }
@@ -232,7 +235,6 @@
     }
   }
 
-    const emits = defineEmits(['closeFormRegister'])
 
     const closeComponent = () => {
         emits('closeFormRegister')
