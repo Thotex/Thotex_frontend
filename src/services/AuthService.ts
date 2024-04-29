@@ -46,7 +46,7 @@ class AuthService {
         
         try {
             // Cambiar localhost por localhost:8081 y desplegar la API
-            const res : Response = await fetch('http://localhost:8081/auth/login', {
+            const res : Response = await fetch('http://localhost:8081/api/v.1.0/login', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

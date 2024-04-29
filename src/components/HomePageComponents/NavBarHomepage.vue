@@ -12,9 +12,13 @@
 				</li>
 				<li class="item" v-for="item in props.navBarRouterNames" :key="item.name"><router-link :to="{name: item.name}">{{ item.shownName }}</router-link></li>
 			</ul>
-			<ul class="right item-container">
+			<ul class="right item-container" v-if="!isAuthenticated">
 				<li class=" button-container"><button class="login-button" @click="toggleLoginView">Ingresar</button></li>
 				<li class=" button-container"><button class="register-button" @click="toggleRegisterView">Registrarse</button></li>
+			</ul>
+			<ul class="right item-container" v-else>
+				<router-link :to="{name: 'portal'}"><li class=" button-container"><button class="login-button">Portal</button></li></router-link>
+				<li class=" button-container"><button class="register-button" @click="logout">Cerrar sesión</button></li>
 			</ul>
 		</nav>
 	</div>
@@ -30,8 +34,11 @@ import RegistrationForm from '@/views/HomePageViews/RegistrationForm.vue';
 import LoginForm from '@/views/HomePageViews/LoginForm.vue';
 // import { useRouter } from 'vue-router';
 import IRouterShownName from '@/interfaces/IRouter';
+import { useCookies } from 'vue3-cookies';
 
 // const router = useRouter()
+const { cookies } = useCookies();
+const isAuthenticated : Ref<boolean> = ref(cookies.isKey('jwt'))
 
 const showLogin : Ref<boolean> = ref(false);
 const showRegister : Ref<boolean> = ref(false);
@@ -62,6 +69,12 @@ const closeFormLogin = () => {
 
 const closeFormRegister = () => {
 	toggleRegisterView()
+	// router.push('/')
+}
+
+const logout = () => {
+	cookies.remove('jwt')
+	isAuthenticated.value = false
 	// router.push('/')
 }
 
