@@ -48,6 +48,7 @@ class AuthService {
             // Cambiar localhost por localhost:8081 y desplegar la API
             const res : Response = await fetch('https://dramirezroc.pythonanywhere.com/api/v1.0/login', {
                 method: 'POST',
+                mode: 'cors',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
@@ -62,6 +63,7 @@ class AuthService {
             })
             
             //Obtenemos respuesta y la pasamos a JSON
+            console.log('Recibimos respuesta')
             const response : IResponse = await res.json()
 
             // if ('errors' in response) {
@@ -105,6 +107,7 @@ class AuthService {
             // Cambiar localhost por localhost:8081 y desplegar la API
             const res : Response = await fetch('https://dramirezroc.pythonanywhere.com/api/v1.0/register', {
                 method: 'POST',
+                mode: 'cors',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
