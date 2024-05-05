@@ -81,7 +81,7 @@ const closeFormRegister = () => {
 const logout = () => {
 	cookies.remove('jwt')
 	isAuthenticated.value = false
-	swal("Hello world!");
+	swal("¡Genial!", "Se ha cerrado la sesión exitosamente", "success");
 	//reload page
 	// router.push('/')
 }
