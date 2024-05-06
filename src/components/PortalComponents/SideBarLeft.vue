@@ -30,7 +30,7 @@
             </li>
 
             <li>
-                <RouterLink :to="{name: 'sale'}" class="button-side">
+                <RouterLink :to="{name: 'sales'}" class="button-side">
                     <label>Ventas</label>
                     <IconifyIcon class="iconos" icon="ion:pricetag-outline" color="white" width="50px" heigth="50px"></IconifyIcon>
                 </RouterLink>

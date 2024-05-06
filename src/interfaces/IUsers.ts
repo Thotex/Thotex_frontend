@@ -13,6 +13,7 @@ export interface IUserFormRegister {
     checkedTerms: boolean
 }
 
+/*
 export interface IResponse {
     errors?: { 
         message: string 
@@ -20,4 +21,9 @@ export interface IResponse {
     data?: {
         access_token: string
     };
+}
+*/
+export interface IResponse {
+    mensaje?: string
+    jwt?: string
 }

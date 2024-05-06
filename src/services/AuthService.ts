@@ -3,6 +3,7 @@ import { Ref, ref } from 'vue'
 import { IUserForm } from '@/interfaces/IUsers';
 import { IUserFormRegister } from '@/interfaces/IUsers';
 import { IResponse } from '@/interfaces/IUsers';
+import { useCookies } from 'vue3-cookies';
 
 //Interfaz de lo que esperamos de la API
 /*
@@ -45,36 +46,43 @@ class AuthService {
         
         try {
             // Cambiar localhost por localhost:8081 y desplegar la API
-            const res : Response = await fetch('http://localhost:8081/auth/login', {
+            const res : Response = await fetch('http://127.0.0.1:8000/api/v1.0/login', {
                 method: 'POST',
+                mode: 'cors',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(
                     //Se puede dejar solo la variable, esta toma el nombre de la variable
-                    userForm
+                    {
+                        correo: userForm.email,
+                        contrasena: userForm.password
+                    }
                 )
             })
             
             //Obtenemos respuesta y la pasamos a JSON
+            console.log('Recibimos respuesta')
             const response : IResponse = await res.json()
 
             // if ('errors' in response) {
             
             // Para tener buenas comparaciones
             // if (response.errors !== undefined && response.errors.length > 0) {
-            if (response.errors && response.errors.length > 0) {
+            if (response.mensaje) {
                 //this.error = "Login failed"
-                this.error.value = response.errors[0].message
+                this.error.value = response.mensaje
                 return false
             }
             
             // Para tener buenas comparaciones
             // if (response.data !== undefined) {
-            else if (response.data) {
+            else if (response.jwt) {
                 // Esta es porque la api tiene un data que contiene el token
-                this.jwt.value = response.data.access_token 
+                this.jwt.value = response.jwt 
+                const {cookies} = useCookies();
+                cookies.set('jwt', response.jwt)
                 return true
             }
     
@@ -97,15 +105,22 @@ class AuthService {
         
         try {
             // Cambiar localhost por localhost:8081 y desplegar la API
-            const res : Response = await fetch('http://localhost:8081/auth/register', {
+            const res : Response = await fetch('http://127.0.0.1:8000//api/v1.0/register', {
                 method: 'POST',
+                mode: 'cors',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(
                     //Se puede dejar solo la variable, esta toma el nombre de la variable
-                    userForm
+                    {
+                        first_name: userForm.name,
+                        last_name: userForm.lastName,
+                        telefono: userForm.phoneNumber,
+                        correo: userForm.email,
+                        contrasena: userForm.password,
+                    }
                 )
             })
             
@@ -116,19 +131,25 @@ class AuthService {
             
             // Para tener buenas comparaciones
             // if (response.errors !== undefined && response.errors.length > 0) {
-            if (response.errors && response.errors.length > 0) {
+            if (response.mensaje) {
                 //this.error = "Login failed"
-                this.error.value = response.errors[0].message
-                return false
+                if (response.mensaje == 'Registro exitoso') {
+                    return true
+                } else {
+                    this.error.value = response.mensaje
+                    return false
+                }
             }
             
             // Para tener buenas comparaciones
             // if (response.data !== undefined) {
-            else if (response.data) {
+            /*
+            else if (response.jwt) {
                 // Esta es porque la api tiene un data que contiene el token
-                this.jwt.value = response.data.access_token 
+                this.jwt.value = response.jwt
                 return true
             }
+            */
     
             return false
         

@@ -26,6 +26,8 @@
   import { defineEmits } from 'vue';
   import AuthService from '@/services/AuthService';
   import { IUserForm } from '@/interfaces/IUsers';
+  import router from '@/router';
+  import swal from 'sweetalert';
 
   const userForm: Ref<IUserForm> = ref({
     email: '',
@@ -123,10 +125,10 @@
       //TODO : MOVER A UNA INTERFAZ APARTE Y MODIFICAR EL AUTH PARA RECIBIR OBJETO USER
       const response : boolean = await auth.login(userForm.value);
       if (response) {
-        alert('Login correcto');
+        router.push({ name: 'portal' })
         return true;
       } else {
-        alert('Login incorrecto');
+        swal("¡Login fallido!", auth.getError().value , "error");
         return false;
       } 
     }
