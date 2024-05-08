@@ -16,6 +16,7 @@
 <script setup lang="ts">
     import CardComponent from '../../components/PortalComponents/CardComponent.vue';
     var imagenCarta = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRffHlYOp7ivHArSLTABCkOTtoKDIJxh2w345KLiRb8Bw&s';
+
 </script>
 
 <style scoped>
