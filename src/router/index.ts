@@ -10,7 +10,7 @@ import PortalView from '@/views/PortalView.vue'
 import BoardView from '@/views/PortalViews/BoardView.vue'
 import PayrollView from '@/views/PortalViews/PayrollView.vue'
 import InventoryView from '@/views/PortalViews/InventoryView.vue'
-import SaleView from '@/views/PortalViews/SaleView.vue'
+import SalesView from '@/views/PortalViews/SalesView.vue'
 import ShoppingView from '@/views/PortalViews/ShoppingView.vue'
 import TercerosView from '@/views/PortalViews/TercerosView.vue'
 import AccountingView from '@/views/PortalViews/AccountingView.vue'
@@ -44,6 +44,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/portal',
     name: 'portal',
     component: PortalView,
+    //meta: { requiresAuth: true },
     children: [
       {
         path: '/portal/tablero',
@@ -62,8 +63,8 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: '/portal/ventas',
-        name: 'sale',
-        component: SaleView
+        name: 'sales',
+        component: SalesView
       },
       {
         path: '/portal/compras',
@@ -127,6 +128,16 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+import { useCookies } from 'vue3-cookies'
+router.beforeEach((to, from, next) => {
+  const { cookies } = useCookies();
+  if (to.meta.requiresAuth && !cookies.isKey('jwt')) {
+    next('/');
+  } else {
+    next();
+  }
 })
 
 export default router

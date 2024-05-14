@@ -12,15 +12,19 @@
 				</li>
 				<li class="item" v-for="item in props.navBarRouterNames" :key="item.name"><router-link :to="{name: item.name}">{{ item.shownName }}</router-link></li>
 			</ul>
-			<ul class="right item-container">
+			<ul class="right item-container" v-if="!isAuthenticated">
 				<li class=" button-container"><button class="login-button" @click="toggleLoginView">Ingresar</button></li>
 				<li class=" button-container"><button class="register-button" @click="toggleRegisterView">Registrarse</button></li>
+			</ul>
+			<ul class="right item-container" v-else>
+				<router-link :to="{name: 'portal'}"><li class=" button-container"><button class="login-button">Portal</button></li></router-link>
+				<li class=" button-container"><button class="register-button" @click="logout">Cerrar sesión</button></li>
 			</ul>
 		</nav>
 	</div>
 	<div class="form-container">
 		<LoginForm v-if="showLogin" @closeFormLogin="closeFormLogin"/>
-		<RegistrationForm v-if="showRegister" @closeFormRegister="closeFormRegister"/>
+		<RegistrationForm v-if="showRegister" @closeFormRegister="closeFormRegister" @successRegister="successRegister"/>
 	</div>
 </template>
 
@@ -30,12 +34,21 @@ import RegistrationForm from '@/views/HomePageViews/RegistrationForm.vue';
 import LoginForm from '@/views/HomePageViews/LoginForm.vue';
 // import { useRouter } from 'vue-router';
 import IRouterShownName from '@/interfaces/IRouter';
+import { useCookies } from 'vue3-cookies';
+import swal from 'sweetalert';
 
 // const router = useRouter()
+const { cookies } = useCookies();
+const isAuthenticated : Ref<boolean> = ref(cookies.isKey('jwt'))
 
 const showLogin : Ref<boolean> = ref(false);
 const showRegister : Ref<boolean> = ref(false);
 
+
+const successRegister = () => {
+	swal("¡Genial!", "Se ha registrado exitosamente", "success");
+	closeFormRegister();
+};
 
 const props = defineProps({
 	navBarRouterNames: {
@@ -62,6 +75,14 @@ const closeFormLogin = () => {
 
 const closeFormRegister = () => {
 	toggleRegisterView()
+	// router.push('/')
+}
+
+const logout = () => {
+	cookies.remove('jwt')
+	isAuthenticated.value = false
+	swal("¡Genial!", "Se ha cerrado la sesión exitosamente", "success");
+	//reload page
 	// router.push('/')
 }
 
