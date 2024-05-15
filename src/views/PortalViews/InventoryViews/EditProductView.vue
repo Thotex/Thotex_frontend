@@ -1,6 +1,6 @@
 <template>
     <div>
-        <router-view/>
+        Editar producto
     </div>
 </template>
 
