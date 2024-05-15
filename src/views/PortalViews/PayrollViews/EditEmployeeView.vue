@@ -1,6 +1,6 @@
 <template>
     <div>
-        <router-view/>
+        Editar empleado
     </div>
 </template>
 
