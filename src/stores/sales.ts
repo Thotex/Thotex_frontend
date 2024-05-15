@@ -15,6 +15,7 @@ export const useSalesStore = defineStore('sales', {
         ] as Headers[] ,
         dataList : [] as ISale[],
         singleData : {} as ISale,
+        cachedData : [] as ISale[],
         fetchedBefore : false
     }),
     actions: {
@@ -22,27 +23,33 @@ export const useSalesStore = defineStore('sales', {
             const fetchService = new FetchService<ISale>('sales')
             if (await fetchService.fetchData()) {
                 this.dataList = fetchService.getData()
+                return true
             }
             else {
                 console.log("Error, no se pudo obtener la lista de ventas")
+                return false
             }
         },
         async fetchSingleData(id: number) {
             const fetchService = new FetchService<ISale>('sales')
             if (await fetchService.fetchSingleData(id)) {
                 this.singleData = fetchService.getSingleData()
+                return true
             }
             else {
                 console.log("Error, no se pudo obtener la venta")
+                return false
             }
         },
         async deleteData(data: ISale) {
             const fetchService = new FetchService<ISale>('sales')
             if (await fetchService.deleteData(data)) {
                 this.dataList = fetchService.getData()
+                return true
             }
             else {
                 console.log("Error, no se pudo borrar la venta")
+                return false
             }
         },
 
@@ -50,9 +57,11 @@ export const useSalesStore = defineStore('sales', {
             const fetchService = new FetchService<ISale>('sales')
             if (await fetchService.updateData(current, data)) {
                 this.dataList = fetchService.getData()
+                return true
             }
             else {
                 console.log("Error, no se pudo actualizar la venta")
+                return false
             }
         },
         

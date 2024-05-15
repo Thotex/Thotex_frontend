@@ -5,7 +5,7 @@
         overflow: auto;
         cursor: default;
         transition: all 400ms ease;
-        width: 300px;
+        width: 100%;
         &:hover{
             box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
             transform: translateY(-1%);
