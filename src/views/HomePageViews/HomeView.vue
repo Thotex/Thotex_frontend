@@ -1,9 +1,16 @@
 <template>
     <div class="container">
         <div class="content">
+          <section>
             <h1 class="title">SOFTWARE PARA LA ADMINISTRACIÓN DE TU NEGOCIO</h1>
             <p>Factura Electrónica, Nómina, Documento Soporte, Contabilidad, Cartera, Cotizaciones, Inventarios y más, todo en un solo lugar, <span>sin costos ocultos ni cláusulas de permanencia.</span></p>
+
+          </section>
+          <div class="image">
+            <img src="@/assets/ImagenHome.png" alt="Imagen inicio" height="500px" width="500px">
+          </div>
         </div>
+        
     </div>
 </template>
 
@@ -15,23 +22,26 @@
   .container {
     display: flex;
     flex-direction: column;
-    align-items: left;
     justify-content: center;
     width: 100%;
   }
 
   .content {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 80%;
     margin: 20px 0;
-    text-align: center;
-    overflow: hidden;
-    max-width: 400px;
     padding-left: 10%;
     padding: auto;
+    text-align: left;
+    
+  }
+  .image{
+
+    padding-left: 100px;
+  }
+  .section{
+    max-width: 200px;
+    margin-right: 100px;
     .title {
       text-align: left;
       width: 100%;
@@ -45,5 +55,4 @@
       }
     }
   }
-
 </style>
