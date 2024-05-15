@@ -11,8 +11,8 @@
                 <tr class="table-row" v-for="(row, index) in props.data" :key="index" @click="selectRow(row)">
                     <td v-for="(header, index) in props.headers" :key="index">{{row[header.dbName]}}</td>
                     <td  class="w-25">
-                        <button class="btn btn-danger" @click="deleteRow(row)"><IconifyIcon icon="mdi:delete" />Eliminar</button>
-                        <button class="btn btn-primary" @click="editRow(row)"><IconifyIcon icon="mdi:pencil" /> Editar</button>
+                        <button class="btn btn-danger" @click="deleteRow(row)"><IconifyIcon icon="mdi:delete" width="20px" /></button>
+                        <button class="btn btn-primary" @click="editRow(row)"><IconifyIcon icon="mdi:pencil" width="20px"/></button>
                     </td>
                 </tr>
             </tbody>
@@ -56,13 +56,22 @@
 </script>
 
 <style scoped lang="scss">
+.btn {
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
 .btn-danger {
-    background-color: red;
+    background-color: $custom-red;
     color: white;
 }
 
 .btn-primary {
-    background-color: blue;
+    background-color: $custom-blue;
     color: white;
 }
 
@@ -79,6 +88,7 @@
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 400px;
+    width: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     th,
     td {
@@ -88,30 +98,33 @@
     thead th {
         background-color: $custom-blue;
         color: #ffffff;
-        text-align: left;
+        text-align: center;
+        &:first-child {
+            border-top-left-radius: 5px;
+        }
+        &:last-child {
+            border-top-right-radius: 5px;
+        }
     }
 
     tbody tr {
         border-bottom: 1px solid #dddddd;
+        &:nth-of-type(even) {
+            background-color: #f3f3f3;
+            &:hover {
+                background-color: darken($color: #ddd, $amount: 5%);
+            }
+        }
+        &:nth-of-type(odd) {
+            background-color: #ddd;
+            &:hover {
+                background-color: darken($color: #ddd, $amount: 5%);
+            }
+        }
+        &:last-of-type {
+            border-bottom: 2px solid $custom-blue;
+        }
     }
-
-    tbody tr:nth-of-type(even) {
-        background-color: #f3f3f3;
-    }
-
-    tbody tr:nth-of-type(even):hover {
-        background-color: #ddd;
-    }
-
-    tbody tr:last-of-type {
-        border-bottom: 2px solid $custom-blue;
-    }
-    
 }
 
-
-.table-row:hover {
-    background-color: #ccc;
-    cursor: pointer;
-}
 </style>

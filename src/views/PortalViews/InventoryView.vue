@@ -28,11 +28,16 @@
     })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .title{
         font-weight: bold;
         text-align: left;
     }
+
+    .card-global{
+        width: 300px !important;
+    }
+
     .cartas{
         display: flex;
         

@@ -1,7 +1,6 @@
 <template>
     <div>
-        <h1>Ventas</h1>
-        <RouterView />
+        formulario
     </div>
 </template>
 

@@ -3,7 +3,7 @@
 		<nav class="nav">
 			<ul class="left item-container">	
 				<li class="logo-container">
-					<router-link to="/">
+					<router-link :to="{name: 'home'}">
 						<div class="logo">
 							<img src="@/assets/logoamarillo.png" alt="logo">
 							<h1 class="logo-text">Thot<span>ex</span></h1>

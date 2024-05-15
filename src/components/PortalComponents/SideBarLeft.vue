@@ -115,6 +115,7 @@
                 text-align: center;
                 align-items: normal;
             }
+
             li:hover{
                 background-color: #4D6FB3;
                 
@@ -125,6 +126,10 @@
                 width: 80px;
                 align-items: center;
             }
+
+    .router-link-active{
+        background-color: lighten($color: $custom-blue, $amount: 5%);
+    }
 
     .button-side{
         text-decoration: none;

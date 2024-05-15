@@ -20,7 +20,7 @@ import CalendarView from '@/views/PortalViews/CalendarView.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
+    name: 'index',
     component: HomePage,
     children: [
       {
@@ -43,6 +43,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/portal',
     name: 'portal',
+    redirect: '/portal/tablero', //Corresponde al dashboard 
     component: PortalView,
     //meta: { requiresAuth: true },
     children: [
@@ -63,8 +64,21 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: '/portal/ventas',
-        name: 'sales',
-        component: SalesView
+        name: 'indexSales',
+        component: SalesView,
+        children: [
+          {
+            path: '/portal/ventas',
+            name: 'sales',
+            component: () => import('@/views/PortalViews/SalesViews/MainSalesView.vue')
+          },
+          {
+            path: '/portal/ventas/editar/:id',
+            name: 'editSale',
+            component: () => import('@/views/PortalViews/SalesViews/EditSaleView.vue'),
+            props: true
+          }
+        ]
       },
       {
         path: '/portal/compras',
