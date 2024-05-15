@@ -1,6 +1,4 @@
 <template>
-
-<body>
         <div v-bind:class="props.class">
             <div class="content">
                 <img :src="props.image" alt="Card Image">
@@ -8,11 +6,7 @@
                 <p>{{props.content}}
                 </p>
             </div>
-    
         </div>
-</body>
-
-
 </template>
 <script setup lang="ts">
 import { defineProps} from 'vue';

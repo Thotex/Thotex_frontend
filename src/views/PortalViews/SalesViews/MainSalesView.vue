@@ -1,4 +1,9 @@
 <template>
+    <div class="cartas">
+        <CardComponent v-bind:class="'card-global'" image="https://i.imgur.com/MD4yrXa.png" v-bind:title="'Registrar venta'" v-bind:content="'Puedes registrar datos de la venta'"></CardComponent>
+        <CardComponent v-bind:class="'card-global'" image="https://i.imgur.com/0vz9Bpm.png" v-bind:title="'Historial de ventas'" v-bind:content="'Puedes ver el historial de tus ventas'"></CardComponent>
+        <CardComponent v-bind:class="'card-global'" image="https://i.imgur.com/StU4MFX.png" v-bind:title="'Estadísticas de ventas'" v-bind:content="'Puedes registrar productos'"></CardComponent>
+    </div>
     <div class="container">
         <StatsComponent/>
         <TableComponent v-if="showTable" :headers="salesStore.headers" :data="salesStore.dataList" @deleteCurrentRow="deleteItem" @editCurrentRow="editItem"/>
@@ -12,6 +17,7 @@
     import { onMounted, ref, Ref } from 'vue';
     import { useRouter } from 'vue-router';
     import { ISale } from '@/interfaces/ISales';
+    import CardComponent from '@/components/PortalComponents/CardComponent.vue';
 
 
     const salesStore = useSalesStore();
@@ -49,6 +55,10 @@
 </script>
 
 <style scoped lang="scss">
+    .cartas {
+        display: flex;
+    }
+
     .container{
         padding: 10px;
         display: flex;
