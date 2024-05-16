@@ -54,7 +54,7 @@ export const useSalesStore = defineStore('sales', {
         },
         async deleteData(data: ISale) {
             const fetchService = new FetchService<ISale>('sales')
-            if (await fetchService.deleteData(data)) {
+            if (await fetchService.deleteData(data.Fac_codigo)) {
                 this.dataList = fetchService.getData()
                 return true
             }
@@ -66,7 +66,7 @@ export const useSalesStore = defineStore('sales', {
 
         async updateData(data: ISale) {
             const fetchService = new FetchService<ISale>('sales')
-            if (await fetchService.updateData(this.singleData, data)) {
+            if (await fetchService.updateData(this.singleData.Fac_codigo, data)) {
                 this.dataList = fetchService.getData()
                 return true
             }

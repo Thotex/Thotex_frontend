@@ -159,6 +159,57 @@ class AuthService {
             return false
         }
     }
+    logout = async () => {
+        try {
+            // Cambiar localhost por localhost:8081 y desplegar la API
+            const {cookies} = useCookies();
+            const jwt = cookies.get('jwt');
+            const res : Response = await fetch('https://thotex-d214cd515eaf.herokuapp.com/api/v1.0/logout', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + jwt
+                }
+            })
+            
+            //Obtenemos respuesta y la pasamos a JSON
+            console.log('Recibimos respuesta')
+            const response : IResponse = await res.json()
+            // if ('errors' in response) {
+            
+            // Para tener buenas comparaciones
+            // if (response.errors !== undefined && response.errors.length > 0) {
+            if (response.mensaje) {
+                //this.error = "Login failed"
+                if (response.mensaje == 'Sesion cerrada') {
+                    cookies.remove('jwt');
+                    return true
+                } else {
+                    this.error.value = response.mensaje
+                    return false
+                }
+            }
+            
+            // Para tener buenas comparaciones
+            // if (response.data !== undefined) {
+            /*
+            else if (response.jwt) {
+                // Esta es porque la api tiene un data que contiene el token
+                this.jwt.value = response.jwt
+                return true
+            }
+            */
+    
+            return false
+        
+        //Any by default, pero esta bien
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+    }
 }
 
 export default AuthService
