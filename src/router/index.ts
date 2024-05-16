@@ -54,13 +54,26 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: '/portal/nomina',
-        name: 'payroll',
-        component: PayrollView
-      },
-      {
-        path: '/portal/nomina/crear',
-        name: 'createEmployee',
-        component: () => import('@/views/PortalViews/PayrollViews/CreateEmployeeView.vue')
+        name: 'indexPayroll',
+        component: PayrollView,
+        children : [
+          {
+            path: '/portal/nomina',
+            name: 'payroll',
+            component: () => import('@/views/PortalViews/PayrollViews/MainPayrollView.vue')
+          },
+          {
+            path: '/portal/nomina/editar/:id',
+            name: 'editPayroll',
+            component: () => import('@/views/PortalViews/PayrollViews/EditEmployeeView.vue'),
+            props: true
+          },
+          {
+            path: '/portal/nomina/crear',
+            name: 'createPayroll',
+            component: () => import('@/views/PortalViews/PayrollViews/CreateEmployeeView.vue')
+          }
+        ]
       },
       {
         path: '/portal/ventas',
@@ -77,6 +90,11 @@ const routes: Array<RouteRecordRaw> = [
             name: 'editSale',
             component: () => import('@/views/PortalViews/SalesViews/EditSaleView.vue'),
             props: true
+          },
+          {
+            path: '/portal/ventas/crear',
+            name: 'createSale',
+            component: () => import('@/views/PortalViews/SalesViews/CreateSaleView.vue')
           }
         ]
       },
@@ -87,14 +105,26 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: '/portal/inventario',
-        name: 'inventory',
-        component: InventoryView
-
-      },
-      {
-        path: '/portal/inventario/registrarProducto',
-        name: 'registrarProducto',
-        component: () => import('@/views/PortalViews/InventoryViews/RegistrarProductosView.vue')
+        name: 'indexInventory',
+        component: InventoryView,
+        children: [
+          {
+            path: '/portal/inventario',
+            name: 'inventory',
+            component: () => import('@/views/PortalViews/InventoryViews/MainInventoryView.vue')
+          },
+          {
+            path: '/portal/inventario/editar/:id',
+            name: 'editInventory',
+            component: () => import('@/views/PortalViews/InventoryViews/EditProductView.vue'),
+            props: true
+          },
+          {
+            path: '/portal/inventario/crear_producto',
+            name: 'registrarProducto',
+            component: () => import('@/views/PortalViews/InventoryViews/RegistrarProductosView.vue')
+          },
+        ]
       },
       {
         path: '/portal/terceros',
