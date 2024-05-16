@@ -1,13 +1,14 @@
 import { IProduct } from '@/interfaces/IInventory'
 import { ISale } from './ISales'
+import { IEmployee } from './IPayroll'
 
 export interface Headers {
     name: string
     dbName: string
 }
 
-export type Epic = IProduct | ISale
-export type EpicName = 'products' | 'sales' | 'none'
+export type Epic = IProduct | ISale | IEmployee
+export type EpicName = 'products' | 'sales' | 'employees' | 'none'
 
 /*
 export interface IStoreData {
