@@ -46,7 +46,7 @@ class AuthService {
         
         try {
             // Cambiar localhost por localhost:8081 y desplegar la API
-            const res : Response = await fetch('http://127.0.0.1:8000/api/v1.0/login', {
+            const res : Response = await fetch('https://thotex-d214cd515eaf.herokuapp.com/api/v1.0/login', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
@@ -105,7 +105,7 @@ class AuthService {
         
         try {
             // Cambiar localhost por localhost:8081 y desplegar la API
-            const res : Response = await fetch('http://127.0.0.1:8000//api/v1.0/register', {
+            const res : Response = await fetch('https://thotex-d214cd515eaf.herokuapp.com/api/v1.0/register', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
@@ -125,8 +125,8 @@ class AuthService {
             })
             
             //Obtenemos respuesta y la pasamos a JSON
+            console.log('Recibimos respuesta')
             const response : IResponse = await res.json()
-
             // if ('errors' in response) {
             
             // Para tener buenas comparaciones
