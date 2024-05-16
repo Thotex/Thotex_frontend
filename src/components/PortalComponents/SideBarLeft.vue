@@ -105,6 +105,7 @@
                 
         width: $sidebar-left-width;
         height: 70px;
+        position: relative;
         background-color: #203B70;
         font-size: 12px;
         font-weight: bold;
@@ -137,6 +138,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        height: 100%;
     } 
     
     .logo-container:hover{

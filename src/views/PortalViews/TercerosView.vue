@@ -18,7 +18,7 @@
     
     </script>
     
-    <style scoped>
+<style scoped>
         .title{
             font-weight: bold;
             text-align: left;
@@ -28,4 +28,4 @@
             
         }
         
-    </style>
+</style>
