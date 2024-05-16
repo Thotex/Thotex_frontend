@@ -16,7 +16,6 @@ import TercerosView from '@/views/PortalViews/TercerosView.vue'
 import AccountingView from '@/views/PortalViews/AccountingView.vue'
 import CalendarView from '@/views/PortalViews/CalendarView.vue'
 
-
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -100,8 +99,33 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: '/portal/compras',
-        name: 'shopping',
-        component: ShoppingView
+        name: 'indexShopping',
+        component: ShoppingView,
+        children:[
+          {
+            path: '/portal/compras',
+            name: 'shopping',
+            component: MainShoppingView
+        },
+        {
+          path: '/portal/compras/Crear',
+          name: 'createShopping',
+          component: CreateShoppingView,
+          props: true
+        },
+        {
+          path: '/portal/compras/Historial',
+          name: 'historyShopping',
+          component: ShoppingHistoryView,
+          props: true
+        },
+        {
+          path: '/portal/compras/Estadisticas',
+          name: 'statisticsShopping',
+          component: ShoppingStatisticsView,
+          props: true
+        }
+        ]
       },
       {
         path: '/portal/inventario',
@@ -175,6 +199,10 @@ const router = createRouter({
 })
 
 import { useCookies } from 'vue3-cookies'
+import MainShoppingView from '@/views/PortalViews/ShoppingViews/MainShoppingView.vue'
+import CreateShoppingView from '@/views/PortalViews/ShoppingViews/CreateShoppingView.vue'
+import ShoppingHistoryView from '@/views/PortalViews/ShoppingViews/ShoppingHistoryView.vue'
+import ShoppingStatisticsView from '@/views/PortalViews/ShoppingViews/ShoppingStatisticsView.vue'
 router.beforeEach((to, from, next) => {
   const { cookies } = useCookies();
   if (to.meta.requiresAuth && !cookies.isKey('jwt')) {

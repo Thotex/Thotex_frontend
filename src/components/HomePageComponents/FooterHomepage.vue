@@ -21,7 +21,7 @@
                     <a href="https://twitter.com/Thotex223715" target="_blank" rel="noreferrer" class="button-side">
                         <IconifyIcon class="iconos" icon="ph:x-logo" color="white" width="35px" heigth="20px" ></IconifyIcon>
                     </a>
-                    <a href="https://www.instagram.com" target="_blank" rel="noreferrer" class="button-side">
+                    <a href="https://www.tiktok.com/@thotexonline" target="_blank" rel="noreferrer" class="button-side">
                         <IconifyIcon class="iconos" icon="ph:tiktok-logo" color="white" width="35px" heigth="20px" ></IconifyIcon>
                     </a>
                     <a href="https://www.instagram.com/thopage37/" target="_blank" rel="noreferrer" class="button-side">
