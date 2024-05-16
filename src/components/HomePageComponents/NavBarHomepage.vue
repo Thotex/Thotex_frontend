@@ -23,8 +23,8 @@
 		</nav>
 	</div>
 	<div class="form-container">
-		<LoginForm v-if="showLogin" @closeFormLogin="closeFormLogin"/>
-		<RegistrationForm v-if="showRegister" @closeFormRegister="closeFormRegister" @successRegister="successRegister"/>
+		<LoginForm class="modal-form" v-if="showLogin" @closeFormLogin="closeFormLogin"/>
+		<RegistrationForm class="modal-form" v-if="showRegister" @closeFormRegister="closeFormRegister" @successRegister="successRegister"/>
 	</div>
 </template>
 
@@ -243,6 +243,7 @@ const logout = () => {
 		font-weight: bold;
 	}
 	
-	
-
+	.modal-form {
+		z-index: 4;
+	}
 </style>
