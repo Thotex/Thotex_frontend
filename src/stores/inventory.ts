@@ -37,6 +37,17 @@ export const useInventoryStore = defineStore('inventory', {
                 console.log("Error, no se pudo obtener el item")
             }
         },
+        async createData(data:IProduct) {
+            const fetchService = new FetchService<IProduct>('products')
+            if (await fetchService.insertData(data)) {
+                this.dataList = fetchService.getData()
+                return true
+            }
+            else {
+                console.log("Error, no se pudo crear el item")
+                return false
+            }
+        },
         async deleteData(data: IProduct) {
             const fetchService = new FetchService<IProduct>('products')
             if (await fetchService.deleteData(data)) {
@@ -47,9 +58,9 @@ export const useInventoryStore = defineStore('inventory', {
             }
         },
 
-        async updateData(current: IProduct, data: IProduct) {
+        async updateData( data: IProduct) {
             const fetchService = new FetchService<IProduct>('products')
-            if (await fetchService.updateData(current, data)) {
+            if (await fetchService.updateData(this.singleData, data)) {
                 this.dataList = fetchService.getData()
             }
             else {
