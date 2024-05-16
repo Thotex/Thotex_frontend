@@ -1,46 +1,79 @@
 <template>
     <div class="container">
-        <h1>Create Employee</h1>
+        <h1>Crear factura</h1>
         <div class="card-global">
             <form class="form-global" onsubmit="event.preventDefault()">
                 <div class="column">
-                    <h2 class="label">Nombre</h2>
-                    <input class="input" type="text" placeholder="Nombre" />
-                    <h2 class="label">Apellido</h2>
-                    <input class="input" type="text" placeholder="Apellido" />
-                    <h2 class="label">Identificación</h2>
-                    <input class="input" type="number" placeholder="Identificación" />
+                    <h2 class="label">Código de la factura</h2>
+                    <input v-model="saleForm.id" class="input" type="number" placeholder="Código" readonly/>
+                    <h2 class="label">Subtotal</h2>
+                    <input v-model="saleForm.subtotal" class="input" type="number" placeholder="Subtotal" step=".01"/>
+                    <h2 class="label">IVA</h2>
+                    <input v-model="saleForm.iva" class="input" type="number" placeholder="0.19" step=".01" readonly/>
                 </div>
                 <div class="column">
-                    <h2 class="label">Correo</h2>
-                    <input class="input" type="email" placeholder="Correo" />
-                    <h2 class="label">Rol</h2>
-                    <input class="input" type="text" placeholder="Rol" />
-                    <h2 class="label">Salario</h2>
-                    <input class="input" type="number" placeholder="Salario" />
+                    <h2 class="label">Fecha de Facturación</h2>
+                    <input v-model="saleForm.date" class="input" type="date" placeholder="Fecha de Facturación" />
+                    <h2 class="label">Total</h2>
+                    <input v-model="total" class="input" type="number" placeholder="Total" readonly/>
+                    <h2 class="label">Cliente</h2>
+                    <input v-model="saleForm.client" class="input" type="number" placeholder="Cliente ID" />
                 </div>
-                <!--
                 <div class="column">
-                    <h2 class="label">Fecha de nacimiento</h2>
-                    <input class="input" type="date" placeholder="Fecha de nacimiento" />
-                    <h2 class="label">Fecha de registro</h2>
-                    <input class="input" type="date" placeholder="Fecha de registro" />
-                    <h2 class="label">Fecha de inicio de contrato</h2>
-                    <input class="input" type="date" placeholder="Fecha de inicio de contrato" />
-                </div>
-                -->
-                <div class="column">
-                    <router-link class="button-global-light" :to="{name: 'payroll'}">Atrás</router-link>
-                    <button class="button-global">Crear</button>
+                    <router-link class="button-global-light" :to="{name: 'sales'}">Atrás</router-link>
+                    <button class="button-global" @click="submitFrom">Crear</button>
                 </div>
             </form>
-            
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-    
+    import { ref, Ref, computed, ComputedRef } from 'vue';
+    import { ISale } from '@/interfaces/ISales';
+    import { useSalesStore } from '@/stores/sales';
+    import { useRouter } from 'vue-router';
+    import swal from 'sweetalert';
+
+    const router = useRouter();
+
+    const saleStore = useSalesStore();
+
+    const currentItem = saleStore.singleData;
+
+    const saleForm : Ref = ref({
+        id: currentItem.Fac_codigo,
+        subtotal: currentItem.Fac_subtotal,
+        iva: currentItem.Fac_IVA,
+        date: currentItem.Fac_fechaGeneracion,
+        client: currentItem.Cl_codigo
+    })
+
+    const total: ComputedRef<number> = computed(() => {
+        return Math.ceil((saleForm.value.subtotal * (1 + saleForm.value.iva)) * 100) / 100;
+    })
+
+    const store = useSalesStore();
+
+    const submitFrom = async () => {
+        const sale : ISale = {
+            Fac_codigo: saleForm.value.id,
+            Fac_fechaGeneracion: new Date(saleForm.value.date),
+            Fac_subtotal: saleForm.value.subtotal,
+            Fac_precioTotal: total.value,
+            Fac_IVA: saleForm.value.iva,
+            Cl_codigo: saleForm.value.client
+        }
+
+        if (await store.updateData(sale)) {
+            router.push({name: 'sales'})
+        } else {
+            console.log("Error, no se pudo editar la venta")
+            swal("Error", "No se pudo editar la venta", "error")
+        }
+    }
+
+
 
 </script>
 

@@ -23,8 +23,8 @@
 		</nav>
 	</div>
 	<div class="form-container">
-		<LoginForm v-if="showLogin" @closeFormLogin="closeFormLogin"/>
-		<RegistrationForm v-if="showRegister" @closeFormRegister="closeFormRegister" @successRegister="successRegister"/>
+		<LoginForm class="modal-form" v-if="showLogin" @closeFormLogin="closeFormLogin"/>
+		<RegistrationForm class="modal-form" v-if="showRegister" @closeFormRegister="closeFormRegister" @successRegister="successRegister"/>
 	</div>
 </template>
 
@@ -36,6 +36,8 @@ import LoginForm from '@/views/HomePageViews/LoginForm.vue';
 import IRouterShownName from '@/interfaces/IRouter';
 import { useCookies } from 'vue3-cookies';
 import swal from 'sweetalert';
+// Auth
+import AuthService from '@/services/AuthService';
 
 // const router = useRouter()
 const { cookies } = useCookies();
@@ -78,12 +80,16 @@ const closeFormRegister = () => {
 	// router.push('/')
 }
 
-const logout = () => {
-	cookies.remove('jwt')
-	isAuthenticated.value = false
-	swal("¡Genial!", "Se ha cerrado la sesión exitosamente", "success");
-	//reload page
-	// router.push('/')
+const logout = async () => {
+	const auth : AuthService = new AuthService();
+	if (await auth.logout()) {
+		isAuthenticated.value = false
+		swal("Se ha cerrado la sesión exitosamente");
+	} else {
+		console.log("Error al cerrar la sesión")
+		console.log(auth.getError)
+		swal("Error al cerrar la sesión");
+	}
 }
 
 
@@ -243,6 +249,7 @@ const logout = () => {
 		font-weight: bold;
 	}
 	
-	
-
+	.modal-form {
+		z-index: 4;
+	}
 </style>

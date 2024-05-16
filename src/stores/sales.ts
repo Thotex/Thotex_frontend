@@ -41,9 +41,20 @@ export const useSalesStore = defineStore('sales', {
                 return false
             }
         },
+        async createData(data:ISale) {
+            const fetchService = new FetchService<ISale>('sales')
+            if (await fetchService.insertData(data)) {
+                this.dataList = fetchService.getData()
+                return true
+            }
+            else {
+                console.log("Error, no se pudo crear la venta")
+                return false
+            }
+        },
         async deleteData(data: ISale) {
             const fetchService = new FetchService<ISale>('sales')
-            if (await fetchService.deleteData(data)) {
+            if (await fetchService.deleteData(data.Fac_codigo)) {
                 this.dataList = fetchService.getData()
                 return true
             }
@@ -53,9 +64,9 @@ export const useSalesStore = defineStore('sales', {
             }
         },
 
-        async updateData(current: ISale, data: ISale) {
+        async updateData(data: ISale) {
             const fetchService = new FetchService<ISale>('sales')
-            if (await fetchService.updateData(current, data)) {
+            if (await fetchService.updateData(this.singleData.Fac_codigo, data)) {
                 this.dataList = fetchService.getData()
                 return true
             }
