@@ -1,5 +1,6 @@
 import { IProduct } from '@/interfaces/IInventory'
 import { ISale } from './ISales'
+import { IShopping } from './IShopping'
 import { IEmployee } from './IPayroll'
 
 export interface Headers {
@@ -7,8 +8,8 @@ export interface Headers {
     dbName: string
 }
 
-export type Epic = IProduct | ISale | IEmployee
-export type EpicName = 'products' | 'sales' | 'employees' | 'none'
+export type Epic = IProduct | ISale | IEmployee | IShopping
+export type EpicName = 'products' | 'sales' | 'employees' | 'shopping' | 'none'
 
 /*
 export interface IStoreData {
