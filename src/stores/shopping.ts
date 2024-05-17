@@ -10,7 +10,7 @@ export const useSalesStore = defineStore('shopping', {
             {name: 'Subtotal', dbName: 'Fac_subtotal'},
             {name: 'Total', dbName: 'Fac_precioTotal'},
             {name: 'IVA', dbName: 'Fac_IVA'},
-            {name: 'Proveedor', dbName: 'Cl_codigo'},// Cambiar segun la base de datos
+            {name: 'Proveedor', dbName: 'Proveedor_codigo'},// Cambiar segun la base de datos
         ] as Headers[] ,
         dataList : [] as IShopping[],
         singleData : {} as IShopping,
@@ -42,7 +42,7 @@ export const useSalesStore = defineStore('shopping', {
         },
         async deleteData(data: IShopping) {
             const fetchService = new FetchService<IShopping>('shopping')
-            if (await fetchService.deleteData(data)) {
+            if (await fetchService.deleteData(data.Fac_codigo)) {
                 this.dataList = fetchService.getData()
                 return true
             }
@@ -52,9 +52,9 @@ export const useSalesStore = defineStore('shopping', {
             }
         },
 
-        async updateData(current: IShopping, data: IShopping) {
+        async updateData( data: IShopping) {
             const fetchService = new FetchService<IShopping>('shopping')
-            if (await fetchService.updateData(current, data)) {
+            if (await fetchService.updateData(this.singleData.Fac_codigo, data)) {
                 this.dataList = fetchService.getData()
                 return true
             }
@@ -72,7 +72,7 @@ export const useSalesStore = defineStore('shopping', {
                     Fac_subtotal: 80000,
                     Fac_precioTotal: 95200,
                     Fac_IVA: 15200,
-                    Cl_codigo: 501
+                    Proveedor_codigo: 501
                 },
                 {
                     Fac_codigo: 102,
@@ -80,7 +80,7 @@ export const useSalesStore = defineStore('shopping', {
                     Fac_subtotal: 120000,
                     Fac_precioTotal: 142800,
                     Fac_IVA: 22800,
-                    Cl_codigo: 502
+                    Proveedor_codigo: 502
                 },
                 {
                     Fac_codigo: 103,
@@ -88,7 +88,7 @@ export const useSalesStore = defineStore('shopping', {
                     Fac_subtotal: 45000,
                     Fac_precioTotal: 53550,
                     Fac_IVA: 8550,
-                    Cl_codigo: 503
+                    Proveedor_codigo: 503
                 }
             ]
         }
