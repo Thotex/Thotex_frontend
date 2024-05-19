@@ -4,15 +4,17 @@
             <thead class="table-header">
                 <tr>
                     <th scope="col" v-for="(header, index) in props.headers" :key="index">{{header.name}}</th>
-                    <th scope="col" class="w-25">Acciones</th>
+                    <th v-if="!noActions" scope="col" class="w-25">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="table-row" v-for="(row, index) in props.data" :key="index" @click="selectRow(row)">
-                    <td v-for="(header, index) in props.headers" :key="index">{{row[header.dbName]}}</td>
-                    <td  class="w-25">
-                        <button class="btn btn-danger" @click="deleteRow(row)"><IconifyIcon icon="mdi:delete" width="20px" /></button>
-                        <button class="btn btn-primary" @click="editRow(row)"><IconifyIcon icon="mdi:pencil" width="20px"/></button>
+                <tr class="table-row" v-for="(row, index) in props.data" :key="index" @click="selectRow(row)" @dbclick="selectRowDoubleClick(row)">
+                    <td :class="{ 'pointer': props.noActions }" v-for="(header, index) in props.headers" :key="index">{{row[header.dbName]}}</td>
+                    <td v-if="!noActions" class="actions">
+                        <div class="btn-container">
+                            <button class="btn btn-primary" @click="editRow(row)"><IconifyIcon icon="mdi:pencil" width="20px"/></button>
+                            <button class="btn btn-danger" @click="deleteRow(row)"><IconifyIcon icon="mdi:delete" width="20px" /></button>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -37,13 +39,22 @@
         data: {
             //TODO change any
             type: Array as () => T[],
+        },
+        noActions: {
+            type: Boolean
         }
     })
 
-    const emit = defineEmits(['returnSelectedRow', 'deleteCurrentRow', 'editCurrentRow']);
+    const emit = defineEmits(['returnSelectedRow', 'returnSelectedRowDoubleClick', 'deleteCurrentRow', 'editCurrentRow']);
 
     const selectRow = (row: T) => {
+        console.log("Seleccionado: ", row)
         emit('returnSelectedRow', row);
+    }
+
+    const selectRowDoubleClick = (row: T) => {
+        console.log("Doble click: ", row)
+        emit('returnSelectedRowDoubleClick', row);
     }
 
     const deleteRow = (row: T) => {
@@ -93,6 +104,9 @@
     th,
     td {
         padding: 12px 15px;
+        text-align: center; 
+        //Nowrap
+        white-space: nowrap;
     }
 
     thead th {
@@ -125,6 +139,20 @@
             border-bottom: 2px solid $custom-blue;
         }
     }
+    .actions {
+        display: table-cell; /* Cambia a display table-cell */
+        vertical-align: middle; /* Centra verticalmente los botones */
+        height: 100%;
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }   
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 </style>

@@ -3,16 +3,19 @@ import { IEmployee, IEmployeeClean, cleanEmployee, formEmployee} from '@/interfa
 import { Headers } from '@/interfaces/IProject'
 import FetchService from '@/services/FetchService'
 
-export const useInventoryStore = defineStore('inventory', {
+export const usePayrollStore = defineStore('inventory', {
     state: () => ({
         headers: [
-            { name: 'Código', dbName: 'Prod_codigo' },
-            { name: 'Nombre', dbName: 'Prod_nombre' },
-            { name: 'Precio', dbName: 'Prod_precio' },
-            { name: 'Existencias', dbName: 'Prod_cantidad' },
-            { name: 'IVA', dbName: 'Prod_IVA' },
-            { name: 'Municipio', dbName: 'Mun_nombre' },
-            { name: 'Empresa', dbName: 'Emp_codigo' },
+            { name: 'Código', dbName: 'Emp_codigo' },
+            { name: 'Número de ID', dbName: 'Per_id' },
+            { name: 'Tipo de ID', dbName: 'Per_tipoId' },
+            { name: 'Nombres', dbName: 'Per_nombre' },
+            { name: 'Apellidos', dbName: 'Per_apellido' },
+            { name: 'Correo', dbName: 'Per_correo' },
+            { name: 'Teléfono', dbName: 'Per_telefono' },
+            { name: 'Cargo', dbName: 'Emp_cargo' },
+            { name: 'Salario', dbName: 'Emp_salario' },
+            { name: 'Fecha de Ingreso', dbName: 'Emp_fechaingreso' },
         ] as Array<Headers>,
         dataList : [] as Array<IEmployeeClean>,
         singleData : {} as IEmployeeClean,
@@ -91,5 +94,35 @@ export const useInventoryStore = defineStore('inventory', {
         /**
          * Fills the dataList with dummy data for development purposes.
          */
+        devFillerData() {
+            this.dataList = [
+                {
+                    Emp_codigo: 1,
+                    Per_codigo: 101,
+                    Per_tipoId: 'CC',
+                    Per_id: 123456789,
+                    Per_nombre: 'Juan',
+                    Per_apellido: 'Pérez',
+                    Per_correo: 'juan.perez@example.com',
+                    Per_telefono: 3001234567,
+                    Emp_cargo: "Gerente",
+                    Emp_salario: 5000000,
+                    Emp_fechaingreso: new Date('2020-01-01')
+                },
+                {
+                    Emp_codigo: 2,
+                    Per_codigo: 102,
+                    Per_tipoId: 'CC',
+                    Per_id: 987654321,
+                    Per_nombre: 'María',
+                    Per_apellido: 'Rodríguez',
+                    Per_correo: 'maria.rodriguez@example.com',
+                    Per_telefono: 3109876543,
+                    Emp_cargo: "Vendedor",
+                    Emp_salario: 6000000,
+                    Emp_fechaingreso: new Date('2021-02-01')
+                },
+            ]
+        }
     }
 })

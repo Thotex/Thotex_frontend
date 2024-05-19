@@ -40,13 +40,14 @@
                 <input class="input" type="date" placeholder="Fecha de adquisición" required>
 
                 <h2>Fecha de vencimiento(Si aplica)</h2>
-                <input class="inpunt" type="date" placeholder="Fecha de vencimiento">
+                <input class="input" type="date" placeholder="Fecha de vencimiento">
                 <!--
                     <h2>Ubicación en el almacen</h2>
                     <input class="inpunt" type="text" placeholder="Ubicación en el almacen" >
                 -->
             </div>
             <div class="column">
+                <router-link class="button-global-light" :to="{name: 'inventory'}">Atrás</router-link>
                 <button class="button-global">Registrar</button>
             </div>
         </form>
@@ -56,20 +57,18 @@
 </div>
 </template>
 
+<script setup lang="ts">
+
+</script>
+
 <style scoped lang="scss">
     .container{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 100%;
+        width: auto;
         padding: 10px;
-    }
-    .card-global{
-        width: 80%;
-        @media screen and (max-width: 768px) {
-            width: 100%;
-        }
     }
 
 </style>

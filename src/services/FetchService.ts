@@ -26,9 +26,12 @@ class FetchService <T extends Epic> {
             case 'employees':
                 this.mode = 'empleados'
                 break
+            case 'shopping':
+                this.mode = 'shopping'
+                break
             default:
-                console.log("Mode not found, defaulting to 'none'")
-                alert("Mode not found, defaulting to 'none'")
+                console.log("Mode" + mode + " not found, defaulting to 'none'")
+                alert("Mode" + mode + " not found, defaulting to 'none'")
                 this.mode = 'none'
                 break
         }

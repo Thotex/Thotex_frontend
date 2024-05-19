@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { IShopping } from '@/interfaces/IShopping'
 import { Headers } from '@/interfaces/IProject'
 import FetchService from '@/services/FetchService'
-export const useSalesStore = defineStore('shopping', {
+export const useShoppingStore = defineStore('shopping', {
     state: () => ({
         headers: [
             {name: 'Código', dbName: 'Fac_codigo'},
@@ -43,8 +43,10 @@ export const useSalesStore = defineStore('shopping', {
         async deleteData(data: IShopping) {
             const fetchService = new FetchService<IShopping>('shopping')
             if (await fetchService.deleteData(data.Fac_codigo)) {
-                this.dataList = fetchService.getData()
-                return true
+                if (await this.fetchDataList()) {
+                    return true
+                }
+                return false
             }
             else {
                 console.log("Error, no se pudo borrar la venta")
@@ -55,10 +57,11 @@ export const useSalesStore = defineStore('shopping', {
         async updateData( data: IShopping) {
             const fetchService = new FetchService<IShopping>('shopping')
             if (await fetchService.updateData(this.singleData.Fac_codigo, data)) {
-                this.dataList = fetchService.getData()
-                return true
-            }
-            else {
+                if (await this.fetchDataList()) {
+                    return true
+                }
+                return false
+            } else {
                 console.log("Error, no se pudo actualizar la venta")
                 return false
             }

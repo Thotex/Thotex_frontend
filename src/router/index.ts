@@ -150,7 +150,7 @@ const routes: Array<RouteRecordRaw> = [
           },
           {
             path: '/portal/inventario/crear_producto',
-            name: 'registrarProducto',
+            name: 'createInventory',
             component: () => import('@/views/PortalViews/InventoryViews/RegistrarProductosView.vue')
           },
         ]
