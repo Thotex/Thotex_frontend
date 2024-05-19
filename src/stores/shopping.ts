@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { IShopping } from '@/interfaces/IShopping'
 import { Headers } from '@/interfaces/IProject'
 import FetchService from '@/services/FetchService'
+
 export const useShoppingStore = defineStore('shopping', {
     state: () => ({
         headers: [
