@@ -15,6 +15,11 @@ import ShoppingView from '@/views/PortalViews/ShoppingView.vue'
 import TercerosView from '@/views/PortalViews/TercerosView.vue'
 import AccountingView from '@/views/PortalViews/AccountingView.vue'
 import CalendarView from '@/views/PortalViews/CalendarView.vue'
+import MainShoppingView from '@/views/PortalViews/ShoppingViews/MainShoppingView.vue'
+import CreateShoppingView from '@/views/PortalViews/ShoppingViews/CreateShoppingView.vue'
+import ShoppingHistoryView from '@/views/PortalViews/ShoppingViews/ShoppingHistoryView.vue'
+import ShoppingStatisticsView from '@/views/PortalViews/ShoppingViews/ShoppingStatisticsView.vue'
+
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -199,10 +204,6 @@ const router = createRouter({
 })
 
 import { useCookies } from 'vue3-cookies'
-import MainShoppingView from '@/views/PortalViews/ShoppingViews/MainShoppingView.vue'
-import CreateShoppingView from '@/views/PortalViews/ShoppingViews/CreateShoppingView.vue'
-import ShoppingHistoryView from '@/views/PortalViews/ShoppingViews/ShoppingHistoryView.vue'
-import ShoppingStatisticsView from '@/views/PortalViews/ShoppingViews/ShoppingStatisticsView.vue'
 router.beforeEach((to, from, next) => {
   const { cookies } = useCookies();
   if (to.meta.requiresAuth && !cookies.isKey('jwt')) {
