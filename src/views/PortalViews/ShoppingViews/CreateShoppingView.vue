@@ -31,7 +31,7 @@
 <script setup lang="ts">
     import { ref, Ref, computed, ComputedRef } from 'vue';
     import { IShopping } from '@/interfaces/IShopping';
-    import { useSalesStore } from '@/stores/sales';
+    import { useSalesStore } from '@/stores/shopping';
     import { useRouter } from 'vue-router';
     import swal from 'sweetalert';
 
