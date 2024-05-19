@@ -34,13 +34,9 @@
         text-align: left;
     }
 
-    .card-global{
-        width: 300px !important;
-    }
 
     .cartas{
         display: flex;
-        
     }
-    
+
 </style>
