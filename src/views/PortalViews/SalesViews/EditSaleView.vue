@@ -17,7 +17,10 @@
                     <h2 class="label">Total</h2>
                     <input v-model="total" class="input" type="number" placeholder="Total" readonly/>
                     <h2 class="label">Cliente</h2>
-                    <input v-model="saleForm.client" class="input" type="number" placeholder="Cliente ID" />
+                    <div class="input-container">
+                        <input v-model="saleForm.client" class="input" type="number" placeholder="Cliente ID" readonly/>
+                        <button @click="openClientModal" class="button-global-light size20"><IconifyIcon icon="gridicons:dropdown" height="30px" width="30px"/></button>
+                    </div>
                 </div>
                 <div class="column">
                     <router-link class="button-global-light" :to="{name: 'sales'}">Atrás</router-link>
@@ -26,18 +29,38 @@
             </form>
         </div>
     </div>
+    <div class="modal" v-if="clientModal" @click="closeModal">
+        <div class=" popup-card">
+            <h1>Seleccionar cliente</h1>
+            <TableComponent @returnSelectedRow="getClientName" :headers="payrollStore.headers" :data="payrollStore.dataList" :no-actions="true"/>
+        </div>
+    </div>
 </template>
 
 <script setup lang="ts">
-    import { ref, Ref, computed, ComputedRef } from 'vue';
+    import { ref, Ref, computed, ComputedRef, onMounted } from 'vue';
     import { ISale } from '@/interfaces/ISales';
     import { useSalesStore } from '@/stores/sales';
     import { useRouter } from 'vue-router';
     import swal from 'sweetalert';
-
+    import TableComponent from '@/components/PortalComponents/TableComponent.vue';
+    import { usePayrollStore } from '@/stores/payroll'; //TODO: Cambiar esto por lo de terceros
+    import { IEmployeeClean } from '@/interfaces/IPayroll'; //TODO: Cambiar esto por lo de terceros
+ 
     const router = useRouter();
 
+    const payrollStore = usePayrollStore();
     const saleStore = useSalesStore();
+
+    const getClientName = (data: IEmployeeClean) => {
+        console.log("Seleccionado: ", data)
+        saleForm.value.client = data.Emp_codigo
+        openClientModal()
+    }
+
+    onMounted(() => {
+        payrollStore.fetchDataList();
+    })
 
     const currentItem = saleStore.singleData;
 
@@ -53,7 +76,6 @@
         return Math.ceil((saleForm.value.subtotal * (1 + saleForm.value.iva)) * 100) / 100;
     })
 
-    const store = useSalesStore();
 
     const submitFrom = async () => {
         const sale : ISale = {
@@ -65,7 +87,7 @@
             Cl_codigo: saleForm.value.client
         }
 
-        if (await store.updateData(sale)) {
+        if (await saleStore.updateData(sale)) {
             router.push({name: 'sales'})
         } else {
             console.log("Error, no se pudo editar la venta")
@@ -74,6 +96,15 @@
     }
 
 
+    const clientModal = ref(false)
+    const openClientModal = () => {
+        clientModal.value = !clientModal.value
+    }
+
+    const closeModal = (event : Event ) => {
+        if (event.target !== event.currentTarget) return;
+        clientModal.value = false;
+    }
 
 </script>
 
@@ -83,14 +114,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 100%;
+        width: auto;
         padding: 10px;
-    }
-    .card-global{
-        width: 80%;
-        @media screen and (max-width: 768px) {
-            width: 100%;
-        }
     }
 
 </style>
