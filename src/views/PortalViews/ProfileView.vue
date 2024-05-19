@@ -1,7 +1,7 @@
 <template>
         <main>
             <h1 class="titulo">Perfil</h1>
-            <form method="post" action="/" class="formulario">
+            <form method="post" action="/" class="card-global">
                 
                 <section class="encabezado">
                     <h2>Información personal</h2>
@@ -11,8 +11,7 @@
                 
                 <section class="etiqueta1">
                     <label class="descripcion" >Rol</label>
-                    <label class="descripcion" for="email">Email<span>*</span></label>
-                    
+                    <label class="descripcion" for="email">Email</label>
                 </section>
                 
                 <section class="campo1">
@@ -39,8 +38,8 @@
                                 <option value="2">xxxxxxxxx</option>  
                             </select>
                         </section>
-                        <label class="descripcion" for="iden">Numero de indetificación<span>*</span></label>
-                        <input class="campo-entrada" type="number" id="iden" name="iden" required>
+                        <label class="descripcion" for="iden">Numero de indetificación</label>
+                        <input class="campo-entrada" type="number" id="iden" name="iden">
                     </div>
                     
                     <div>
@@ -109,23 +108,6 @@ button:hover{
     background: #ffe6a1;
 }
 
-.formulario{
-    position: relative;
-    top: flex;
-    box-sizing: border-box;
-    border: 0; 
-    background-color: white;
-    top: 10px;
-    height: 80%;
-    width: 800px;
-    text-align: justify;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
 .campo-entrada{
     position: relative;
     left: 10px;
@@ -196,9 +178,7 @@ h2{
     gap: 235px;
 }
 
-input[type=number] {
-  -moz-appearance: textfield;
-  }
+
   
   input[type=number]::-webkit-outer-spin-button,
   ::-webkit-inner-spin-button {
