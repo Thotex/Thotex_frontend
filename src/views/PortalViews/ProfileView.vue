@@ -1,17 +1,6 @@
-<template> 
-    <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-        <meta charset=”utf-8”>
-        <link rel="icon" type="image/png" href="../assets/LogoThotex.png">
-        <meta name="viewport" content="width=device-width">
-    </head>
-    
-    <body>
+<template>
         <main>
-            <header>
-                <h1>Perfil</h1>
-            </header>
+            <h1 class="titulo">Perfil</h1>
             <form method="post" action="/" class="formulario">
                 
                 <section class="encabezado">
@@ -85,21 +74,22 @@
             
             
         </main>
-        
-    </body>
-    
+         
 </template>
 
 <script setup lang="ts">
 </script>
 
 <style scoped lang="scss">
-body {
-    background-color:rgb(211, 208, 203) ;
+main {
     font-family: "roboto";
-    position: flex;
     height: 100%;
-    width: 100%;
+    width: 80%;
+    position: absolute;
+    top: 0;
+    left: 80;
+    text-align: left;
+    align-items: start;
 }
 
 button {
@@ -110,7 +100,7 @@ button {
     height: 35px;
     font-family: "roboto";
     font-weight: bold;
-    margin-top: 200px;
+    margin-top: 100px;
     margin-bottom: 15px;
     left: 10px;
 }
@@ -120,22 +110,21 @@ button:hover{
 }
 
 .formulario{
-    position: absolute;
+    position: relative;
     top: flex;
     box-sizing: border-box;
     border: 0; 
     background-color: white;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     top: 10px;
-    height: 100%;
-    width: 100%;
-    margin-left: 85px;
+    height: 80%;
+    width: 800px;
     text-align: justify;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 20px;
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .campo-entrada{
     position: relative;
@@ -228,4 +217,11 @@ input[type=number] {
     justify-content: flex-start;
     gap: 232px;
   }
+  .titulo{
+    color: black;
+    padding-left: 30px;
+    margin: 0;
+    margin-top: 30px;
+  }
+
 </style>

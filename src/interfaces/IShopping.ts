@@ -1,4 +1,4 @@
-export interface IShopping {
+export interface IShopping{
     Fac_codigo: number
     Fac_fechaGeneracion: Date
     Fac_subtotal: number
