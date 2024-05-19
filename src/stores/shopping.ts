@@ -66,6 +66,17 @@ export const useShoppingStore = defineStore('shopping', {
                 return false
             }
         },
+        async createData(data:IShopping) {
+            const fetchService = new FetchService<IShopping>('sales')
+            if (await fetchService.insertData(data)) {
+                this.dataList = fetchService.getData()
+                return true
+            }
+            else {
+                console.log("Error, no se pudo crear la venta")
+                return false
+            }
+        },
         
         devFillerData() {
             this.dataList = [

@@ -72,7 +72,7 @@
         display: flex;
         
     }
-    
+
     .container{
         padding: 10px;
         display: flex;
