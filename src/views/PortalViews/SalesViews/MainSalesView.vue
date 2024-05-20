@@ -6,6 +6,7 @@
     </div>
     <div class="container">
         <StatsComponent/>
+        <SaleStatsBar/>
         <TableComponent v-if="showTable" :headers="salesStore.headers" :data="salesStore.dataList" @deleteCurrentRow="deleteItem" @editCurrentRow="editItem"/>
     </div>
 </template>
@@ -18,9 +19,9 @@
     import { ISale } from '@/interfaces/ISales';
     import CardComponent from '@/components/PortalComponents/CardComponent.vue';
     import { useRouter } from 'vue-router';
+    import SaleStatsBar from './SaleStatsBar.vue';
 
     const router = useRouter();
-
     const salesStore = useSalesStore();
     let showTable: Ref<boolean> = ref(false);
 

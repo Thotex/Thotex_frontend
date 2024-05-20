@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { IShopping } from '@/interfaces/IShopping'
 import { Headers } from '@/interfaces/IProject'
 import FetchService from '@/services/FetchService'
-export const useSalesStore = defineStore('shopping', {
+export const useShoppingStore = defineStore('shopping', {
     state: () => ({
         headers: [
             {name: 'Código', dbName: 'Fac_codigo'},
@@ -25,7 +25,7 @@ export const useSalesStore = defineStore('shopping', {
                 return true
             }
             else {
-                console.log("Error, no se pudo obtener la lista de ventas")
+                console.log("Error, no se pudo obtener la lista de compras")
                 return false
             }
         },
@@ -64,7 +64,7 @@ export const useSalesStore = defineStore('shopping', {
             }
         },
         async createData(data:IShopping) {
-            const fetchService = new FetchService<IShopping>('sales')
+            const fetchService = new FetchService<IShopping>('shopping')
             if (await fetchService.insertData(data)) {
                 this.dataList = fetchService.getData()
                 return true
@@ -97,7 +97,7 @@ export const useSalesStore = defineStore('shopping', {
                     Fac_codigo: 103,
                     Fac_fechaGeneracion: new Date('2024-05-04T11:45:00'),
                     Fac_subtotal: 45000,
-                    Fac_precioTotal: 53550,
+                    Fac_precioTotal: 53,
                     Fac_IVA: 8550,
                     Proveedor_codigo: 503
                 }

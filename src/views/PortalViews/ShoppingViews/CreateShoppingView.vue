@@ -31,7 +31,7 @@
 <script setup lang="ts">
     import { ref, Ref, computed, ComputedRef } from 'vue';
     import { IShopping } from '@/interfaces/IShopping';
-    import { useSalesStore } from '@/stores/shopping';
+    import { useShoppingStore } from '@/stores/shopping';
     import { useRouter } from 'vue-router';
     import swal from 'sweetalert';
 
@@ -49,7 +49,7 @@
         return Math.ceil((saleForm.value.subtotal * (1 + saleForm.value.iva)) * 100) / 100;
     })
 
-    const store = useSalesStore();
+    const store = useShoppingStore();
 
     const submitFrom = async () => {
         const sale : IShopping = {

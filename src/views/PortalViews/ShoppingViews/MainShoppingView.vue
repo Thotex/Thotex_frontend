@@ -5,36 +5,35 @@
         <CardComponent v-bind:class="'card-global'" image="https://i.imgur.com/StU4MFX.png" v-bind:title="'Estadísticas de compras'" v-bind:content="'Puedes ver las estadísticas de tus compras'"></CardComponent>
     </div>
     <div class="container">
-        <TableComponent v-if="showTable" :headers="salesStore.headers" :data="salesStore.dataList" @deleteCurrentRow="deleteItem" @editCurrentRow="editItem"/>
+        <TableComponent v-if="showTable" :headers="ShoppingStore.headers" :data="ShoppingStore.dataList" @deleteCurrentRow="deleteItem" @editCurrentRow="editItem"/>
+        <ShoppingStatsBar/>
     </div>
 </template>
 <script setup lang="ts">
 import TableComponent from '@/components/PortalComponents/TableComponent.vue';
-import StatsComponent from '@/components/PortalComponents/StatsComponent.vue';
-import { useSalesStore } from '@/stores/sales';
 import { onMounted, ref, Ref } from 'vue';
 import { IShopping } from '@/interfaces/IShopping';
 import CardComponent from '@/components/PortalComponents/CardComponent.vue';
 import { useRouter } from 'vue-router';
-
-const router = useRouter();
-
-    const salesStore = useSalesStore();
+import { useShoppingStore } from '@/stores/shopping';
+import ShoppingStatsBar from './ShoppingStatsBar.vue';
+    const router = useRouter();
+    const ShoppingStore = useShoppingStore();
     let showTable: Ref<boolean> = ref(false);
 
     onMounted(() => {
-        salesStore.devFillerData();
-        if (salesStore.dataList.length > 0) {
+        ShoppingStore.devFillerData();
+        if (ShoppingStore.dataList.length > 0) {
             showTable.value = true
         }
     })
 
     const editItem = async( item: IShopping ) => {
         console.log(item)
-        if ( await salesStore.fetchSingleData(item.Fac_codigo)) {
-            router.push({name: 'editSale', params: {id: salesStore.singleData.Fac_codigo}})
+        if ( await ShoppingStore.fetchSingleData(item.Fac_codigo)) {
+            router.push({name: 'editSale', params: {id: ShoppingStore.singleData.Fac_codigo}})
             // Actualizar la tabla
-            salesStore.fetchDataList()
+            ShoppingStore.fetchDataList()
         } else {
             console.log("Error, no se pudo obtener el item")
         }
@@ -42,10 +41,10 @@ const router = useRouter();
 
     const deleteItem = async ( item: IShopping ) => {
         console.log(item)
-        if (await salesStore.deleteData(item)) {
+        if (await ShoppingStore.deleteData(item)) {
             // Actualizar la tabla
             console.log("Item eliminado")
-            salesStore.fetchDataList()
+            ShoppingStore.fetchDataList()
         } else {
             console.log("Error, no se pudo borrar el item")
         }
