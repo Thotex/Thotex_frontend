@@ -81,13 +81,19 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: '/portal/ventas',
-        name: 'indexSales',
+        name: 'sales',
         component: SalesView,
+        redirect: '/portal/ventas/historial',
         children: [
           {
-            path: '/portal/ventas',
-            name: 'sales',
-            component: () => import('@/views/PortalViews/SalesViews/MainSalesView.vue')
+            path: '/portal/ventas/historial',
+            name: 'historySales',
+            component: () => import('@/views/PortalViews/SalesViews/HistorySalesView.vue')
+          },
+          {
+            path: '/portal/ventas/estadisticas',
+            name: 'statsSales',
+            component: () => import('@/views/PortalViews/SalesViews/StatsSalesView.vue')
           },
           {
             path: '/portal/ventas/editar/:id',
@@ -113,19 +119,19 @@ const routes: Array<RouteRecordRaw> = [
             component: MainShoppingView
         },
         {
-          path: '/portal/compras/Crear',
+          path: '/portal/compras/crear',
           name: 'createShopping',
           component: CreateShoppingView,
           props: true
         },
         {
-          path: '/portal/compras/Historial',
+          path: '/portal/compras/historial',
           name: 'historyShopping',
           component: ShoppingHistoryView,
           props: true
         },
         {
-          path: '/portal/compras/Estadisticas',
+          path: '/portal/compras/estadisticas',
           name: 'statisticsShopping',
           component: ShoppingStatisticsView,
           props: true
@@ -158,7 +164,27 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/portal/terceros',
         name: 'third',
-        component: TercerosView
+        component: TercerosView,
+        children : [
+          /*
+          {
+            path: '/portal/terceros',
+            name: 'third',
+            component: () => import('@/views/PortalViews/TercerosViews/MainTercerosView.vue')
+          },
+          {
+            path: '/portal/terceros/editar/:id',
+            name: 'editThird',
+            component: () => import('@/views/PortalViews/TercerosViews/EditThirdView.vue'),
+            props: true
+          },
+          {
+            path: '/portal/terceros/crear',
+            name: 'createThird',
+            component: () => import('@/views/PortalViews/TercerosViews/CreateThirdView.vue')
+          }
+          */
+        ]
       },
       {
         path: '/portal/contabilidad',

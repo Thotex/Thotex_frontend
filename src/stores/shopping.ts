@@ -68,7 +68,7 @@ export const useShoppingStore = defineStore('shopping', {
             }
         },
         async createData(data:IShopping) {
-            const fetchService = new FetchService<IShopping>('sales')
+            const fetchService = new FetchService<IShopping>('shopping')
             if (await fetchService.insertData(data)) {
                 this.dataList = fetchService.getData()
                 return true
