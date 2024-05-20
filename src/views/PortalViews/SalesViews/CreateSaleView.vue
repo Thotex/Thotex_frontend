@@ -17,7 +17,10 @@
                     <h2 class="label">Total</h2>
                     <input v-model="total" class="input" type="number" placeholder="Total" readonly/>
                     <h2 class="label">Cliente</h2>
-                    <input v-model="saleForm.client" class="input" type="number" placeholder="Cliente ID" />
+                    <div class="input-container">
+                        <input v-model="saleForm.client" class="input" type="number" placeholder="Cliente ID" readonly/>
+                        <button @click="openClientModal" class="button-global-light size20"><IconifyIcon icon="gridicons:dropdown" height="30px" width="30px"/></button>
+                    </div>
                 </div>
                 <div class="column">
                     <router-link class="button-global-light" :to="{name: 'sales'}">Atrás</router-link>
@@ -26,16 +29,37 @@
             </form>
         </div>
     </div>
+    <div class="modal" v-if="clientModal" @click="closeModal">
+        <div class=" popup-card">
+            <h1>Seleccionar cliente</h1>
+            <TableComponent @returnSelectedRow="getClientName" :headers="payrollStore.headers" :data="payrollStore.dataList" :no-actions="true"/>
+        </div>
+    </div>
 </template>
 
 <script setup lang="ts">
-    import { ref, Ref, computed, ComputedRef } from 'vue';
+    import { ref, Ref, computed, ComputedRef, onMounted } from 'vue';
     import { ISale } from '@/interfaces/ISales';
     import { useSalesStore } from '@/stores/sales';
     import { useRouter } from 'vue-router';
     import swal from 'sweetalert';
-
+    import TableComponent from '@/components/PortalComponents/TableComponent.vue';
+    import { usePayrollStore } from '@/stores/payroll'; //TODO: Cambiar esto por lo de terceros
+    import { IEmployeeClean } from '@/interfaces/IPayroll'; //TODO: Cambiar esto por lo de terceros
+    
     const router = useRouter();
+    const payrollStore = usePayrollStore(); //TODO
+    const saleStore = useSalesStore();
+
+    const getClientName = (data: IEmployeeClean) => {
+        console.log("Seleccionado: ", data)
+        saleForm.value.client = data.Emp_codigo
+        openClientModal()
+    }
+
+    onMounted(() => {
+        payrollStore.fetchDataList();
+    })
 
     const saleForm : Ref = ref({
         id: 'Código',
@@ -49,8 +73,6 @@
         return Math.ceil((saleForm.value.subtotal * (1 + saleForm.value.iva)) * 100) / 100;
     })
 
-    const store = useSalesStore();
-
     const submitFrom = async () => {
         const sale : ISale = {
             Fac_codigo: saleForm.value.id,
@@ -61,7 +83,7 @@
             Cl_codigo: saleForm.value.client
         }
 
-        if (await store.createData(sale)) {
+        if (await saleStore.createData(sale)) {
             router.push({name: 'sales'})
         } else {
             console.log("Error, no se pudo crear la venta")
@@ -69,7 +91,15 @@
         }
     }
 
+    const clientModal = ref(false)
+    const openClientModal = () => {
+        clientModal.value = !clientModal.value
+    }
 
+    const closeModal = (event : Event ) => {
+        if (event.target !== event.currentTarget) return;
+        clientModal.value = false;
+    }
 
 </script>
 
@@ -79,14 +109,38 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 100%;
+        width: auto;
         padding: 10px;
     }
-    .card-global{
-        width: 80%;
-        @media screen and (max-width: 768px) {
-            width: 100%;
-        }
+
+    .size20{
+        max-width: 40px;
+    }
+
+    .modal{
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        overflow: auto;
+    }
+
+    .popup-card{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        background-color: white;
+        flex-direction: column;
+        min-width: 400px;
+        max-width: 85%;
+        max-height: 80%;
+        border-radius: 10px;
+        padding: 10px;
     }
 
 </style>

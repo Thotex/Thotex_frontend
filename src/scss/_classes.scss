@@ -39,6 +39,14 @@
     @media screen and (max-width: 768px) {
         grid-template-columns: 1fr;
     }
+    .input-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        button {
+            margin-left: 10px;
+        }
+    }
 
     .column {
         display: grid;

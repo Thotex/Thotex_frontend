@@ -15,11 +15,8 @@ import ShoppingView from '@/views/PortalViews/ShoppingView.vue'
 import TercerosView from '@/views/PortalViews/TercerosView.vue'
 import AccountingView from '@/views/PortalViews/AccountingView.vue'
 import CalendarView from '@/views/PortalViews/CalendarView.vue'
-import MainShoppingView from '@/views/PortalViews/ShoppingViews/MainShoppingView.vue'
 import CreateShoppingView from '@/views/PortalViews/ShoppingViews/CreateShoppingView.vue'
 import ShoppingHistoryView from '@/views/PortalViews/ShoppingViews/ShoppingHistoryView.vue'
-import ShoppingStatisticsView from '@/views/PortalViews/ShoppingViews/ShoppingStatisticsView.vue'
-
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -110,7 +107,7 @@ const routes: Array<RouteRecordRaw> = [
           {
             path: '/portal/compras',
             name: 'shopping',
-            component: MainShoppingView
+            component: ShoppingView
         },
         {
           path: '/portal/compras/Crear',
@@ -124,12 +121,6 @@ const routes: Array<RouteRecordRaw> = [
           component: ShoppingHistoryView,
           props: true
         },
-        {
-          path: '/portal/compras/Estadisticas',
-          name: 'statisticsShopping',
-          component: ShoppingStatisticsView,
-          props: true
-        }
         ]
       },
       {
@@ -150,7 +141,7 @@ const routes: Array<RouteRecordRaw> = [
           },
           {
             path: '/portal/inventario/crear_producto',
-            name: 'registrarProducto',
+            name: 'createInventory',
             component: () => import('@/views/PortalViews/InventoryViews/RegistrarProductosView.vue')
           },
         ]

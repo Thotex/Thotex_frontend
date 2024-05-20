@@ -5,7 +5,7 @@
         <CardComponent v-bind:class="'card-global'" image="https://i.imgur.com/StU4MFX.png" v-bind:title="'Estadísticas de ventas'" v-bind:content="'Puedes registrar productos'"></CardComponent>
     </div>
     <div class="container">
-        <StatsComponent/>
+        <SaleStatsPie/>
         <SaleStatsBar/>
         <TableComponent v-if="showTable" :headers="salesStore.headers" :data="salesStore.dataList" @deleteCurrentRow="deleteItem" @editCurrentRow="editItem"/>
     </div>
@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
     import TableComponent from '@/components/PortalComponents/TableComponent.vue';
-    import StatsComponent from '@/components/PortalComponents/StatsComponent.vue';
+    import SaleStatsPie from './SaleStatsPie.vue';
     import { useSalesStore } from '@/stores/sales';
     import { onMounted, ref, Ref } from 'vue';
     import { ISale } from '@/interfaces/ISales';

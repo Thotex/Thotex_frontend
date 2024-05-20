@@ -8,11 +8,12 @@
 import { ref, onMounted } from 'vue'
 import { useSalesStore } from '@/stores/sales'
 import { Chart, registerables } from 'chart.js'
+import ChartDataLabels from 'chartjs-plugin-datalabels'
 import type { Ref } from 'vue'
 import type { ISale } from '@/interfaces/ISales'
 
-// Registrar todos los componentes de Chart.js
-Chart.register(...registerables)
+// Registrar todos los componentes de Chart.js y el plugin de datalabels
+Chart.register(...registerables, ChartDataLabels)
 
 const pieChart: Ref<HTMLCanvasElement | null> = ref(null) // Referencia al elemento canvas
 const salesStore = useSalesStore() // Accede a la store de ventas
@@ -79,6 +80,18 @@ const createChart = () => {
         plugins: {
           legend: {
             position: 'top'
+          },
+          datalabels: {
+            formatter: (value, ctx) => {
+              const data = ctx.chart.data.datasets[0].data as number[]
+              const total = data.reduce((acc, val) => acc + val, 0)
+              const percentage = (value / total * 100).toFixed(2) + '%'
+              return percentage
+            },
+            color: '#fff',
+            anchor: 'end',
+            align: 'start',
+            offset: -10
           }
         }
       }

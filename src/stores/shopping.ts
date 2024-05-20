@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { IShopping } from '@/interfaces/IShopping'
 import { Headers } from '@/interfaces/IProject'
 import FetchService from '@/services/FetchService'
+
 export const useShoppingStore = defineStore('shopping', {
     state: () => ({
         headers: [
@@ -43,8 +44,10 @@ export const useShoppingStore = defineStore('shopping', {
         async deleteData(data: IShopping) {
             const fetchService = new FetchService<IShopping>('shopping')
             if (await fetchService.deleteData(data.Fac_codigo)) {
-                this.dataList = fetchService.getData()
-                return true
+                if (await this.fetchDataList()) {
+                    return true
+                }
+                return false
             }
             else {
                 console.log("Error, no se pudo borrar la venta")
@@ -55,10 +58,11 @@ export const useShoppingStore = defineStore('shopping', {
         async updateData( data: IShopping) {
             const fetchService = new FetchService<IShopping>('shopping')
             if (await fetchService.updateData(this.singleData.Fac_codigo, data)) {
-                this.dataList = fetchService.getData()
-                return true
-            }
-            else {
+                if (await this.fetchDataList()) {
+                    return true
+                }
+                return false
+            } else {
                 console.log("Error, no se pudo actualizar la venta")
                 return false
             }
@@ -97,7 +101,7 @@ export const useShoppingStore = defineStore('shopping', {
                     Fac_codigo: 103,
                     Fac_fechaGeneracion: new Date('2024-05-04T11:45:00'),
                     Fac_subtotal: 45000,
-                    Fac_precioTotal: 53,
+                    Fac_precioTotal: 5300,
                     Fac_IVA: 8550,
                     Proveedor_codigo: 503
                 }

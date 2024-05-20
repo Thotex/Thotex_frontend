@@ -23,27 +23,32 @@ export const useInventoryStore = defineStore('inventory', {
             const fetchService = new FetchService<IProduct>('products')
             if (await fetchService.fetchData()) {
                 this.dataList = fetchService.getData()
+                return true
             }
             else {
                 console.log("Error, no se pudo obtener la lista de inventario")
+                return false
             }
         },
         async fetchSingleData(id: number) {
             const fetchService = new FetchService<IProduct>('products')
             if (await fetchService.fetchSingleData(id)) {
                 this.singleData = fetchService.getSingleData()
+                return true
             }
             else {
                 console.log("Error, no se pudo obtener el item")
+                return false
             }
         },
         async createData(data:IProduct) {
             const fetchService = new FetchService<IProduct>('products')
             if (await fetchService.insertData(data)) {
-                this.dataList = fetchService.getData()
-                return true
-            }
-            else {
+                if (await this.fetchDataList()) {
+                    return true
+                }
+                return false
+            } else {
                 console.log("Error, no se pudo crear el item")
                 return false
             }
@@ -51,20 +56,28 @@ export const useInventoryStore = defineStore('inventory', {
         async deleteData(data: IProduct) {
             const fetchService = new FetchService<IProduct>('products')
             if (await fetchService.deleteData(data.Prod_codigo)) {
-                this.dataList = fetchService.getData()
+                if (await this.fetchDataList()) {
+                    return true
+                }
+                return false
             }
             else {
                 console.log("Error, no se pudo borrar el item")
+                return false
             }
         },
 
         async updateData( data: IProduct) {
             const fetchService = new FetchService<IProduct>('products')
             if (await fetchService.updateData(this.singleData.Prod_codigo, data)) {
-                this.dataList = fetchService.getData()
+                if (await this.fetchDataList()) {
+                    return true
+                }
+                return false
             }
             else {
                 console.log("Error, no se pudo actualizar el item")
+                return false
             }
         },
 

@@ -9,7 +9,7 @@ export interface IEmployee {
         Per_correo: string,
         Per_telefono: number
     },
-    Emp_cargo: number,
+    Emp_cargo: string,
     Emp_salario: number,
     Emp_fechaingreso: Date
 }
@@ -23,7 +23,7 @@ export interface IEmployeeClean {
     Per_apellido: string,
     Per_correo: string,
     Per_telefono: number
-    Emp_cargo: number,
+    Emp_cargo: string,
     Emp_salario: number,
     Emp_fechaingreso: Date
 }
