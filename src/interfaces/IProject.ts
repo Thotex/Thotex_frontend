@@ -2,14 +2,16 @@ import { IProduct } from '@/interfaces/IInventory'
 import { ISale } from './ISales'
 import { IShopping } from './IShopping'
 import { IEmployee } from './IPayroll'
+import { IEvent } from './ICalendar'
+import { IThirdParty } from './IThirdParties'
 
 export interface Headers {
     name: string
     dbName: string
 }
 
-export type Epic = IProduct | ISale | IEmployee | IShopping
-export type EpicName = 'products' | 'sales' | 'employees' | 'shopping' | 'none'
+export type Epic = IProduct | ISale | IEmployee | IShopping | IEvent | IThirdParty
+export type EpicName = 'products' | 'sales' | 'employees' | 'shopping' | 'calendar' | 'thirdParties' | 'none'
 
 /*
 export interface IStoreData {

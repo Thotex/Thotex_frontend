@@ -29,6 +29,12 @@ class FetchService <T extends Epic> {
             case 'shopping':
                 this.mode = 'shopping'
                 break
+            case 'thirdParties':
+                this.mode = 'terceros' //TODO: Cuadrar esto con la API
+                break
+            case 'calendar':
+                this.mode = 'calendar'
+                break
             default:
                 console.log("Mode" + mode + " not found, defaulting to 'none'")
                 alert("Mode" + mode + " not found, defaulting to 'none'")

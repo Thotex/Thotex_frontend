@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <h1>Crear factura</h1>
-        <div class="card-global">
+        <div class="card-global card-centered">
             <form class="form-global" onsubmit="event.preventDefault()">
                 <div class="column">
                     <h2 class="label">Código de la factura</h2>
@@ -22,11 +22,8 @@
                         <button @click="openClientModal" class="button-global-light size20"><IconifyIcon icon="gridicons:dropdown" height="30px" width="30px"/></button>
                     </div>
                 </div>
-                <div class="column">
-                    <router-link class="button-global-light" :to="{name: 'sales'}">Atrás</router-link>
-                    <button class="button-global" @click="submitFrom">Crear</button>
-                </div>
             </form>
+            <button class="button-global btn-center" @click="submitFrom">Crear</button>
         </div>
     </div>
     <div class="modal" v-if="clientModal" @click="closeModal">
@@ -115,6 +112,20 @@
 
     .size20{
         max-width: 40px;
+    }
+
+    .card-centered{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .btn-center{
+        margin: 20px;
+        width: 30%;
     }
 
     .modal{

@@ -1,12 +1,13 @@
 <template>
-        <div v-bind:class="props.class">
-            <div class="content">
-                <img :src="props.image" alt="Card Image">
+    <div v-bind:class="props.class">
+        <div class="content">
+            <img :src="props.image" alt="Card Image">
+            <div>
                 <h3>{{ props.title }}</h3>
-                <p>{{props.content}}
-                </p>
+                <p>{{props.content}} </p>
             </div>
         </div>
+    </div>
 </template>
 <script setup lang="ts">
 import { defineProps} from 'vue';
@@ -31,5 +32,12 @@ const props = defineProps({
     
 })
 </script>
+
+<style scoped lang="scss">
+    .content {
+        display: flex;
+    }
+
+</style>
 
 

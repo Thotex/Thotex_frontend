@@ -23,6 +23,8 @@
         useShoppingStore().fetchDataList();
         useInventoryStore().fetchDataList();
         console.log("Cargadas las stores")
+
+        useSalesStore().devFillerData()
     })
 </script>
 
