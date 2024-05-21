@@ -2,38 +2,8 @@
     <div>
         <h1 class="title">Calendario</h1>
     </div>
-
-    Locale es
     <vue-cal style="height:400px" locale="es" :events="eventos" />
-    
-    Time false y hide-weekends
-    <vue-cal :time="false" hide-weekends   :events="eventos"/>
 
-    Pequeño
-
-
-    <vue-cal
-    class="vuecal--rounded-theme vuecal--green-theme"
-    xsmall
-    hide-view-selector
-    :time="false"
-    active-view="month"
-    :disable-views="['week']"
-    :events="eventos"
-    style="width: 270px;height: 300px">
-</vue-cal>
-
-    Vistas desactivadas
-    <vue-cal   :events="eventos" :time="false" active-view="month" :disable-views="['years', 'year', 'week']" />
-
-    Con hoario laboral
-    <vue-cal
-  :time-from="8 * 60"
-  :time-to="19 * 60"
-  :time-step="30"
-  :events="eventos"
-  hide-weekends>
-</vue-cal>
 </template>
 
 <script setup lang="ts">

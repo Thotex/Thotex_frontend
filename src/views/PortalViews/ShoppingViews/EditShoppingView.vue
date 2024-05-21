@@ -9,23 +9,24 @@
                     <h2 class="label">Subtotal</h2>
                     <input required v-model="shoppingForm.subtotal" class="input" type="number" placeholder="Subtotal" step=".01"/>
                     <h2 class="label">IVA</h2>
-                    <input required disabled v-model="shoppingForm.iva" class="input" type="number" placeholder="0.19" step=".01" readonly/>
+                    <input required v-model="shoppingForm.iva" class="input" type="number" placeholder="0.19" step=".01" readonly/>
                 </div>
                 <div class="column">
                     <h2 class="label">Fecha de Facturación</h2>
                     <input required v-model="shoppingForm.date" class="input" type="date" placeholder="Fecha de Facturación" />
                     <h2 class="label">Total</h2>
-                    <input required disabled v-model="total" class="input" type="number" placeholder="Total" readonly/>
+                    <input required v-model="total" class="input" type="number" placeholder="Total" readonly/>
                     <h2 class="label">Proveedor</h2>
                     <div class="input-container">
-                        <input v-model="shoppingForm.client" class="input" type="number" placeholder="Proveedor ID" readonly/>
+                        <input required v-model="shoppingForm.client" class="input" type="number" placeholder="Cliente ID" readonly/>
                         <button @click.prevent="openClientModal" class="button-global-light size20"><IconifyIcon icon="gridicons:dropdown" height="30px" width="30px"/></button>
                     </div>
                 </div>
+                <div class="column">
+                    <router-link class="button-global-light" :to="{name: 'shopping'}">Atrás</router-link>
+                    <button class="button-global" @click="submitFrom">Crear</button>
+                </div>
             </form>
-            <div class="flex-centered-button">
-                <button class="button-global btn-center" @click="submitFrom">Crear</button>
-            </div>
         </div>
     </div>
     <div class="modal" v-if="clientModal" @click="closeModal">
@@ -60,20 +61,23 @@
         thirdPartiesStore.fetchDataList();
     })
 
+    const currentItem = shoppingStore.singleData;
+
     const shoppingForm : Ref = ref({
-        id: null,
-        subtotal: null,
-        iva: 0.19,
-        date: null,
-        client: null
+        id: currentItem.Fac_codigo,
+        subtotal: currentItem.Fac_subtotal,
+        iva: currentItem.Fac_IVA,
+        date: currentItem.Fac_fechaGeneracion,
+        client: currentItem.Proveedor_codigo
     })
 
     const total: ComputedRef<number> = computed(() => {
         return Math.ceil((shoppingForm.value.subtotal * (1 + shoppingForm.value.iva)) * 100) / 100;
     })
 
+
     const submitFrom = async () => {
-        const shopping : IShopping = {
+        const sale : IShopping = {
             Fac_codigo: shoppingForm.value.id,
             Fac_fechaGeneracion: new Date(shoppingForm.value.date),
             Fac_subtotal: shoppingForm.value.subtotal,
@@ -82,13 +86,14 @@
             Proveedor_codigo: shoppingForm.value.client
         }
 
-        if (await shoppingStore.createData(shopping)) {
+        if (await shoppingStore.updateData(sale)) {
             router.push({name: 'shopping'})
         } else {
-            console.log("Error, no se pudo crear la compra")
-            swal("Error", "No se pudo crear la compra", "error")
+            console.log("Error, no se pudo editar la compra")
+            swal("Error", "No se pudo editar la compra", "error")
         }
     }
+
 
     const clientModal = ref(false)
     const openClientModal = () => {
@@ -103,30 +108,14 @@
 </script>
 
 <style scoped lang="scss">
-    .modal{
+/*
+    .container{
         display: flex;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        justify-content: center;
-        align-items: center;
-        overflow: auto;
-    }
-
-    .popup-card{
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        background-color: white;
         flex-direction: column;
-        min-width: 400px;
-        max-width: 85%;
-        max-height: 80%;
-        border-radius: 10px;
+        align-items: center;
+        justify-content: center;
+        width: auto;
         padding: 10px;
     }
-
+*/
 </style>

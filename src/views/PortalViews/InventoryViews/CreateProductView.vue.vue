@@ -36,11 +36,10 @@
                     </select>
                     <div></div>
                 </div>
-                <div class="column">
-                    <router-link class="button-global-light" :to="{name: 'inventory'}">Atrás</router-link>
-                    <button @click="submitFrom" class="button-global">Editar</button>
-                </div>
             </form>
+            <div class="flex-centered-button">
+                <button @click="submitFrom" class="button-global btn-center">Registrar</button>
+            </div>
         </div>
     </div>
     <div class="modal" v-if="clientModal" @click="closeModal">
@@ -87,17 +86,7 @@
         thirdPartiesStore.fetchDataList();
         placesStore.fetchDepartamentos();
         placesStore.municipios = []
-        
-        // Llenar con el current
-        saleForm.value.name = current.Prod_nombre
-        saleForm.value.existences = current.Prod_cantidad
-        saleForm.value.price = current.Prod_precio
-        saleForm.value.iva = current.Prod_IVA
-        saleForm.value.municipality = current.Mun_nombre
-        saleForm.value.client = current.Emp_codigo
     })
-
-    const current = inventoryStore.singleData
 
     const saleForm : Ref = ref({
         name: null,
@@ -121,11 +110,11 @@
             Emp_codigo: saleForm.value.client,
         }
 
-        if (await inventoryStore.updateData(item)) {
+        if (await inventoryStore.createData(item)) {
             router.push({name: 'inventory'})
         } else {
-            console.log("Error, no se pudo actualizar el item")
-            swal("Error", "No se pudo actualizar el item", "error")
+            console.log("Error, no se pudo crear el item")
+            swal("Error", "No se pudo crear el item", "error")
         }
     }
 

@@ -1,26 +1,17 @@
 <template>
-    <h1 class="title">Inventario</h1>
-    <div class="cartas">
-        <CardComponent @click="redirectToCreate" v-bind:class="'card-global'" image="https://i.imgur.com/aLkaA1D.png" v-bind:title="'Registrar productos'" v-bind:content="'Puedes registrar productos'"></CardComponent>
-        <CardComponent v-bind:class="'card-global'" image="https://i.imgur.com/ICFBcKG.png" v-bind:title="'Historial de inventario'" v-bind:content="'Puedes registrar productos'"></CardComponent>
-        <CardComponent v-bind:class="'card-global'" image="https://i.imgur.com/yo86YnL.png" v-bind:title="'Estadísticas de inventario'" v-bind:content="'Puedes registrar productos'"></CardComponent>
-    </div>
-    <div class="container">
-        <StatsComponent/>
+    <div>
+        <h1>Historial de inventario</h1>
         <TableComponent @editCurrentRow="editItem" @deleteCurrentRow="deleteItem" v-if="showTable" :headers="inventoryStore.headers" :data="inventoryStore.dataList"/>
     </div>
 </template>
 
-
 <script setup lang="ts">
-    import CardComponent from '@/components/PortalComponents/CardComponent.vue';
     import TableComponent from '@/components/PortalComponents/TableComponent.vue';
     import { useInventoryStore } from '@/stores/inventory';
     import { onMounted, ref, Ref } from 'vue';
     import { IProduct } from '@/interfaces/IInventory';
     import { useRouter } from 'vue-router';
-
-    import StatsComponent from '@/components/PortalComponents/StatsComponent.vue';
+    import swal from 'sweetalert';
 
     const router = useRouter();
 
@@ -28,7 +19,6 @@
     let showTable: Ref<boolean> = ref(false);
 
     onMounted(() => {
-        inventoryStore.devFillerData();
         if (inventoryStore.dataList.length > 0) {
             showTable.value = true
         }
@@ -50,34 +40,15 @@
         if (await inventoryStore.deleteData(item)) {
             // Actualizar la tabla
             console.log("Item eliminado")
+            swal("¡Genial!", "Se ha eliminado exitosamente", "success")
             inventoryStore.fetchDataList()
         } else {
             console.log("Error, no se pudo borrar el item")
+            swal("Error", "No se pudo borrar el item", "error")
         }
-    }
-
-    const redirectToCreate = () => {
-        router.push({name: 'createInventory'})
     }
 </script>
 
-<style scoped lang="scss">
-    .title{
-        font-weight: bold;
-        text-align: left;
-    }
+<style scoped>
 
-
-    .cartas{
-        display: flex;
-        
-    }
-
-    .container{
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
 </style>

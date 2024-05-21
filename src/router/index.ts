@@ -56,13 +56,14 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: '/portal/nomina',
-        name: 'indexPayroll',
+        name: 'payroll',
         component: PayrollView,
+        redirect: '/portal/nomina/historial',
         children : [
           {
-            path: '/portal/nomina',
-            name: 'payroll',
-            component: () => import('@/views/PortalViews/PayrollViews/MainPayrollView.vue')
+            path: '/portal/nomina/historial',
+            name: 'historyPayroll',
+            component: () => import('@/views/PortalViews/PayrollViews/HistoryPayrollView.vue')
           },
           {
             path: '/portal/nomina/editar/:id',
@@ -108,18 +109,20 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: '/portal/compras',
-        name: 'indexShopping',
+        name: 'shopping',
         component: ShoppingView,
+        redirect: '/portal/compras/historial',
         children:[
-          {
-            path: '/portal/compras',
-            name: 'shopping',
-            component: ShoppingView
-        },
         {
           path: '/portal/compras/crear',
           name: 'createShopping',
           component: CreateShoppingView,
+          props: true
+        },
+        {
+          path: '/portal/compras/editar/:id',
+          name: 'editShopping',
+          component: () => import('@/views/PortalViews/ShoppingViews/EditShoppingView.vue'),
           props: true
         },
         {
@@ -128,25 +131,29 @@ const routes: Array<RouteRecordRaw> = [
           component: ShoppingHistoryView,
           props: true
         },
-        /*
         {
           path: '/portal/compras/estadisticas',
-          name: 'statisticsShopping',
-          component: ShoppingStatisticsView,
+          name: 'statsShopping',
+          component: () => import('@/views/PortalViews/ShoppingViews/StatsShoppingView.vue'),
           props: true
         }
-        */
         ]
       },
       {
         path: '/portal/inventario',
-        name: 'indexInventory',
+        name: 'inventory',
         component: InventoryView,
+        redirect: '/portal/inventario/historial',
         children: [
           {
-            path: '/portal/inventario',
-            name: 'inventory',
-            component: () => import('@/views/PortalViews/InventoryViews/MainInventoryView.vue')
+            path: '/portal/inventario/historial',
+            name: 'historyInventory',
+            component: () => import('@/views/PortalViews/InventoryViews/HistoryInventoryView.vue')
+          },
+          {
+            path: '/portal/inventario/estadisticas',
+            name: 'statsInventory',
+            component: () => import('@/views/PortalViews/InventoryViews/StatsInventoryView.vue')
           },
           {
             path: '/portal/inventario/editar/:id',
@@ -157,7 +164,7 @@ const routes: Array<RouteRecordRaw> = [
           {
             path: '/portal/inventario/crear_producto',
             name: 'createInventory',
-            component: () => import('@/views/PortalViews/InventoryViews/RegistrarProductosView.vue')
+            component: () => import('@/views/PortalViews/InventoryViews/CreateProductView.vue')
           },
         ]
       },
