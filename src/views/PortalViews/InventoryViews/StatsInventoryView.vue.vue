@@ -1,19 +1,17 @@
 <template>
     <div>
-        <h1>Estadísticas de ventas</h1>
+        <h1>Estadísticas de inventario</h1>
         <div class="container card-global">
-            <SaleStatsBar class="stat"/>
-            <SaleStatsPie class="stat" />
+            <InvetoryStatsBar class="stat"/>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-    import SaleStatsBar from './SaleStatsBar.vue';
-    import SaleStatsPie from './SaleStatsPie.vue';
+    import InvetoryStatsBar from '@/views/PortalViews/InventoryViews/InvetoryStatsBar.vue';
 </script>
 
-<style scoped lang="scss">
+<style scoped>
     .container {
         width: auto;
         display: flex;

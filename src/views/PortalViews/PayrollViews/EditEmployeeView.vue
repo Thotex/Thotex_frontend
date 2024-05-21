@@ -55,28 +55,17 @@
     const router = useRouter();
     const payrollStore = usePayrollStore();
 
-    interface IForm {
-        typeId: string
-        name: string
-        email: string
-        position: string
-        joinDate: Date
-        id : number
-        lastname: string 
-        phoneNumber: number 
-        salary: number
-    }
 
-    const employeeForm: Ref<IForm> = ref({
-        typeId: '',
-        name: '',
-        email: '',
-        position: '',
-        joinDate: new Date(),
-        id: NaN,
-        lastname: '',
-        phoneNumber: NaN,
-        salary: NaN
+    const employeeForm: Ref = ref({
+        typeId: null,
+        name: null,
+        email: null,
+        position: null,
+        joinDate: null,
+        id: null,
+        lastname: null,
+        phoneNumber: null,
+        salary: null
     })
 
     onMounted(() => {

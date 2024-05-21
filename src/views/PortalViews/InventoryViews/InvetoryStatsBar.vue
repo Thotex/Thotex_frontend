@@ -101,8 +101,8 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-canvas {
-  max-width: 600px;
-  max-height: 400px;
-}
+  canvas {
+    width: 100%;
+    height: 300px;
+  }
 </style>

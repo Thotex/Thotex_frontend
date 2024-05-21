@@ -76,6 +76,10 @@
         height: 40px;
     }
 
+    .size20{
+        max-width: 40px;
+    }
+
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
         -webkit-appearance: none;
@@ -132,5 +136,18 @@
     &:hover {
         background-color: $custom-dark-blue;
         cursor: pointer;
+    }
+}
+
+.flex-centered-button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 10px;
+    .btn-center{
+        margin: 20px;
+        width: 30%;
     }
 }

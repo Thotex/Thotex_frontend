@@ -1,24 +1,24 @@
 <template>
     <div>
-        <h1>Estadísticas de ventas</h1>
+        <h1>Estadísticas de compras</h1>
         <div class="container card-global">
-            <SaleStatsBar class="stat"/>
-            <SaleStatsPie class="stat" />
+            <ShoppingStatsBar class="stat"/>
+            <ShoppingStatsPie class="stat" />
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-    import SaleStatsBar from './SaleStatsBar.vue';
-    import SaleStatsPie from './SaleStatsPie.vue';
+    import ShoppingStatsBar from './ShoppingStatsBar.vue';
+    import ShoppingStatsPie from './ShoppingStatsPie.vue';
 </script>
 
 <style scoped lang="scss">
     .container {
-        width: auto;
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
+        width: auto;
     }
     .stat{
         padding: 20px;

@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1>Create Employee</h1>
+        <h1>Crear Empleado</h1>
         <div class="card-global">
             <form class="form-global" onsubmit="event.preventDefault()">
                 <div class="column">
@@ -35,12 +35,10 @@
                     <input class="input" type="date" placeholder="Fecha de inicio de contrato" />
                 </div>
                 -->
-                <div class="column">
-                    <router-link class="button-global-light" :to="{name: 'payroll'}">Atrás</router-link>
-                    <button @click="submitFrom" class="button-global">Crear</button>
-                </div>
             </form>
-            
+            <div class="flex-centered-button">
+                <button @click="submitFrom" class="button-global btn-center">Crear</button>
+            </div>
         </div>
     </div>
 </template>
@@ -55,28 +53,17 @@
     const router = useRouter();
     const payrollStore = usePayrollStore();
 
-    interface IForm {
-        typeId: string
-        name: string
-        email: string
-        position: string
-        joinDate: Date
-        id : number
-        lastname: string 
-        phoneNumber: number 
-        salary: number
-    }
 
-    const employeeForm: Ref<IForm> = ref({
-        typeId: '',
-        name: '',
-        email: '',
-        position: '',
-        joinDate: new Date(),
-        id: NaN,
-        lastname: '',
-        phoneNumber: NaN,
-        salary: NaN
+    const employeeForm: Ref = ref({
+        typeId: null,
+        name: null,
+        email: null,
+        position: null,
+        joinDate: null,
+        id: null,
+        lastname: null,
+        phoneNumber: null,
+        salary: null
     })
 
     const submitFrom = async () => {
@@ -104,13 +91,5 @@
 </script>
 
 <style scoped lang="scss">
-    .container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: auto;
-        padding: 10px;
-    }
 
  </style>

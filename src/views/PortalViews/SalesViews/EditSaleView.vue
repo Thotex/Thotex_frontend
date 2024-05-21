@@ -5,21 +5,21 @@
             <form class="form-global" onsubmit="event.preventDefault()">
                 <div class="column">
                     <h2 class="label">Código de la factura</h2>
-                    <input v-model="saleForm.id" class="input" type="number" placeholder="Código" readonly/>
+                    <input required v-model="saleForm.id" class="input" type="number" placeholder="Código" readonly/>
                     <h2 class="label">Subtotal</h2>
-                    <input v-model="saleForm.subtotal" class="input" type="number" placeholder="Subtotal" step=".01"/>
+                    <input required v-model="saleForm.subtotal" class="input" type="number" placeholder="Subtotal" step=".01"/>
                     <h2 class="label">IVA</h2>
-                    <input v-model="saleForm.iva" class="input" type="number" placeholder="0.19" step=".01" readonly/>
+                    <input required disabled v-model="saleForm.iva" class="input" type="number" placeholder="0.19" step=".01" readonly/>
                 </div>
                 <div class="column">
                     <h2 class="label">Fecha de Facturación</h2>
-                    <input v-model="saleForm.date" class="input" type="date" placeholder="Fecha de Facturación" />
+                    <input required v-model="saleForm.date" class="input" type="date" placeholder="Fecha de Facturación" />
                     <h2 class="label">Total</h2>
-                    <input v-model="total" class="input" type="number" placeholder="Total" readonly/>
+                    <input required disabled v-model="total" class="input" type="number" placeholder="Total" readonly/>
                     <h2 class="label">Cliente</h2>
                     <div class="input-container">
-                        <input v-model="saleForm.client" class="input" type="number" placeholder="Cliente ID" readonly/>
-                        <button @click="openClientModal" class="button-global-light size20"><IconifyIcon icon="gridicons:dropdown" height="30px" width="30px"/></button>
+                        <input required v-model="saleForm.client" class="input" type="number" placeholder="Cliente ID" readonly/>
+                        <button @click.prevent="openClientModal" class="button-global-light size20"><IconifyIcon icon="gridicons:dropdown" height="30px" width="30px"/></button>
                     </div>
                 </div>
                 <div class="column">
@@ -32,7 +32,7 @@
     <div class="modal" v-if="clientModal" @click="closeModal">
         <div class=" popup-card">
             <h1>Seleccionar cliente</h1>
-            <TableComponent @returnSelectedRow="getClientName" :headers="payrollStore.headers" :data="payrollStore.dataList" :no-actions="true"/>
+            <TableComponent @returnSelectedRow="getClientName" :headers="thirdPartiesStore.headers" :data="thirdPartiesStore.dataList" :no-actions="true"/>
         </div>
     </div>
 </template>
@@ -44,22 +44,21 @@
     import { useRouter } from 'vue-router';
     import swal from 'sweetalert';
     import TableComponent from '@/components/PortalComponents/TableComponent.vue';
-    import { usePayrollStore } from '@/stores/payroll'; //TODO: Cambiar esto por lo de terceros
-    import { IEmployeeClean } from '@/interfaces/IPayroll'; //TODO: Cambiar esto por lo de terceros
- 
+    import { useThirdPartiesStore } from '@/stores/thirdParties'; 
+    import { IThirdParty } from '@/interfaces/IThirdParties'; 
+    
     const router = useRouter();
-
-    const payrollStore = usePayrollStore();
+    const thirdPartiesStore = useThirdPartiesStore();
     const saleStore = useSalesStore();
 
-    const getClientName = (data: IEmployeeClean) => {
+    const getClientName = (data: IThirdParty) => {
         console.log("Seleccionado: ", data)
-        saleForm.value.client = data.Emp_codigo
+        saleForm.value.client = data.id
         openClientModal()
     }
 
     onMounted(() => {
-        payrollStore.fetchDataList();
+        thirdPartiesStore.fetchDataList();
     })
 
     const currentItem = saleStore.singleData;

@@ -11,6 +11,7 @@
     import { onMounted, ref, Ref } from 'vue';
     import { ISale } from '@/interfaces/ISales';
     import { useRouter } from 'vue-router';
+import swal from 'sweetalert';
 
     const router = useRouter();
 
@@ -39,9 +40,11 @@
         if (await salesStore.deleteData(item)) {
             // Actualizar la tabla
             console.log("Item eliminado")
+            swal("¡Genial!", "Se ha eliminado exitosamente", "success")
             salesStore.fetchDataList()
         } else {
             console.log("Error, no se pudo borrar el item")
+            swal("Error", "No se pudo borrar el item", "error")
         }
     }
 
