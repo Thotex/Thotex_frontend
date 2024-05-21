@@ -6,7 +6,7 @@
         <CardComponent v-bind:class="'card-global'" image="https://i.imgur.com/yo86YnL.png" v-bind:title="'Estadísticas de inventario'" v-bind:content="'Puedes registrar productos'"></CardComponent>
     </div>
     <div class="container">
-        <StatsComponent/>
+        <InvetoryStatsBar/>
         <TableComponent @editCurrentRow="editItem" @deleteCurrentRow="deleteItem" v-if="showTable" :headers="inventoryStore.headers" :data="inventoryStore.dataList"/>
     </div>
 </template>
@@ -19,9 +19,7 @@
     import { onMounted, ref, Ref } from 'vue';
     import { IProduct } from '@/interfaces/IInventory';
     import { useRouter } from 'vue-router';
-
-    import StatsComponent from '@/components/PortalComponents/StatsComponent.vue';
-
+    import InvetoryStatsBar from './InvetoryStatsBar.vue';
     const router = useRouter();
 
     const inventoryStore = useInventoryStore();
