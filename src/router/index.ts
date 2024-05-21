@@ -18,6 +18,7 @@ import CalendarView from '@/views/PortalViews/CalendarView.vue'
 import CreateShoppingView from '@/views/PortalViews/ShoppingViews/CreateShoppingView.vue'
 import ShoppingHistoryView from '@/views/PortalViews/ShoppingViews/ShoppingHistoryView.vue'
 
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -127,12 +128,14 @@ const routes: Array<RouteRecordRaw> = [
           component: ShoppingHistoryView,
           props: true
         },
+        /*
         {
           path: '/portal/compras/estadisticas',
           name: 'statisticsShopping',
           component: ShoppingStatisticsView,
           props: true
         }
+        */
         ]
       },
       {

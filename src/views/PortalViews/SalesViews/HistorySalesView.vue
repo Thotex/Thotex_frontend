@@ -11,7 +11,6 @@
     import { onMounted, ref, Ref } from 'vue';
     import { ISale } from '@/interfaces/ISales';
     import { useRouter } from 'vue-router';
-    import SaleStatsBar from './SaleStatsBar.vue';
 
     const router = useRouter();
 
