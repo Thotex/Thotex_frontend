@@ -17,7 +17,6 @@ import swal from 'sweetalert';
     let showTable: Ref<boolean> = ref(false);
 
     onMounted(() => {
-        ShoppingStore.devFillerData();
         if (ShoppingStore.dataList.length > 0) {
             showTable.value = true
         }
