@@ -15,11 +15,8 @@ import ShoppingView from '@/views/PortalViews/ShoppingView.vue'
 import TercerosView from '@/views/PortalViews/TercerosView.vue'
 import AccountingView from '@/views/PortalViews/AccountingView.vue'
 import CalendarView from '@/views/PortalViews/CalendarView.vue'
-import MainShoppingView from '@/views/PortalViews/ShoppingViews/MainShoppingView.vue'
 import CreateShoppingView from '@/views/PortalViews/ShoppingViews/CreateShoppingView.vue'
 import ShoppingHistoryView from '@/views/PortalViews/ShoppingViews/ShoppingHistoryView.vue'
-import ShoppingStatisticsView from '@/views/PortalViews/ShoppingViews/ShoppingStatisticsView.vue'
-
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -116,7 +113,7 @@ const routes: Array<RouteRecordRaw> = [
           {
             path: '/portal/compras',
             name: 'shopping',
-            component: MainShoppingView
+            component: ShoppingView
         },
         {
           path: '/portal/compras/crear',
