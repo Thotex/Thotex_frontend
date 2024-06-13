@@ -25,7 +25,9 @@
                     <h2>Confirmar contraseña</h2>
                     <input required type="password" placeholder="Confirmar contraseña" v-model="confirmPassword" />
                     <p class="error" v-if="errors.confirmPassword">{{ error_messages.confirmPassword }}</p>
-                    
+                    <h2>Captcha</h2>
+                    <vue-recaptcha class="captcha" sitekey="6LemvvUpAAAAABGbyf2TRryGns0TnFMWgp5_PYIX" @verify="captcha = true" @fail="captcha = false"/>
+                    <p class="error" v-if="errors.captcha">{{ error_messages.captcha }}</p>
                     <div>
                         <label class="terms">
                             <input required type="checkbox" class="checkbox" v-model="userForm.checkedTerms" @input="errors.checkedTerms = false; error_messages.checkedTerms = ''"/>Acepto los términos de política y privacidad
@@ -46,8 +48,11 @@
     import AuthService from '@/services/AuthService';
     import { IUserFormRegister } from '@/interfaces/IUsers';
     import swal from 'sweetalert';
+    import vueRecaptcha from 'vue3-recaptcha2';
 
     const emits = defineEmits(['closeFormRegister', 'successRegister'])
+
+    const captcha : Ref<boolean> = ref(false)
     
     /*
     interface IUserFormRegister {
@@ -72,24 +77,26 @@
 
     let confirmPassword: Ref<string> = ref('')
 
-    const errors : Ref<{name: boolean, lastName: boolean, phoneNumber: boolean, email: boolean, password: boolean, confirmPassword: boolean, checkedTerms: boolean}> = ref({
+    const errors : Ref<{name: boolean, lastName: boolean, phoneNumber: boolean, email: boolean, password: boolean, confirmPassword: boolean, checkedTerms: boolean, captcha: boolean}> = ref({
         name: false,
         lastName: false,
         phoneNumber: false,
         email: false,
         password: false,
         confirmPassword: false,
-        checkedTerms: false
+        checkedTerms: false,
+        captcha: false
     })
 
-    const error_messages : Ref<{name: string, lastName: string, phoneNumber: string, email: string, password: string, confirmPassword: string, checkedTerms: string}> = ref({
+    const error_messages : Ref<{name: string, lastName: string, phoneNumber: string, email: string, password: string, confirmPassword: string, checkedTerms: string, captcha: string}> = ref({
         name: '',
         lastName: '',
         phoneNumber: '',
         email: '',
         password: '',
         confirmPassword: '',
-        checkedTerms: ''
+        checkedTerms: '',
+        captcha: ''
     })
 
     const verifyEmail = () : boolean => {
@@ -201,6 +208,13 @@
         if (!userForm.value.checkedTerms) {
             errors.value.checkedTerms = true
             error_messages.value.checkedTerms = 'Debes aceptar los terminos y condiciones'
+            isFormValid = false
+        }
+
+        //captcha
+        if (captcha.value === false) {
+            errors.value.captcha = true
+            error_messages.value.captcha = 'Debes aceptar el captcha'
             isFormValid = false
         }
 
@@ -359,6 +373,7 @@
     -webkit-appearance: none;
     margin: 0;
   }
+  
 
   .error {
     display: block;
@@ -371,6 +386,10 @@
     margin: 0 auto;
     width: 100%;
     max-width: 240px;
+  }
+
+  .captcha {
+    padding: 8px;
   }
 
 
