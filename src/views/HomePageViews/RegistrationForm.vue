@@ -25,6 +25,7 @@
                     <h2>Confirmar contraseña</h2>
                     <input required type="password" placeholder="Confirmar contraseña" v-model="confirmPassword" />
                     <p class="error" v-if="errors.confirmPassword">{{ error_messages.confirmPassword }}</p>
+                    
                     <div>
                         <label class="terms">
                             <input required type="checkbox" class="checkbox" v-model="userForm.checkedTerms" @input="errors.checkedTerms = false; error_messages.checkedTerms = ''"/>Acepto los términos de política y privacidad
@@ -47,7 +48,7 @@
     import swal from 'sweetalert';
 
     const emits = defineEmits(['closeFormRegister', 'successRegister'])
-
+    
     /*
     interface IUserFormRegister {
       name: string,
@@ -104,7 +105,18 @@
 
     const verifyPassword = () : boolean => {
         // Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character
-        if (userForm.value.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
+        if (!(
+          //lowercase letter
+          userForm.value.password.match(/[a-z]/g) &&
+          //uppercase letter
+          userForm.value.password.match(/[A-Z]/g) &&
+          //number
+          userForm.value.password.match(/[0-9]/g) &&
+          //special character
+          userForm.value.password.match(/[@$!%*?&]/g) &&
+          //8 characters length
+          userForm.value.password.length >= 8
+        )) {
             if (userForm.value.password === confirmPassword.value) {
                 return true
             }

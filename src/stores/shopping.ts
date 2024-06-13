@@ -6,7 +6,7 @@ import FetchService from '@/services/FetchService'
 export const useShoppingStore = defineStore('shopping', {
     state: () => ({
         headers: [
-            {name: 'Código', dbName: 'Fac_codigo'},
+            {name: 'Código', dbName: 'Com_codigo'},
             {name: 'Fecha', dbName: 'Fac_fechaGeneracion'},
             {name: 'Subtotal', dbName: 'Fac_subtotal'},
             {name: 'Total', dbName: 'Fac_precioTotal'},

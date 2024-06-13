@@ -15,9 +15,13 @@ globalCookiesConfig({
     expireTimes: '1m',
 })
 
+import { VueRecaptchaPlugin } from 'vue-recaptcha';
 
 const app = createApp(App)
 app.component('IconifyIcon', Icon)
+app.use(VueRecaptchaPlugin, {
+    v2SiteKey: '6LemvvUpAAAAABGbyf2TRryGns0TnFMWgp5_PYIX',
+  })
 app.use(pinia)
 app.use(router)
 app.mount('#app')

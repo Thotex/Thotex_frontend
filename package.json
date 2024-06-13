@@ -19,6 +19,7 @@
     "sweetalert": "^2.1.2",
     "vue": "^3.2.13",
     "vue-cal": "^4.8.1",
+    "vue-recaptcha": "^3.0.0-alpha.6",
     "vue-router": "^4.0.3",
     "vue3-cookies": "^1.0.6"
   },

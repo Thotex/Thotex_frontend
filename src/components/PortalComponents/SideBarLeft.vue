@@ -12,12 +12,14 @@
                 </header>
             </li>
 
+            <!--
             <li class="tablero">
                 <RouterLink :to="{name: 'dashboard'}" class="button-side">
                     <label>Tablero</label>
                     <IconifyIcon class="iconos" icon="ant-design:book-outlined" color="white" width="50px" heigth="50px"></IconifyIcon >
                 </RouterLink>        
             </li>
+            -->
            
             <li>
                 <router-link :to="{name: 'payroll'}" class="button-side">
@@ -55,12 +57,14 @@
                 </RouterLink>
             </li>
 
+            <!--
             <li>
                 <RouterLink :to="{name: 'accounting'}" class="button-side">
                     <label>Contabilidad</label>
                     <IconifyIcon class="iconos" icon="material-symbols:android-calculator" color="white" width="50px" heigth="50px"></IconifyIcon>
                 </RouterLink>
             </li>
+            -->
 
             <li>
                 <RouterLink :to="{name: 'calendar'}" class="button-side">
