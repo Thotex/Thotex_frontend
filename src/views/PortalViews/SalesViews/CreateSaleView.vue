@@ -74,11 +74,11 @@
 
     const submitFrom = async () => {
         const sale : ISale = {
-            Fac_codigo: saleForm.value.id,
-            Fac_fechaGeneracion: new Date(saleForm.value.date),
-            Fac_subtotal: saleForm.value.subtotal,
-            Fac_precioTotal: total.value,
-            Fac_IVA: saleForm.value.iva,
+            Ven_codigo: saleForm.value.id,
+            Ven_fechaGeneracion: new Date(saleForm.value.date),
+            Ven_subtotal: saleForm.value.subtotal,
+            Ven_precioTotal: total.value,
+            Ven_IVA: saleForm.value.iva,
             Cl_codigo: saleForm.value.client
         }
 

@@ -7,10 +7,10 @@ export const useSalesStore = defineStore('sales', {
     state: () => ({
         headers: [
             {name: 'Código', dbName: 'Ven_codigo'},
-            {name: 'Fecha', dbName: 'Fac_fechaGeneracion'},
-            {name: 'Subtotal', dbName: 'Fac_subtotal'},
-            {name: 'Total', dbName: 'Fac_precioTotal'},
-            {name: 'IVA', dbName: 'Fac_IVA'},
+            {name: 'Fecha', dbName: 'Ven_fechaGeneracion'},
+            {name: 'Subtotal', dbName: 'Ven_subtotal'},
+            {name: 'Total', dbName: 'Ven_precioTotal'},
+            {name: 'IVA', dbName: 'Ven_IVA'},
             {name: 'Cliente', dbName: 'Cl_codigo'},
         ] as Headers[] ,
         dataList : [] as ISale[],
@@ -54,7 +54,7 @@ export const useSalesStore = defineStore('sales', {
         },
         async deleteData(data: ISale) {
             const fetchService = new FetchService<ISale>('sales')
-            if (await fetchService.deleteData(data.Fac_codigo)) {
+            if (await fetchService.deleteData(data.Ven_codigo)) {
                 this.dataList = fetchService.getData()
                 return true
             }
@@ -66,7 +66,7 @@ export const useSalesStore = defineStore('sales', {
 
         async updateData(data: ISale) {
             const fetchService = new FetchService<ISale>('sales')
-            if (await fetchService.updateData(this.singleData.Fac_codigo, data)) {
+            if (await fetchService.updateData(this.singleData.Ven_codigo, data)) {
                 this.dataList = fetchService.getData()
                 return true
             }
@@ -79,27 +79,27 @@ export const useSalesStore = defineStore('sales', {
         devFillerData() {
             this.dataList = [
                 {
-                    Fac_codigo: 101,
-                    Fac_fechaGeneracion: new Date('2024-05-04T09:00:00'),
-                    Fac_subtotal: 80000,
-                    Fac_precioTotal: 95200,
-                    Fac_IVA: 15200,
+                    Ven_codigo: 101,
+                    Ven_fechaGeneracion: new Date('2024-05-04T09:00:00'),
+                    Ven_subtotal: 80000,
+                    Ven_precioTotal: 95200,
+                    Ven_IVA: 15200,
                     Cl_codigo: 501
                 },
                 {
-                    Fac_codigo: 102,
-                    Fac_fechaGeneracion: new Date('2024-05-04T10:30:00'),
-                    Fac_subtotal: 120000,
-                    Fac_precioTotal: 142800,
-                    Fac_IVA: 22800,
+                    Ven_codigo: 102,
+                    Ven_fechaGeneracion: new Date('2024-05-04T10:30:00'),
+                    Ven_subtotal: 120000,
+                    Ven_precioTotal: 142800,
+                    Ven_IVA: 22800,
                     Cl_codigo: 502
                 },
                 {
-                    Fac_codigo: 103,
-                    Fac_fechaGeneracion: new Date('2024-05-04T11:45:00'),
-                    Fac_subtotal: 45000,
-                    Fac_precioTotal: 53550,
-                    Fac_IVA: 8550,
+                    Ven_codigo: 103,
+                    Ven_fechaGeneracion: new Date('2024-05-04T11:45:00'),
+                    Ven_subtotal: 45000,
+                    Ven_precioTotal: 53550,
+                    Ven_IVA: 8550,
                     Cl_codigo: 503
                 }
             ]

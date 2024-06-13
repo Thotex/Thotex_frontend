@@ -24,8 +24,8 @@ import swal from 'sweetalert';
 
     const editItem = async( item: IShopping ) => {
         console.log(item)
-        if ( await ShoppingStore.fetchSingleData(item.Fac_codigo)) {
-            router.push({name: 'editSale', params: {id: ShoppingStore.singleData.Fac_codigo}})
+        if ( await ShoppingStore.fetchSingleData(item.Com_codigo)) {
+            router.push({name: 'editSale', params: {id: ShoppingStore.singleData.Com_codigo}})
             // Actualizar la tabla
             ShoppingStore.fetchDataList()
         } else {

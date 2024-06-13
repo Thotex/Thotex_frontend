@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@mercadopago/sdk-js": "^0.0.3",
+    "@unhead/vue": "^1.9.12",
     "chart.js": "^4.4.2",
     "chartjs-plugin-datalabels": "^2.2.0",
     "core-js": "^3.8.3",

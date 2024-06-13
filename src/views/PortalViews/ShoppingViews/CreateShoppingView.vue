@@ -74,12 +74,12 @@
 
     const submitFrom = async () => {
         const shopping : IShopping = {
-            Fac_codigo: shoppingForm.value.id,
-            Fac_fechaGeneracion: new Date(shoppingForm.value.date),
-            Fac_subtotal: shoppingForm.value.subtotal,
-            Fac_precioTotal: total.value,
-            Fac_IVA: shoppingForm.value.iva,
-            Proveedor_codigo: shoppingForm.value.client
+            Com_codigo: shoppingForm.value.id,
+            Com_fechaGeneracion: new Date(shoppingForm.value.date),
+            Com_subtotal: shoppingForm.value.subtotal,
+            Com_precioTotal: total.value,
+            Com_IVA: shoppingForm.value.iva,
+            Prov_codigo: shoppingForm.value.client
         }
 
         if (await shoppingStore.createData(shopping)) {
