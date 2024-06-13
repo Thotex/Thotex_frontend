@@ -45,14 +45,14 @@ const darkenColor = ({ r, g, b }: RGBColor, percentage: number): RGBColor => {
 const groupSalesByMonth = (sales: ISale[]) => {
   const monthlySales: { [key: string]: number } = {}
   sales.forEach(sale => {
-    const date = new Date(sale.Fac_fechaGeneracion)
+    const date = new Date(sale.Ven_fechaGeneracion)
     const month = date.toLocaleString('default', { month: 'long' })
     const year = date.getFullYear()
     const key = `${month} ${year}`
     if (!monthlySales[key]) {
       monthlySales[key] = 0
     }
-    monthlySales[key] += sale.Fac_precioTotal
+    monthlySales[key] += sale.Ven_precioTotal
   })
   return monthlySales
 }

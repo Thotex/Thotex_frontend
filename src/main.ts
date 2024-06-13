@@ -15,7 +15,6 @@ globalCookiesConfig({
     expireTimes: '1m',
 })
 
-
 const app = createApp(App)
 app.component('IconifyIcon', Icon)
 app.use(pinia)

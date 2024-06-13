@@ -1,8 +1,8 @@
 export interface ISale {
-    Fac_codigo: number
-    Fac_fechaGeneracion: Date
-    Fac_subtotal: number
-    Fac_precioTotal: number
-    Fac_IVA: number
+    Ven_codigo: number
+    Ven_fechaGeneracion: Date
+    Ven_subtotal: number
+    Ven_precioTotal: number
+    Ven_IVA: number
     Cl_codigo: number
 }

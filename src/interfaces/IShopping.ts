@@ -1,8 +1,8 @@
 export interface IShopping{
-    Fac_codigo: number
-    Fac_fechaGeneracion: Date
-    Fac_subtotal: number
-    Fac_precioTotal: number
-    Fac_IVA: number
-    Proveedor_codigo: number
+    Com_codigo: number
+    Com_fechaGeneracion: Date
+    Com_subtotal: number
+    Com_precioTotal: number
+    Com_IVA: number
+    Prov_codigo: number
 }

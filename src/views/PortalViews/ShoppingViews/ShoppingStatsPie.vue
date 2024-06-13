@@ -44,15 +44,15 @@
   
   // Función para obtener los 5 productos más vendidos
   const getTopFiveshopping = (shopping: IShopping[]) => {
-    return shopping.sort((a, b) => b.Fac_precioTotal - a.Fac_precioTotal).slice(0, 5)
+    return shopping.sort((a, b) => b.Com_precioTotal - a.Com_precioTotal).slice(0, 5)
   }
   
   // Función para crear el gráfico
   const createChart = () => {
     if (pieChart.value) {
       const topshopping = getTopFiveshopping(shoppingStore.dataList)
-      const labels = topshopping.map(sale => `Venta ${sale.Fac_codigo}`)
-      const data = topshopping.map(sale => sale.Fac_precioTotal)
+      const labels = topshopping.map(sale => `Venta ${sale.Com_codigo}`)
+      const data = topshopping.map(sale => sale.Com_precioTotal)
       const backgroundColors: string[] = []
       const borderColors: string[] = []
   

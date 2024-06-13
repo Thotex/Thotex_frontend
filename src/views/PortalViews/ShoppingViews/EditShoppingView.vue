@@ -64,11 +64,11 @@
     const currentItem = shoppingStore.singleData;
 
     const shoppingForm : Ref = ref({
-        id: currentItem.Fac_codigo,
-        subtotal: currentItem.Fac_subtotal,
-        iva: currentItem.Fac_IVA,
-        date: currentItem.Fac_fechaGeneracion,
-        client: currentItem.Proveedor_codigo
+        id: currentItem.Com_codigo,
+        subtotal: currentItem.Com_subtotal,
+        iva: currentItem.Com_IVA,
+        date: currentItem.Com_fechaGeneracion,
+        client: currentItem.Prov_codigo
     })
 
     const total: ComputedRef<number> = computed(() => {
@@ -78,12 +78,12 @@
 
     const submitFrom = async () => {
         const sale : IShopping = {
-            Fac_codigo: shoppingForm.value.id,
-            Fac_fechaGeneracion: new Date(shoppingForm.value.date),
-            Fac_subtotal: shoppingForm.value.subtotal,
-            Fac_precioTotal: total.value,
-            Fac_IVA: shoppingForm.value.iva,
-            Proveedor_codigo: shoppingForm.value.client
+            Com_codigo: shoppingForm.value.id,
+            Com_fechaGeneracion: new Date(shoppingForm.value.date),
+            Com_subtotal: shoppingForm.value.subtotal,
+            Com_precioTotal: total.value,
+            Com_IVA: shoppingForm.value.iva,
+            Prov_codigo: shoppingForm.value.client
         }
 
         if (await shoppingStore.updateData(sale)) {

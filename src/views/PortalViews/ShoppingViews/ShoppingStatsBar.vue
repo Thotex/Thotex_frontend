@@ -45,14 +45,14 @@
   function groupshoppingsByMonth(shopping: IShopping[]) {
   const monthlyshoppings: { [key: string]: number}  = {}
   shopping.forEach(shopping => {
-    const date = new Date(shopping.Fac_fechaGeneracion)
+    const date = new Date(shopping.Com_fechaGeneracion)
     const month = date.toLocaleString('default', { month: 'long' })
     const year = date.getFullYear()
     const key = `${month} ${year}`
     if (!monthlyshoppings[key]) {
       monthlyshoppings[key] = 0
     }
-    monthlyshoppings[key] += shopping.Fac_precioTotal
+    monthlyshoppings[key] += shopping.Com_precioTotal
   })
   return monthlyshoppings
 }

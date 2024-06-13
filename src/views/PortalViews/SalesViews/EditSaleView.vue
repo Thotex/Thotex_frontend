@@ -64,10 +64,10 @@
     const currentItem = saleStore.singleData;
 
     const saleForm : Ref = ref({
-        id: currentItem.Fac_codigo,
-        subtotal: currentItem.Fac_subtotal,
-        iva: currentItem.Fac_IVA,
-        date: currentItem.Fac_fechaGeneracion,
+        id: currentItem.Ven_codigo,
+        subtotal: currentItem.Ven_subtotal,
+        iva: currentItem.Ven_IVA,
+        date: currentItem.Ven_fechaGeneracion,
         client: currentItem.Cl_codigo
     })
 
@@ -78,11 +78,11 @@
 
     const submitFrom = async () => {
         const sale : ISale = {
-            Fac_codigo: saleForm.value.id,
-            Fac_fechaGeneracion: new Date(saleForm.value.date),
-            Fac_subtotal: saleForm.value.subtotal,
-            Fac_precioTotal: total.value,
-            Fac_IVA: saleForm.value.iva,
+            Ven_codigo: saleForm.value.id,
+            Ven_fechaGeneracion: new Date(saleForm.value.date),
+            Ven_subtotal: saleForm.value.subtotal,
+            Ven_precioTotal: total.value,
+            Ven_IVA: saleForm.value.iva,
             Cl_codigo: saleForm.value.client
         }
 

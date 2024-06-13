@@ -57,7 +57,18 @@
 
   const verifyPassword = () : boolean => {
     // Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character
-    if (!userForm.value.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
+    if (!(
+          //lowercase letter
+          userForm.value.password.match(/[a-z]/g) &&
+          //uppercase letter
+          userForm.value.password.match(/[A-Z]/g) &&
+          //number
+          userForm.value.password.match(/[0-9]/g) &&
+          //special character
+          userForm.value.password.match(/[@$!%*?&]/g) &&
+          //8 characters length
+          userForm.value.password.length >= 8
+        )) {
       errors.value.password = true
       error_messages.value.password = 'La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial'
       return false

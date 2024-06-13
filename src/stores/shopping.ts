@@ -6,12 +6,12 @@ import FetchService from '@/services/FetchService'
 export const useShoppingStore = defineStore('shopping', {
     state: () => ({
         headers: [
-            {name: 'Código', dbName: 'Fac_codigo'},
-            {name: 'Fecha', dbName: 'Fac_fechaGeneracion'},
-            {name: 'Subtotal', dbName: 'Fac_subtotal'},
-            {name: 'Total', dbName: 'Fac_precioTotal'},
-            {name: 'IVA', dbName: 'Fac_IVA'},
-            {name: 'Proveedor', dbName: 'Proveedor_codigo'},// Cambiar segun la base de datos
+            {name: 'Código', dbName: 'Com_codigo'},
+            {name: 'Fecha', dbName: 'Com_fechaGeneracion'},
+            {name: 'Subtotal', dbName: 'Com_subtotal'},
+            {name: 'Total', dbName: 'Com_precioTotal'},
+            {name: 'IVA', dbName: 'Com_IVA'},
+            {name: 'Proveedor', dbName: 'Prov_codigo'},// Cambiar segun la base de datos
         ] as Headers[] ,
         dataList : [] as IShopping[],
         singleData : {} as IShopping,
@@ -43,7 +43,7 @@ export const useShoppingStore = defineStore('shopping', {
         },
         async deleteData(data: IShopping) {
             const fetchService = new FetchService<IShopping>('shopping')
-            if (await fetchService.deleteData(data.Fac_codigo)) {
+            if (await fetchService.deleteData(data.Com_codigo)) {
                 if (await this.fetchDataList()) {
                     return true
                 }
@@ -57,7 +57,7 @@ export const useShoppingStore = defineStore('shopping', {
 
         async updateData( data: IShopping) {
             const fetchService = new FetchService<IShopping>('shopping')
-            if (await fetchService.updateData(this.singleData.Fac_codigo, data)) {
+            if (await fetchService.updateData(this.singleData.Com_codigo, data)) {
                 if (await this.fetchDataList()) {
                     return true
                 }
@@ -82,28 +82,28 @@ export const useShoppingStore = defineStore('shopping', {
         devFillerData() {
             this.dataList = [
                 {
-                    Fac_codigo: 101,
-                    Fac_fechaGeneracion: new Date('2024-05-04T09:00:00'),
-                    Fac_subtotal: 80000,
-                    Fac_precioTotal: 95200,
-                    Fac_IVA: 15200,
-                    Proveedor_codigo: 501
+                    Com_codigo: 101,
+                    Com_fechaGeneracion: new Date('2024-05-04T09:00:00'),
+                    Com_subtotal: 80000,
+                    Com_precioTotal: 95200,
+                    Com_IVA: 15200,
+                    Prov_codigo: 501
                 },
                 {
-                    Fac_codigo: 102,
-                    Fac_fechaGeneracion: new Date('2024-05-04T10:30:00'),
-                    Fac_subtotal: 120000,
-                    Fac_precioTotal: 142800,
-                    Fac_IVA: 22800,
-                    Proveedor_codigo: 502
+                    Com_codigo: 102,
+                    Com_fechaGeneracion: new Date('2024-05-04T10:30:00'),
+                    Com_subtotal: 120000,
+                    Com_precioTotal: 142800,
+                    Com_IVA: 22800,
+                    Prov_codigo: 502
                 },
                 {
-                    Fac_codigo: 103,
-                    Fac_fechaGeneracion: new Date('2024-05-04T11:45:00'),
-                    Fac_subtotal: 45000,
-                    Fac_precioTotal: 5300,
-                    Fac_IVA: 8550,
-                    Proveedor_codigo: 503
+                    Com_codigo: 103,
+                    Com_fechaGeneracion: new Date('2024-05-04T11:45:00'),
+                    Com_subtotal: 45000,
+                    Com_precioTotal: 5300,
+                    Com_IVA: 8550,
+                    Prov_codigo: 503
                 }
             ]
         }
