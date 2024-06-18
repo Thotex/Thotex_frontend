@@ -10,16 +10,17 @@
     </div>
   </div>
   <div class="presentacion">
-    <CardComponent v-bind:class="'card-global'" image="https://i.imgur.com/kbL2ErW.png" v-bind:title="'Migueal Angel Pinzón Garcia'" v-bind:content="''"></CardComponent>
-    <CardComponent v-bind:class="'card-global'" image="https://i.imgur.com/LwOBLeM.png" v-bind:title="'Juan'" v-bind:content="''"></CardComponent>
-    <CardComponent v-bind:class="'card-global'" image="https://i.imgur.com/u3AZVWo.png" v-bind:title="'Daniel'" v-bind:content="''"></CardComponent>
-    <CardComponent v-bind:class="'card-global'" image="https://i.imgur.com/u3AZVWo.png" v-bind:title="'Javier'" v-bind:content="''"></CardComponent>
+    <AboutCards v-bind:class="'card-global'" image="https://i.imgur.com/GiocmnL.png" v-bind:title="'Miguel Angel Pinzón Garcia'" v-bind:content="'Desarrollador Frontend.'" v-bind:red-git="'https://github.com/MiPinzon'" v-bind:red-linked="'https://www.linkedin.com/in/miguel-angel-pinzón-garcia-1771a9267/'"></AboutCards>
+    <AboutCards v-bind:class="'card-global'" image="https://i.imgur.com/LwOBLeM.png" v-bind:title="'Juan David Vasquez Pinzon'" v-bind:content="'Desarrollador Frontend.'"  v-bind:red-git="'https://github.com/MiPinzon'" v-bind:red-linked="'https://www.linkedin.com/in/miguel-angel-pinzón-garcia-1771a9267/'"></AboutCards>
+    <AboutCards v-bind:class="'card-global'" image="https://i.imgur.com/u3AZVWo.png" v-bind:title="'Daniel Santiago Ramirez Rocha'" v-bind:content="'Desarrollador Backend.'" v-bind:red-git="'https://github.com/MiPinzon'" v-bind:red-linked="'https://www.linkedin.com/in/miguel-angel-pinzón-garcia-1771a9267/'"></AboutCards>
+    <AboutCards v-bind:class="'card-global'" image="https://i.imgur.com/u3AZVWo.png" v-bind:title="'Javier Esteban Gonzales Vivas'" v-bind:content="'Desarrollador Backend.'" v-bind:red-git="'https://github.com/MiPinzon'" v-bind:red-linked="'https://www.linkedin.com/in/miguel-angel-pinzón-garcia-1771a9267/'"></AboutCards>
 
   </div>
 </template>
 
 <script setup lang="ts">
-  import CardComponent from '../../components/PortalComponents/CardComponent.vue';    
+
+  import AboutCards from './AboutCards.vue';
 </script>
 
 <style scoped lang="scss">
@@ -34,6 +35,7 @@
     display: flex;
     justify-content: center;
     padding-bottom: 200px;
+    align-items: center;
   }
   .content {
     display: flex;
@@ -55,4 +57,5 @@
       width: 90%;
     }
   }
+
 </style>
