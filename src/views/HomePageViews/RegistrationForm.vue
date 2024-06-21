@@ -112,7 +112,7 @@
 
     const verifyPassword = () : boolean => {
         // Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character
-        if (!(
+        if ((
           //lowercase letter
           userForm.value.password.match(/[a-z]/g) &&
           //uppercase letter

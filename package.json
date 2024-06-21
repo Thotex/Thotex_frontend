@@ -21,8 +21,7 @@
     "vue-cal": "^4.8.1",
     "vue-router": "^4.0.3",
     "vue3-cookies": "^1.0.6",
-    "vue3-recaptcha2": "^1.8.0",
-    "wave-ui": "^3.13.5"
+    "vue3-recaptcha2": "^1.8.0"
   },
   "devDependencies": {
     "@iconify/vue": "^4.1.1",

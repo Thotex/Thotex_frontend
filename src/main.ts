@@ -10,8 +10,8 @@ import { createPinia } from 'pinia'
 const pinia = createPinia()
 
 //WAVE-UI
-import WaveUI from 'wave-ui'
-import 'wave-ui/dist/wave-ui.css'
+// import WaveUI from 'wave-ui'
+// import 'wave-ui/dist/wave-ui.css'
 
 //COOKIES
 import { globalCookiesConfig } from 'vue3-cookies';
@@ -23,5 +23,5 @@ const app = createApp(App)
 app.component('IconifyIcon', Icon)
 app.use(pinia)
 app.use(router)
-app.use(WaveUI)
+// app.use(WaveUI)
 app.mount('#app')

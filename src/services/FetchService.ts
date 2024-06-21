@@ -111,6 +111,7 @@ class FetchService <T extends Epic> {
             const responseRaw : Response = await fetch(this.url + "/" + this.mode, {
                 method: 'POST',
                 headers: {
+                    'Content-Type': 'application/json',
                     'Accept': 'application/json',
                     'Authorization': 'Bearer ' + cookies.get('jwt')
                 },
@@ -139,6 +140,7 @@ class FetchService <T extends Epic> {
             const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/" + id, {
                 method: 'PUT',
                 headers: {
+                    'Content-Type': 'application/json',
                     'Accept': 'application/json',
                     'Authorization': 'Bearer ' + cookies.get('jwt')
                 },
