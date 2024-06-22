@@ -6,8 +6,8 @@ import FetchService from '@/services/FetchService'
 export const useThirdPartiesStore = defineStore('thirdParties', {
     state: () => ({
         headers: [
-            {name: 'Código del tercero', dbName: 'id'}, // TODO: Cambiar segun la base de datos
-            {name: 'Nombre del tercero', dbName: 'name'},// Cambiar segun la base de datos
+            {name: 'Código del tercero', dbName: 'Cl_codigo'}, // TODO: Cambiar segun la base de datos
+            {name: 'Nombre del tercero', dbName: 'Cl_nombre'},// Cambiar segun la base de datos
         ] as Headers[] ,
         dataList : [] as IThirdParty[],
         singleData : {} as IThirdParty,
