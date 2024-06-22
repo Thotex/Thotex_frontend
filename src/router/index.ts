@@ -171,8 +171,8 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '/portal/terceros',
         name: 'third',
-        component: TercerosView,
-        children : [
+        component: TercerosView
+        //children : [
           /*
           {
             path: '/portal/terceros',
@@ -191,7 +191,7 @@ const routes: Array<RouteRecordRaw> = [
             component: () => import('@/views/PortalViews/TercerosViews/CreateThirdView.vue')
           }
           */
-        ]
+        //]
       },
       {
         path: '/portal/contabilidad',

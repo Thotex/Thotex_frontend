@@ -48,11 +48,9 @@
     import { ref } from 'vue';
     import { useThirdPartiesStore } from '@/stores/thirdParties';
     import { IThirdParty } from '@/interfaces/IThirdParties';
-    import { useRouter } from 'vue-router';
     import swal from 'sweetalert';
 
     const thirdPartiesStore = useThirdPartiesStore();
-    const router = useRouter();
 
     const thirdPartyForm = ref({
         name: '',
@@ -64,7 +62,9 @@
             Cl_nombre: thirdPartyForm.value.name,
         }
         if (await thirdPartiesStore.createData(item)) {
-            router.push({name: 'terceros'})
+            thirdPartiesStore.fetchDataList()
+            swal("¡Genial!", "Se ha registrado exitosamente", "success")
+            thirdPartyForm.value.name = ''
         } else {
             console.log("Error, no se pudo actualizar el tercero")
             swal("Error", "No se pudo actualizar el tercero", "error")
@@ -77,7 +77,10 @@
             Cl_nombre: editForm.value.name,
         }
         if (await thirdPartiesStore.updateData(item)) {
-            router.push({name: 'terceros'})
+            thirdPartiesStore.fetchDataList()
+            swal("¡Genial!", "Se ha actualizado exitosamente", "success")
+            clientModal.value = false
+            editForm.value.name = ''
         } else {
             console.log("Error, no se pudo actualizar el tercero")
             swal("Error", "No se pudo actualizar el tercero", "error")
