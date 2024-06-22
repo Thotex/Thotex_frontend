@@ -15,6 +15,7 @@ class FetchService <T extends Epic> {
         this.data = [];
         this.singleData = {} as T
         //this.url = process.env.VUE_APP_API_URL;
+        //this.url = "http://127.0.0.1:8000/api/v1.0"
         this.url = "https://thotex-d214cd515eaf.herokuapp.com/api/v1.0"
         switch (mode) {
             case 'sales':
@@ -54,7 +55,7 @@ class FetchService <T extends Epic> {
     fetchSingleData = async (id: number) : Promise<boolean> => {
         try {
             const { cookies } = useCookies();
-            const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/" + id, {
+            const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/" + id + "/", {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -81,7 +82,7 @@ class FetchService <T extends Epic> {
     fetchData = async () : Promise<boolean> => {
         try {
             const { cookies } = useCookies();
-            const responseRaw : Response = await fetch(this.url + "/" + this.mode, {
+            const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/", {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -108,7 +109,7 @@ class FetchService <T extends Epic> {
     insertData = async ( data : T ) : Promise<boolean> => {
         try {
             const { cookies } = useCookies();
-            const responseRaw : Response = await fetch(this.url + "/" + this.mode, {
+            const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -137,7 +138,7 @@ class FetchService <T extends Epic> {
     updateData = async ( id : number, to : T) : Promise<boolean> => {
         try {
             const { cookies } = useCookies();
-            const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/" + id, {
+            const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/" + id + "/", {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -166,7 +167,7 @@ class FetchService <T extends Epic> {
     deleteData = async ( id : number ) : Promise<boolean> => {
         try {
             const { cookies } = useCookies();
-            const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/" + id, {
+            const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/" + id + "/", {
                 method: 'DELETE',
                 headers: {
                     'Accept': 'application/json',
