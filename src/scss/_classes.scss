@@ -120,8 +120,8 @@
     align-items: center;
     justify-content: center;
 
-    background-color: $custom-blue;
-    color: white;
+    background-color: $custom-yellow;
+    color: black;
 
     border: none;
     border-radius: 10px;
@@ -134,7 +134,7 @@
     font-size: 17px;
 
     &:hover {
-        background-color: $custom-dark-blue;
+        background-color: $custom-light-yellow;
         cursor: pointer;
     }
 }
