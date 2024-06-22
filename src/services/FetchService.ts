@@ -68,7 +68,7 @@ class FetchService <T extends Epic> {
                 return false
             }
             else if (response.data) {
-                this.data = response.data
+                this.singleData = response.data
                 return true
             }
             console.log("Maybe the api is not working")

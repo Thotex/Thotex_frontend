@@ -77,7 +77,6 @@
             Cl_nombre: editForm.value.name,
         }
         if (await thirdPartiesStore.updateData(item)) {
-            thirdPartiesStore.fetchDataList()
             swal("¡Genial!", "Se ha actualizado exitosamente", "success")
             clientModal.value = false
             editForm.value.name = ''
@@ -93,7 +92,6 @@
             // Open modal with the data
             openClientModal(item)
             // Actualizar la tabla
-            thirdPartiesStore.fetchDataList()
         } else {
             console.log("Error, no se pudo obtener el tercero")
         }
