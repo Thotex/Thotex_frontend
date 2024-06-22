@@ -79,7 +79,6 @@ export const usePayrollStore = defineStore('inventory', {
         async updateData( dataRaw: IEmployeeClean) {
             const fetchService = new FetchService<IEmployee>('employees')
             const data = formEmployee(dataRaw)
-            data.Usr_codigo = 1
             if (await fetchService.updateData(this.singleData.Emp_codigo, data)) {
                 if (await this.fetchDataList()) {
                     return true
