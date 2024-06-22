@@ -66,7 +66,7 @@
     const saleForm : Ref = ref({
         id: currentItem.Ven_codigo,
         subtotal: currentItem.Ven_subtotal,
-        iva: currentItem.Ven_IVA,
+        iva: 0.19,
         date: currentItem.Ven_fechaGeneracion,
         client: currentItem.Cl_codigo
     })

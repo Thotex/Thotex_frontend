@@ -11,7 +11,7 @@ export const useShoppingStore = defineStore('shopping', {
             {name: 'Subtotal', dbName: 'Com_subtotal'},
             {name: 'Total', dbName: 'Com_precioTotal'},
             {name: 'IVA', dbName: 'Com_IVA'},
-            {name: 'Proveedor', dbName: 'Prov_codigo'},// Cambiar segun la base de datos
+            {name: 'Proveedor', dbName: 'Cl_codigo'},// Cambiar segun la base de datos
         ] as Headers[] ,
         dataList : [] as IShopping[],
         singleData : {} as IShopping,
