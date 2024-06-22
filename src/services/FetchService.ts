@@ -18,19 +18,19 @@ class FetchService <T extends Epic> {
         this.url = "https://thotex-d214cd515eaf.herokuapp.com/api/v1.0"
         switch (mode) {
             case 'sales':
-                this.mode = 'sales'
+                this.mode = 'vetnas'
                 break
             case 'products':
-                this.mode = 'products'
+                this.mode = 'productos'
                 break
             case 'employees':
                 this.mode = 'empleados'
                 break
             case 'shopping':
-                this.mode = 'shopping'
+                this.mode = 'compras'
                 break
             case 'thirdParties':
-                this.mode = 'terceros' //TODO: Cuadrar esto con la API
+                this.mode = 'clientes' //TODO: Cuadrar esto con la API
                 break
             case 'calendar':
                 this.mode = 'calendar'
