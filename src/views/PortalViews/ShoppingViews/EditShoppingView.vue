@@ -53,7 +53,7 @@
 
     const getClientName = (data: IThirdParty) => {
         console.log("Seleccionado: ", data)
-        shoppingForm.value.client = data.id
+        shoppingForm.value.client = data.Cl_codigo
         openClientModal()
     }
 

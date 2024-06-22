@@ -17,8 +17,8 @@
 
         </div>
         <div class="card-container">
-                <div v-for="thirdParty in thirdPartiesStore.dataList" :key="thirdParty.id" class="card-global card-size">
-                    <p class="label">{{ thirdParty.name }}</p>
+                <div v-for="thirdParty in thirdPartiesStore.dataList" :key="thirdParty.Cl_codigo" class="card-global card-size">
+                    <p class="label">{{ thirdParty.Cl_nombre }}</p>
                     <div class="buttons">
                         <button class="btn btn-primary" @click="editItem(thirdParty)"><IconifyIcon icon="mdi:pencil" width="20px"/></button>
                         <button class="btn btn-danger" @click="deleteItem(thirdParty)"><IconifyIcon icon="mdi:delete" width="20px" /></button>
@@ -60,8 +60,8 @@
 
     const submitFrom = async () => {
         const item : IThirdParty = {
-            id: 0,
-            name: editForm.value.name,
+            Cl_codigo: 0,
+            Cl_nombre: editForm.value.name,
         }
         if (await thirdPartiesStore.createData(item)) {
             router.push({name: 'terceros'})
@@ -73,8 +73,8 @@
 
     const submitEditFrom = async () => {
         const item : IThirdParty = {
-            id: 0,
-            name: thirPartyForm.value.name,
+            Cl_codigo: 0,
+            Cl_nombre: thirPartyForm.value.name,
         }
         if (await thirdPartiesStore.updateData(item)) {
             router.push({name: 'terceros'})
@@ -86,7 +86,7 @@
 
     const editItem = async( item: IThirdParty ) => {
         console.log(item)
-        if ( await thirdPartiesStore.fetchSingleData(item.id)) {
+        if ( await thirdPartiesStore.fetchSingleData(item.Cl_codigo)) {
             // Open modal with the data
             openClientModal(item)
             // Actualizar la tabla
@@ -118,7 +118,7 @@
     const clientModal = ref(false)
     const openClientModal = (tercero: IThirdParty) => {
         clientModal.value = !clientModal.value
-        editForm.value.name = tercero.name
+        editForm.value.name = tercero.Cl_nombre
     }
 
     const closeModal = (event : Event ) => {

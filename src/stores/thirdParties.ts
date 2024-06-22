@@ -39,7 +39,7 @@ export const useThirdPartiesStore = defineStore('thirdParties', {
         },
         async deleteData(data: IThirdParty) {
             const fetchService = new FetchService<IThirdParty>('thirdParties')
-            if (await fetchService.deleteData(data.id)) {
+            if (await fetchService.deleteData(data.Cl_codigo)) {
                 if (await this.fetchDataList()) {
                     return true
                 }
@@ -54,7 +54,7 @@ export const useThirdPartiesStore = defineStore('thirdParties', {
         async updateData( data: IThirdParty) {
             const fetchService = new FetchService<IThirdParty>('thirdParties')
             data.Usr_codigo = 1
-            if (await fetchService.updateData(this.singleData.id, data)) {
+            if (await fetchService.updateData(this.singleData.Cl_codigo, data)) {
                 if (await this.fetchDataList()) {
                     return true
                 }
@@ -79,11 +79,11 @@ export const useThirdPartiesStore = defineStore('thirdParties', {
         
         devFillerData() {
             this.dataList = [
-                { id: 1, name: 'Tercero 1' },
-                { id: 2, name: 'Tercero 2' },
-                { id: 3, name: 'Tercero 3' },
-                { id: 4, name: 'Tercero 4' },
-                { id: 5, name: 'Tercero 5' },
+                { Cl_codigo: 1, Cl_nombre: 'Tercero 1' },
+                { Cl_codigo: 2, Cl_nombre: 'Tercero 2' },
+                { Cl_codigo: 3, Cl_nombre: 'Tercero 3' },
+                { Cl_codigo: 4, Cl_nombre: 'Tercero 4' },
+                { Cl_codigo: 5, Cl_nombre: 'Tercero 5' },
                 // Agrega más datos según sea necesario
             ];
         }
