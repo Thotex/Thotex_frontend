@@ -27,11 +27,13 @@
         useThirdPartiesStore().fetchDataList();
         console.log("Cargadas las stores")
 
+        /* //Llenado de datos de prueba
         useSalesStore().devFillerData()
         usePayrollStore().devFillerData()
         useShoppingStore().devFillerData()
         useInventoryStore().devFillerData()
         useThirdPartiesStore().devFillerData()
+        */
     })
 </script>
 

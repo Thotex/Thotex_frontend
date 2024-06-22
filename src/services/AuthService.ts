@@ -19,10 +19,12 @@ interface IResponse {
 
 class AuthService {
     // axios: AxiosInstance
+    private url: string
     private jwt: Ref<string>
     private error: Ref<string>
     constructor() {
         // this.axios = axios
+        this.url = 'https://thotex-d214cd515eaf.herokuapp.com/api/v1.0'
         this.jwt = ref('')
         this.error = ref('')
     }
@@ -46,7 +48,7 @@ class AuthService {
         
         try {
             // Cambiar localhost por localhost:8081 y desplegar la API
-            const res : Response = await fetch('https://thotex-d214cd515eaf.herokuapp.com/api/v1.0/login', {
+            const res : Response = await fetch(this.url + '/login', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
@@ -105,7 +107,7 @@ class AuthService {
         
         try {
             // Cambiar localhost por localhost:8081 y desplegar la API
-            const res : Response = await fetch('https://thotex-d214cd515eaf.herokuapp.com/api/v1.0/register', {
+            const res : Response = await fetch(this.url + '/register', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
@@ -164,7 +166,7 @@ class AuthService {
             // Cambiar localhost por localhost:8081 y desplegar la API
             const {cookies} = useCookies();
             const jwt = cookies.get('jwt');
-            const res : Response = await fetch('https://thotex-d214cd515eaf.herokuapp.com/api/v1.0/logout', {
+            const res : Response = await fetch(this.url + '/logout', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
