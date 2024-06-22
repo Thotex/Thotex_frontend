@@ -5,7 +5,7 @@
             <form class="form-global flex-column">
                 <div>
                     <h2 class="label padding-label">Nombre del tercero</h2>
-                    <input v-model="thirPartyForm.name" required class="input" type="text" placeholder="Nombre del producto">
+                    <input v-model="thirdPartyForm.name" required class="input" type="text" placeholder="Nombre del producto">
                 </div>
                 <div class="flex-centered-button">
                     <button @click.prevent="submitFrom" class="button-global ">Registrar</button>
@@ -33,7 +33,7 @@
             <form class="form-global flex-column">
                 <div>
                     <h2 class="label padding-label">Nombre del tercero</h2>
-                    <input v-model="thirPartyForm.name" required class="input" type="text" placeholder="Nombre del producto">
+                    <input v-model="editForm.name" required class="input" type="text" placeholder="Nombre del producto">
                 </div>
                 <div class="flex-centered-button">
                     <button @click.prevent="submitEditFrom" class="button-global ">Registrar</button>
@@ -54,14 +54,14 @@
     const thirdPartiesStore = useThirdPartiesStore();
     const router = useRouter();
 
-    const thirPartyForm = ref({
+    const thirdPartyForm = ref({
         name: '',
     })
 
     const submitFrom = async () => {
         const item : IThirdParty = {
             Cl_codigo: 0,
-            Cl_nombre: editForm.value.name,
+            Cl_nombre: thirdPartyForm.value.name,
         }
         if (await thirdPartiesStore.createData(item)) {
             router.push({name: 'terceros'})
@@ -74,7 +74,7 @@
     const submitEditFrom = async () => {
         const item : IThirdParty = {
             Cl_codigo: 0,
-            Cl_nombre: thirPartyForm.value.name,
+            Cl_nombre: editForm.value.name,
         }
         if (await thirdPartiesStore.updateData(item)) {
             router.push({name: 'terceros'})
