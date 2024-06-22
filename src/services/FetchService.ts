@@ -15,8 +15,8 @@ class FetchService <T extends Epic> {
         this.data = [];
         this.singleData = {} as T
         //this.url = process.env.VUE_APP_API_URL;
-        //this.url = "http://127.0.0.1:8000/api/v1.0"
-        this.url = "https://thotex-d214cd515eaf.herokuapp.com/api/v1.0"
+        this.url = "http://127.0.0.1:8000/api/v1.0"
+        // this.url = "https://thotex-d214cd515eaf.herokuapp.com/api/v1.0"
         switch (mode) {
             case 'sales':
                 this.mode = 'ventas'
@@ -123,8 +123,9 @@ class FetchService <T extends Epic> {
                 console.log(response.errors)
                 return false
             }
-            else if (response.data) {
-                this.data = response.data
+            else if (response.mensaje) {
+                console.log(response.mensaje)
+                // this.data = response.data
                 return true
             }
             console.log("Maybe the api is not working")
@@ -179,8 +180,9 @@ class FetchService <T extends Epic> {
                 console.log(response.errors)
                 return false
             }
-            else if (response.data) {
-                this.data = response.data
+            else if (response.mensaje) {
+                // this.data = response.data
+                console.log(response.mensaje)
                 return true
             }
             console.log("Maybe the api is not working")

@@ -24,8 +24,8 @@ class AuthService {
     private error: Ref<string>
     constructor() {
         // this.axios = axios
-        //this.url = "http://127.0.0.1:8000/api/v1.0"
-        this.url = 'https://thotex-d214cd515eaf.herokuapp.com/api/v1.0'
+        this.url = "http://127.0.0.1:8000/api/v1.0"
+        // this.url = 'https://thotex-d214cd515eaf.herokuapp.com/api/v1.0'
         this.jwt = ref('')
         this.error = ref('')
     }
