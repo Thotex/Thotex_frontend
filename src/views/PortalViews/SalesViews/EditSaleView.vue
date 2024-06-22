@@ -72,7 +72,7 @@
     })
 
     const total: ComputedRef<number> = computed(() => {
-        return Math.ceil((saleForm.value.subtotal * (1 + saleForm.value.iva)) * 100) / 100;
+        return parseFloat((saleForm.value.subtotal * (1 + saleForm.value.iva)).toFixed(2));
     })
 
 

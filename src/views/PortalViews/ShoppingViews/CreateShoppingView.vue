@@ -69,7 +69,7 @@
     })
 
     const total: ComputedRef<number> = computed(() => {
-        return Math.ceil((shoppingForm.value.subtotal * (1 + shoppingForm.value.iva)) * 100) / 100;
+        return parseFloat((shoppingForm.value.subtotal * (1 + shoppingForm.value.iva)).toFixed(2));
     })
 
     const submitFrom = async () => {
