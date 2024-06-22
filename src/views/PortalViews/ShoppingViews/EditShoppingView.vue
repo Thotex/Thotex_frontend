@@ -68,7 +68,7 @@
         subtotal: currentItem.Com_subtotal,
         iva: currentItem.Com_IVA,
         date: currentItem.Com_fechaGeneracion,
-        client: currentItem.Prov_codigo
+        client: currentItem.Cl_codigo
     })
 
     const total: ComputedRef<number> = computed(() => {
@@ -83,7 +83,7 @@
             Com_subtotal: shoppingForm.value.subtotal,
             Com_precioTotal: total.value,
             Com_IVA: shoppingForm.value.iva,
-            Prov_codigo: shoppingForm.value.client
+            Cl_codigo: shoppingForm.value.client
         }
 
         if (await shoppingStore.updateData(sale)) {

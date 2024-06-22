@@ -88,7 +88,7 @@ export const useShoppingStore = defineStore('shopping', {
                     Com_subtotal: 80000,
                     Com_precioTotal: 95200,
                     Com_IVA: 15200,
-                    Prov_codigo: 501
+                    Cl_codigo: 501
                 },
                 {
                     Com_codigo: 102,
@@ -96,7 +96,7 @@ export const useShoppingStore = defineStore('shopping', {
                     Com_subtotal: 120000,
                     Com_precioTotal: 142800,
                     Com_IVA: 22800,
-                    Prov_codigo: 502
+                    Cl_codigo: 502
                 },
                 {
                     Com_codigo: 103,
@@ -104,7 +104,7 @@ export const useShoppingStore = defineStore('shopping', {
                     Com_subtotal: 45000,
                     Com_precioTotal: 5300,
                     Com_IVA: 8550,
-                    Prov_codigo: 503
+                    Cl_codigo: 503
                 }
             ]
         }

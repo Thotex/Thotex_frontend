@@ -79,7 +79,7 @@
             Com_subtotal: shoppingForm.value.subtotal,
             Com_precioTotal: total.value,
             Com_IVA: shoppingForm.value.iva,
-            Prov_codigo: shoppingForm.value.client
+            Cl_codigo: shoppingForm.value.client
         }
 
         if (await shoppingStore.createData(shopping)) {
