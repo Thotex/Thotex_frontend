@@ -11,7 +11,8 @@ export interface IEmployee {
     },
     Emp_cargo: string,
     Emp_salario: number,
-    Emp_fechaingreso: Date
+    Emp_fechaingreso: Date,
+    Usr_codigo?: number
 }
 
 export interface IEmployeeClean {

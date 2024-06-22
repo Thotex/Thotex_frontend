@@ -4,5 +4,6 @@ export interface IShopping{
     Com_subtotal: number
     Com_precioTotal: number
     Com_IVA: number
-    Prov_codigo: number
+    Prov_codigo: number,
+    Usr_codigo?: number
 }

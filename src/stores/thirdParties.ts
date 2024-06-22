@@ -53,6 +53,7 @@ export const useThirdPartiesStore = defineStore('thirdParties', {
 
         async updateData( data: IThirdParty) {
             const fetchService = new FetchService<IThirdParty>('thirdParties')
+            data.Usr_codigo = 1
             if (await fetchService.updateData(this.singleData.id, data)) {
                 if (await this.fetchDataList()) {
                     return true
@@ -65,6 +66,7 @@ export const useThirdPartiesStore = defineStore('thirdParties', {
         },
         async createData(data:IThirdParty) {
             const fetchService = new FetchService<IThirdParty>('thirdParties')
+            data.Usr_codigo = 1
             if (await fetchService.insertData(data)) {
                 this.dataList = fetchService.getData()
                 return true

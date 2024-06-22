@@ -43,6 +43,7 @@ export const useShoppingStore = defineStore('shopping', {
         },
         async deleteData(data: IShopping) {
             const fetchService = new FetchService<IShopping>('shopping')
+            data.Usr_codigo = 1
             if (await fetchService.deleteData(data.Com_codigo)) {
                 if (await this.fetchDataList()) {
                     return true
@@ -57,6 +58,7 @@ export const useShoppingStore = defineStore('shopping', {
 
         async updateData( data: IShopping) {
             const fetchService = new FetchService<IShopping>('shopping')
+            data.Usr_codigo = 1
             if (await fetchService.updateData(this.singleData.Com_codigo, data)) {
                 if (await this.fetchDataList()) {
                     return true

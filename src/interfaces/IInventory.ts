@@ -7,4 +7,5 @@ export interface IProduct {
     Prod_IVA: number
     Mun_nombre: string
     Emp_codigo: number
+    Usr_codigo?: number
 }

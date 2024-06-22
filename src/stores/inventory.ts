@@ -43,6 +43,7 @@ export const useInventoryStore = defineStore('inventory', {
         },
         async createData(data:IProduct) {
             const fetchService = new FetchService<IProduct>('products')
+            data.Usr_codigo = 1
             if (await fetchService.insertData(data)) {
                 if (await this.fetchDataList()) {
                     return true
@@ -69,6 +70,7 @@ export const useInventoryStore = defineStore('inventory', {
 
         async updateData( data: IProduct) {
             const fetchService = new FetchService<IProduct>('products')
+            data.Usr_codigo = 1
             if (await fetchService.updateData(this.singleData.Prod_codigo, data)) {
                 if (await this.fetchDataList()) {
                     return true
