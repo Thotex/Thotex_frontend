@@ -12,7 +12,7 @@ import PayrollView from '@/views/PortalViews/PayrollView.vue'
 import InventoryView from '@/views/PortalViews/InventoryView.vue'
 import SalesView from '@/views/PortalViews/SalesView.vue'
 import ShoppingView from '@/views/PortalViews/ShoppingView.vue'
-import TercerosView from '@/views/PortalViews/TercerosView.vue'
+import ThirdpartiesView from '@/views/PortalViews/ThirdpartiesView.vue'
 import AccountingView from '@/views/PortalViews/AccountingView.vue'
 import CalendarView from '@/views/PortalViews/CalendarView.vue'
 import CreateShoppingView from '@/views/PortalViews/ShoppingViews/CreateShoppingView.vue'
@@ -170,28 +170,26 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: '/portal/terceros',
-        name: 'third',
-        component: TercerosView
-        //children : [
-          /*
+        name: 'thirdparties',
+        component: ThirdpartiesView,
+        children : [
           {
-            path: '/portal/terceros',
-            name: 'third',
-            component: () => import('@/views/PortalViews/TercerosViews/MainTercerosView.vue')
+            path: '/portal/terceros/historial',
+            name: 'historyThirdparties',
+            component: () => import('@/views/PortalViews/ThirdpartiesViews/MainTirdpartiesView.vue')
           },
           {
             path: '/portal/terceros/editar/:id',
-            name: 'editThird',
-            component: () => import('@/views/PortalViews/TercerosViews/EditThirdView.vue'),
+            name: 'editThirdparties',
+            component: () => import('@/views/PortalViews/ThirdpartiesViews/EditThirdPartiesView.vue'),
             props: true
           },
           {
             path: '/portal/terceros/crear',
-            name: 'createThird',
-            component: () => import('@/views/PortalViews/TercerosViews/CreateThirdView.vue')
+            name: 'createThirdparties',
+            component: () => import('@/views/PortalViews/ThirdpartiesViews/CreateThirdpartiesView.vue')
           }
-          */
-        //]
+        ]
       },
       {
         path: '/portal/contabilidad',

@@ -9,7 +9,6 @@
 <script setup lang="ts">
     import TableComponent from '@/components/PortalComponents/TableComponent.vue';
     import { useInventoryStore } from '@/stores/inventory';
-    import { onMounted, ref, Ref } from 'vue';
     import { IProduct } from '@/interfaces/IInventory';
     import { useRouter } from 'vue-router';
     import swal from 'sweetalert';

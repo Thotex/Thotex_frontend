@@ -9,7 +9,6 @@
 <script setup lang="ts">
     import TableComponent from '@/components/PortalComponents/TableComponent.vue';
     import { usePayrollStore } from '@/stores/payroll';
-    import { onMounted, ref, Ref } from 'vue';
     import { IEmployeeClean } from '@/interfaces/IPayroll';
     import { useRouter } from 'vue-router';
 import swal from 'sweetalert';

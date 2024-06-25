@@ -7,7 +7,6 @@
 </template>
 <script setup lang="ts">
     import TableComponent from '@/components/PortalComponents/TableComponent.vue';
-    import { onMounted, ref, Ref } from 'vue';
     import { IShopping } from '@/interfaces/IShopping';
     import { useRouter } from 'vue-router';
     import { useShoppingStore } from '@/stores/shopping';
