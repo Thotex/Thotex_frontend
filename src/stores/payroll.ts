@@ -21,6 +21,16 @@ export const usePayrollStore = defineStore('inventory', {
         singleData : {} as IEmployeeClean,
         fectedBefore : false
     }),
+    getters: {
+        showTable: (state) => {
+           if (state.dataList.length > 0) {
+               return true
+           } 
+           else {
+               return false
+           }
+        }
+    },
     actions: {
         async fetchDataList() {
             const fetchService = new FetchService<IEmployee>('employees')

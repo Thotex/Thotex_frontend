@@ -1,7 +1,8 @@
 <template>
     <div>
         <h1>Historial de inventario</h1>
-        <TableComponent @editCurrentRow="editItem" @deleteCurrentRow="deleteItem" v-if="showTable" :headers="inventoryStore.headers" :data="inventoryStore.dataList"/>
+        <TableComponent @editCurrentRow="editItem" @deleteCurrentRow="deleteItem" v-if="showTable()" :headers="inventoryStore.headers" :data="inventoryStore.dataList"/>
+        <h2 v-else>Todavía no hay inventario, puedes agregar usando los botones de arriba</h2>
     </div>
 </template>
 
@@ -16,13 +17,8 @@
     const router = useRouter();
 
     const inventoryStore = useInventoryStore();
-    let showTable: Ref<boolean> = ref(false);
 
-    onMounted(() => {
-        if (inventoryStore.dataList.length > 0) {
-            showTable.value = true
-        }
-    })
+    const showTable = () => inventoryStore.showTable
 
     const editItem = async( item: IProduct ) => {
         console.log(item)

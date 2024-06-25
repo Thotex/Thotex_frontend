@@ -18,6 +18,16 @@ export const useInventoryStore = defineStore('inventory', {
         singleData : {} as IProduct,
         fectedBefore : false
     }),
+    getters: {
+        showTable: (state) => {
+           if (state.dataList.length > 0) {
+               return true
+           } 
+           else {
+               return false
+           }
+        }
+    },
     actions: {
         async fetchDataList() {
             const fetchService = new FetchService<IProduct>('products')

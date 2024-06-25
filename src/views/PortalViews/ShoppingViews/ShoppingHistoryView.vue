@@ -1,7 +1,8 @@
 <template>
     <div>
         <h1>Historial de compras</h1>
-        <TableComponent v-if="showTable" :headers="ShoppingStore.headers" :data="ShoppingStore.dataList" @deleteCurrentRow="deleteItem" @editCurrentRow="editItem"/>
+        <TableComponent v-if="showTable()" :headers="ShoppingStore.headers" :data="ShoppingStore.dataList" @deleteCurrentRow="deleteItem" @editCurrentRow="editItem"/>
+        <h2 v-else>Todavía no hay compras, puedes agregar usando los botones de arriba</h2>
     </div>
 </template>
 <script setup lang="ts">
@@ -10,17 +11,12 @@
     import { IShopping } from '@/interfaces/IShopping';
     import { useRouter } from 'vue-router';
     import { useShoppingStore } from '@/stores/shopping';
-import swal from 'sweetalert';
+    import swal from 'sweetalert';
 
     const router = useRouter();
     const ShoppingStore = useShoppingStore();
-    let showTable: Ref<boolean> = ref(false);
 
-    onMounted(() => {
-        if (ShoppingStore.dataList.length > 0) {
-            showTable.value = true
-        }
-    })
+    const showTable = () => ShoppingStore.showTable
 
     const editItem = async( item: IShopping ) => {
         console.log(item)

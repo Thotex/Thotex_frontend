@@ -7,8 +7,18 @@ export const useCalendarStore = defineStore('calendar', {
         dataList : [] as IEvent[],
         singleData : {} as IEvent,
         cachedData : [] as IEvent[],
-        fetchedBefore : false
+        fetchedBefore : false,
     }),
+    getters: {
+        showTable: (state) => {
+           if (state.dataList.length > 0) {
+               return true
+           } 
+           else {
+               return false
+           }
+        }
+    },
     actions: {
         async fetchDataList() {
             const fetchService = new FetchService<IEvent>('calendar')

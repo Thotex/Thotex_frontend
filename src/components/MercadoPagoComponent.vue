@@ -5,6 +5,7 @@
 </template>
 
 <script setup lang="ts">
+  /* eslint-disable */ 
   import { loadMercadoPago } from "@mercadopago/sdk-js";
   import { onMounted, onBeforeUnmount } from "vue";
 

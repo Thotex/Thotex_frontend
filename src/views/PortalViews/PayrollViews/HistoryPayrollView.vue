@@ -1,7 +1,8 @@
 <template>
     <div>
         <h1>Lista de empleados</h1>
-        <TableComponent v-if="showTable" :headers="payrollStore.headers" :data="payrollStore.dataList" @deleteCurrentRow="deleteItem" @editCurrentRow="editItem"/>
+        <TableComponent v-if="showTable()" :headers="payrollStore.headers" :data="payrollStore.dataList" @deleteCurrentRow="deleteItem" @editCurrentRow="editItem"/>
+        <h2 v-else>Todavía no hay empleados, puedes agregar usando los botones de arriba</h2>
     </div>
 </template>
 
@@ -16,13 +17,8 @@ import swal from 'sweetalert';
     const router = useRouter();
 
     const payrollStore = usePayrollStore();
-    let showTable: Ref<boolean> = ref(false);
 
-    onMounted(() => {
-        if (payrollStore.dataList.length > 0) {
-            showTable.value = true
-        }
-    })
+    const showTable = () => payrollStore.showTable
 
     const editItem = async( item: IEmployeeClean ) => {
         console.log(item)
