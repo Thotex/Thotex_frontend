@@ -51,7 +51,7 @@
             </li>
 
             <li>
-                <RouterLink :to="{name: 'third'}" class="button-side">
+                <RouterLink :to="{name: 'thirdparties'}" class="button-side">
                     <label>Terceros</label>
                     <IconifyIcon class="iconos" icon="material-symbols:supervisor-account-outline-rounded" color="white" width="50px" heigth="50px"></IconifyIcon>
                 </RouterLink>
