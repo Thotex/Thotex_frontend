@@ -2,15 +2,39 @@
     <div>
         <FullCalendar :options="calendarOptions" />
     </div>
+    <div>
+        Lista de eventos
+        <ul>
+          <li v-for='event in eventsList' :key='event.id'>
+            <b>{{ event.startStr }}</b>
+            <i>{{ event.title }}</i>
+          </li>
+        </ul>
+    </div>
 </template>
 
 <script setup lang="ts">
     import FullCalendar from '@fullcalendar/vue3';
     import dayGridPlugin from '@fullcalendar/daygrid';
     import interactionPlugin from '@fullcalendar/interaction';
-    import { CalendarOptions, EventClickArg, DateSelectArg } from '@fullcalendar/core';
+    import timeGridPlugin from '@fullcalendar/timegrid';
+    import { CalendarOptions, EventApi, EventClickArg, DateSelectArg } from '@fullcalendar/core';
     import swal from 'sweetalert';
     import esLocale from '@fullcalendar/core/locales/es';
+    import { ref, Ref } from 'vue';
+
+    // Lista de eventos, por si se requiere
+    /*
+    const INITIAL_EVENTS = [
+       
+    ]
+    */
+
+    let eventsList : Ref<EventApi[]> = ref([]) 
+
+    const handleEvents = (events : EventApi[]) => {
+        eventsList.value = events
+    }
 
     // Este se puede meter dentro del handle select
     const createEvent = (selectInfo : DateSelectArg, title : string) => {
@@ -72,6 +96,7 @@
                 attributes: {
                     placeholder: "Ingrese el nombre del evento",
                     type: "text",
+                    value: clickInfo.event.title
                 },
             },
             buttons: {
@@ -120,15 +145,26 @@
     }
 
     const calendarOptions : CalendarOptions = {
-        plugins: [dayGridPlugin, interactionPlugin],
+        plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
         initialView: 'dayGridMonth',
+        // initialEvents: INITIAL_EVENTS, // Puede ser util para cargar por primera vez
         // Properties
         locale: esLocale,
         selectable: true,
+        selectMirror: true, // Se puede seleccionar el mismo evento dos veces
+        dayMaxEvents: true, // Eventos de maximo dia
+        weekends: true,
         editable: true,
         // Methods
         select: handleDateSelect,
-        eventClick: handleEventClick
+        eventClick: handleEventClick,
+        // Lista de eventos tal vez no necesaria
+        eventsSet: handleEvents
     }
 
 
