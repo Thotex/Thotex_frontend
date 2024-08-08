@@ -25,7 +25,8 @@
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vue3-cookies": "^1.0.6",
-    "vue3-recaptcha2": "^1.8.0"
+    "vue3-recaptcha2": "^1.8.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "devDependencies": {
     "@iconify/vue": "^4.1.1",
