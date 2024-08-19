@@ -6,8 +6,7 @@
         Lista de eventos
         <ul>
           <li v-for='event in eventsList' :key='event.id'>
-            <b>{{ event.startStr }}</b>
-            <i>{{ event.title }}</i>
+            <b>{{ event }}</b>
           </li>
         </ul>
     </div>
