@@ -65,7 +65,6 @@ function close() {
   border-radius: 5px;
   position: relative;
   max-width: 70%;
-  margin-top: 800px;
   margin-bottom: 20px;
   color: black;
   max-height: 80%;

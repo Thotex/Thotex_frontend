@@ -272,7 +272,7 @@ body, html {
 }
 
 .button-global {
-  background-color: $custom-blue;
+  background-color: #FCBB01;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -280,7 +280,7 @@ body, html {
   cursor: pointer;
 
   &:hover {
-    background-color: darken($custom-blue, 10%);
+    background-color: darken(#FCBB01, 10%);
   }
 }
 .posi{

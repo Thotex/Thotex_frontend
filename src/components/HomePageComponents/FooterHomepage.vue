@@ -58,7 +58,41 @@
       Además, en la parte inferior derecha, tendrá acceso a las redes sociales y la forma de contactar a thotex por su correo electrónico. Las redes sociales disponibles son facebook, X, tiktok e instagram.
       </p>
       <img src="https://i.imgur.com/eUysPSh.png" alt="Image" /> 
+      <p class="manual">Para ingresar a la plataforma, basta con haberse registrado previamente en el botón presentado anteriormente, seleccionando esta opción aparecerá una nueva ventana que se muestra en la figura, se muestra un formulario donde el usuario tiene que registrar su información personal. Una vez registrado, se puede acceder a la plataforma por medio del botón ingresar, donde se solicita el correo electrónico, así como la contraseña registrada anteriormente. </p>
+      <img src="https://i.imgur.com/ICMgG2D.png" alt="Image" />
+      <h3>Nomina</h3>
+      <p class="manual">
+        La gestión de nómina, involucra la creación de los empleados vinculados a la empresa, así como el registro del trabajo llevado a cabo por cada uno de ellos. La plataforma divide estos dos apartados en dos secciones llamados gestión de empleados, que permite la creación de los empleados solicitando los datos básicos del empleado como nombre, correo electrónico, entre otros además de los datos relacionados al cargo del empleado como la fecha de ingreso, el nombre de su cargo y el salario devengado. La sección de nómina es visible en la figura.
+      </p>
+      <img src="https://i.imgur.com/NynPvb3.png" alt="Image" />
+      <h3>Ventas</h3>
+      <p class="manual">
+        La sección de ventas se distribuye en tres subsecciones, estas son: registrar venta, en donde se creará una factura para una venta hecha. Esta factura solicitará unos datos en un formulario referentes a la venta. El segundo apartado está presente para visualizar las ventas registradas, llamado historial de ventas. Finalmente, estadísticas de venta donde puede visualizar dos gráficas referentes a las ventas.
+      </p>
+      <img src="https://i.imgur.com/w9j0bvx.png" alt="Image" />
+      <img src="https://i.imgur.com/nfAk24S.png" alt="Image" />
+      <h3>Compras</h3>
+      <p class="manual">
+        Similar al módulo de ventas, las compras se dividen en tres secciones, el registro con un formulario similar al de ventas donde se podrán registrar las compras realizadas a algún proveedor. El historial de compras, que reflejan las compras realizadas y las estadísticas de compras, permitiendo visualizar las compras por medio de gráficos.
+      </p>
+      <img src="https://i.imgur.com/h248Rr2.png" alt="Image" />
+      <h3>Inventario</h3>
+      <p class="manual">
+        Esta sección permite la creación y revisión de existencias de los productos comercializados que tenga el negocio. Para lo primero, se dispone el botón registrar productos, figura 7, aquí, el usuario registra en un formulario el nombre, la cantidad de dicho producto, el precio, así como la empresa y la región desde donde se comercializa.
+      </p>
+      <img src="https://i.imgur.com/Kno3cg5.png" alt="Image" />
+      <h3>Terceros</h3>
+      <p class="manual">
+        En esta sección, se registran todos aquellos que se quieran vincular a la plataforma pero que no van a tener acceso o control sobre. Esta pestaña, hace referencia a todos los clientes y proveedores que el usuario desee registrar para tener acceso directo a ellos para generar facturas que necesiten la información del cliente sin digitar los datos cada vez que el cliente genere una venta. Del mismo modo, se puede registrar al proveedor para contactarlo de una forma más rápida y tener un mayor control sobre los productos que provengan de dicho proveedor.
+      </p>
+      <img src="https://i.imgur.com/sLQj5bt.png" alt="Image" />
+      <h3>Calendario</h3>
+      <p class="manual">
+        El calendario, está destinado para que el usuario cree sus eventos y registre aquellas actividades relevantes en el tema contable que pueda tener un negocio, como por ejemplo el pago de impuestos como el ICA, o declaraciones de renta, así como el pago a proveedores o actividades que pueda tener el negocio. 
+      </p>
+      <img src="https://i.imgur.com/Nyl0pD3.png" alt="Image" />
     </template>
+    
     </MyDialog>
   </footer>
 </template>
