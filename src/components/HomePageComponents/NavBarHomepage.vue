@@ -96,160 +96,168 @@ const logout = async () => {
 </script>
 
 <style scoped lang="scss">
-	div.header {
-		width: 100%;
-		height: $nav-bar-height;
-		background-color: white;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+div.header {
+  width: 100%;
+  height: $nav-bar-height;
+  background-color: white;
+}
 
-	}
+nav.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
 
-	nav.nav {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		height: 100%;
-		max-width: 1200px;
-		margin: 0 auto;
-	}
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 10px;
+  }
+}
 
-	ul.item-container {
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
-	}
+ul.item-container {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
 
-	.item-container li.item {
-		margin: 0.1rem;
-		:hover {
-			display: block flex;			
-			border-radius: 5px;
-			color: $custom-blue;
-			background-color: #F9F9F9;
-		}
-		a {
-			font-weight: bold;
-			display: block;
-			padding-top: calc($nav-bar-height	/ 4);
-			padding-bottom: calc($nav-bar-height	/ 4);
-			padding-left: 1rem;
-			padding-right: 1rem;
-			text-decoration: none;
-			color: $custom-gray;
-		}
+  @media (max-width: 768px) {
+    justify-content: center;
+    width: 100%;
+  }
+}
 
-		a.router-link-exact-active {
-			text-decoration: none;
-			color: $custom-blue;
-			background-color: #F9F9F9;
-			border-radius: 5px;
-		}
-	}
+.item-container li.item {
+  margin: 0.5rem;
+  :hover {
+    display: flex;
+    border-radius: 5px;
+    color: $custom-blue;
+    background-color: #f9f9f9;
+  }
+  
+  a {
+    font-weight: bold;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: $custom-gray;
+  }
 
-	.logo-container {
-		display: flex;
-		align-items: center;
-		text-decoration: none;
+  a.router-link-exact-active {
+    text-decoration: none;
+    color: $custom-blue;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
+}
 
-		.logo {
-			display: block flex;
-			border-radius: 5px;
-			align-items: center;
-			justify-content: center;
-			text-decoration: none;
-			padding-right: 10px;
+.logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 
-			img {
-				width: 65px;
-				height: 60px;
-				margin-right: 5px;
-			}
-		}
-		:hover {
-				background-color: #F9F9F9;
-				border-radius: 5px;
+  .logo {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding-right: 10px;
 
-			}
-		a.router-link-exact-active {
-			text-decoration: none;
-			color: $custom-blue;
-			border-radius: 5px;
-		}
-		a {
-			text-decoration: none;
-		}
-	}
+    img {
+      width: 50px;
+      height: 50px;
+      margin-right: 5px;
+    }
+  }
+  
+  :hover {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
+  
+  a.router-link-exact-active {
+    text-decoration: none;
+    color: $custom-blue;
+    border-radius: 5px;
+  }
 
-	.logo-text {
-		//no underline
-		font-style: normal;
-		text-decoration: none !important;
-		color: $custom-gray;
-		font-weight: bold;
-		font-size: 1.5rem;
-		padding: 0;
-		a {
-			text-decoration: none !important;
-		}
-		span {
-			color: $custom-blue;
-		}
-		
-	}
+  a {
+    text-decoration: none;
+  }
+}
 
-	.login-button {
-		margin-top: 10px;
-		text-transform: uppercase;
-		outline: 0;
-		background: $custom-blue;
-		border: 0;
-		padding: 15px;
-		padding-left: 20px;	
-		padding-right: 20px;
-		color: #FFFFFF;
-		font-size: 14px;
-		border-radius: 5px;
-		margin-right: 4px;
-		//make the text bold
-		font-weight: bold;
-		
-		:hover {
-			background-color: #2957d6;
-		}
-		
-	}
+.logo-text {
+  font-style: normal;
+  text-decoration: none !important;
+  color: $custom-gray;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 0;
 
-	.button-container {
-		.register-button:hover {
-			background-color: #F9F9F9;
-			cursor: pointer;
-		}
-		.login-button:hover {
-			cursor: pointer;
-		}
-	}
+  span {
+    color: $custom-blue;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+}
 
-	.register-button {
-		margin-top: 10px;
-		text-transform: uppercase;
-		outline: 0;
-		background: white;
-		border: 0;
-		padding: 15px;
-		padding-left: 20px;	
-		padding-right: 20px;
-		color: $custom-gray;
-		font-size: 14px;
-		border-radius:5px;
-		margin-right: 4px;
-		//make the text bold
-		font-weight: bold;
-	}
+.login-button, .register-button {
+  margin-top: 10px;
+  text-transform: uppercase;
+  outline: 0;
+  border: 0;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  
+  @media (max-width: 768px) {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+}
+
+.login-button {
+  background: $custom-blue;
+  color: #ffffff;
+
+  :hover {
+    background-color: #2957d6;
+  }
+}
+
+.register-button {
+  background: white;
+  color: $custom-gray;
+
+  :hover {
+    background-color: #f9f9f9;
+  }
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+
+  .register-button:hover, .login-button:hover {
+    cursor: pointer;
+  }
+}
+
+.modal-form {
+  z-index: 4;
+}
+.header{
+	box-shadow: 0 24px 4px rgba(0, 0, 0, 0.2); 
+}
 	
-	.modal-form {
-		z-index: 4;
-	}
 </style>

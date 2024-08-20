@@ -13,7 +13,7 @@
         <label class="mUser" @click="showDialog">Manual de usuario</label>
       </li>
       <li >
-        <label class="mUser">Contactanos</label>
+        <label class="mUser">Contactanos(PQRS)</label>
       </li>
     </ul>
 
@@ -84,6 +84,7 @@ footer {
   padding: 10px 0;
   z-index: 3;
   flex-wrap: wrap; // Permite que los elementos se ajusten en dispositivos móviles
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .direccion {
@@ -184,5 +185,6 @@ h1 {
 .mUser{
   text-decoration: underline;
 }
+
 </style>
 
