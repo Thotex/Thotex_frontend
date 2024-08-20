@@ -21,7 +21,7 @@
 
     const editItem = async( item: IProduct ) => {
         console.log(item)
-        if ( await inventoryStore.fetchSingleData(item.Emp_codigo)) {
+        if ( await inventoryStore.fetchSingleData(item.Prod_codigo)) {
             router.push({name: 'editInventory', params: {id: inventoryStore.singleData.Emp_codigo}})
             // Actualizar la tabla
             inventoryStore.fetchDataList()

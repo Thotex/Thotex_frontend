@@ -54,6 +54,8 @@ export const useInventoryStore = defineStore('inventory', {
         async createData(data:IProduct) {
             const fetchService = new FetchService<IProduct>('products')
             data.Usr_codigo = 1
+            console.log("Creando un producto: " + data)
+            alert("Creando un producto: " + data)
             if (await fetchService.insertData(data)) {
                 if (await this.fetchDataList()) {
                     return true
@@ -66,6 +68,7 @@ export const useInventoryStore = defineStore('inventory', {
         },
         async deleteData(data: IProduct) {
             const fetchService = new FetchService<IProduct>('products')
+            console.log("Borrando un item: " + data)
             if (await fetchService.deleteData(data.Prod_codigo)) {
                 if (await this.fetchDataList()) {
                     return true
@@ -79,7 +82,10 @@ export const useInventoryStore = defineStore('inventory', {
         },
 
         async updateData( data: IProduct) {
+            console.log("Actualizando un item: " + data)
+            console.log("Actualizando un item: " + this.singleData.Prod_codigo)
             const fetchService = new FetchService<IProduct>('products')
+            
             if (await fetchService.updateData(this.singleData.Prod_codigo, data)) {
                 if (await this.fetchDataList()) {
                     return true
@@ -104,7 +110,7 @@ export const useInventoryStore = defineStore('inventory', {
                     Prod_precio: 1.5,
                     Prod_cantidad: 10,
                     Prod_IVA: 0.16,
-                    Mun_nombre: "Santa Cruz",
+                    Mun_nombre: 132,
                     Emp_codigo: 1
                 },
                 {
@@ -113,7 +119,7 @@ export const useInventoryStore = defineStore('inventory', {
                     Prod_precio: 1.5,
                     Prod_cantidad: 10,
                     Prod_IVA: 0.16,
-                    Mun_nombre: "Santa Cruz",
+                    Mun_nombre: 12,
                     Emp_codigo: 1
                 }
             ]

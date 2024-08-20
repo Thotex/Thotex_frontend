@@ -24,7 +24,7 @@
                 </div>
             </form>
             <div class="flex-centered-button">
-                <button class="button-global btn-center" @click="submitFrom">Crear</button>
+                <button class="button-global btn-center" @click.prevent="submitFrom">Crear</button>
             </div>
         </div>
     </div>
@@ -83,6 +83,8 @@
         }
 
         if (await saleStore.createData(sale)) {
+            swal("Creado", "Se ha creado la venta", "success")
+            saleStore.fetchDataList();
             router.push({name: 'sales'})
         } else {
             console.log("Error, no se pudo crear la venta")

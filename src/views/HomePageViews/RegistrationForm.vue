@@ -249,7 +249,7 @@
       //TODO : MOVER A UNA INTERFAZ APARTE Y MODIFICAR EL AUTH PARA RECIBIR OBJETO USER
       const response : boolean = await auth.register(userForm.value);
       if (response) {
-        swal("¡Registro exitoso!", "Se ha registrado exitosamente", "success");
+        swal("¡Registro exitoso!", "Por favor confirma tu correo para completar el registro", "success");
         emits('successRegister')
         return true;
       } else {

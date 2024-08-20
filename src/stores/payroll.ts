@@ -3,7 +3,7 @@ import { IEmployee, IEmployeeClean, cleanEmployee, formEmployee} from '@/interfa
 import { Headers } from '@/interfaces/IProject'
 import FetchService from '@/services/FetchService'
 
-export const usePayrollStore = defineStore('inventory', {
+export const usePayrollStore = defineStore('payroll', {
     state: () => ({
         headers: [
             { name: 'Código', dbName: 'Emp_codigo' },

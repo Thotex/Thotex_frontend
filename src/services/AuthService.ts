@@ -24,7 +24,7 @@ class AuthService {
     private error: Ref<string>
     constructor() {
         // this.axios = axios
-        this.url = "http://127.0.0.1:8000/api/v1.0"
+        this.url = process.env.VUE_APP_BACKEND_URL
         // this.url = 'https://thotex-d214cd515eaf.herokuapp.com/api/v1.0'
         this.jwt = ref('')
         this.error = ref('')
@@ -136,7 +136,7 @@ class AuthService {
             // if (response.errors !== undefined && response.errors.length > 0) {
             if (response.mensaje) {
                 //this.error = "Login failed"
-                if (response.mensaje == 'Registro exitoso') {
+                if (response.mensaje == 'Por favor confirma tu correo para completar el registro') {
                     return true
                 } else {
                     this.error.value = response.mensaje

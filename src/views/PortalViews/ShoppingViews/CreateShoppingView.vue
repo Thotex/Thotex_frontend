@@ -83,6 +83,8 @@
         }
 
         if (await shoppingStore.createData(shopping)) {
+            swal("Listo", "Se ha creado la compra", "success")
+            shoppingStore.fetchDataList();
             router.push({name: 'shopping'})
         } else {
             console.log("Error, no se pudo crear la compra")
