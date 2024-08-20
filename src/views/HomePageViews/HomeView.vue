@@ -2,7 +2,7 @@
  <div class="container">
     <div class="content">
       <section>
-        <h1 class="title contenido">SOFTWARE PARA LA ADMINISTRACIÓN DE TU NEGOCIO</h1>
+        <h1 class="title">SOFTWARE PARA LA ADMINISTRACIÓN DE TU NEGOCIO</h1>
         <p class="contenido">Thotex es una plataforma diseñada para facilitar
           la gestión contable y financiera de pequeños y medianos comercios. 
           Ofreciendo  funcionalidades que permiten a los 
@@ -104,6 +104,7 @@ const submitForm = () => {
     swal("Error", "Por favor, completa todos los campos", "error");
   }
 };
+
 const faqs = ref([
   { question: '¿Qué tipos de usuarios pueden registrarse en Thotex?', answer: 'En Thotex, los usuarios pueden registrarse como personas naturales o empresas, asegurando la seguridad y personalización de sus datos.' },
   { question: '¿Cómo puedo gestionar el inventario de mi negocio en Thotex?', answer: 'Puedes registrar productos y el inventario se actualizará automáticamente con cada compra o venta, permitiéndote tener un control en tiempo real de tus productos en stock.' },
@@ -122,6 +123,7 @@ const activeIndex = ref<number | null>(null);
 const toggleAnswer = (index: number) => {
   activeIndex.value = activeIndex.value === index ? null : index;
 };
+
 </script>
 
 <style scoped lang="scss">
@@ -130,7 +132,7 @@ const toggleAnswer = (index: number) => {
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  background: white;
+  background: #f7f9fc;
   overflow-y: auto;
   overflow-x: hidden; /* Ocultar el desbordamiento horizontal */
 
@@ -175,6 +177,7 @@ const toggleAnswer = (index: number) => {
     text-align: center;
     color: $custom-dark-blue;
     margin-bottom: 20px;
+    font-size: 48px;
   }
 
   p {
@@ -212,7 +215,6 @@ body, html {
 }
 
 .contenido {
-  margin-left: 70px;
   margin-right: 30%;
   text-align: justify;
   font-size: 20px;
@@ -330,4 +332,19 @@ body, html {
   padding-top: 0;
   margin-bottom: 100px;
 }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  animation: fadeIn 2s ease-out; /* Duración y suavidad de la animación */
+}
+
 </style>

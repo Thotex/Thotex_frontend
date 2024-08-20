@@ -14,7 +14,6 @@
         </div>
         <div>
         <h1>Lista de terceros</h1>
-
         </div>
         <div class="card-container">
                 <div v-for="thirdParty in thirdPartiesStore.dataList" :key="thirdParty.id" class="card-global card-size">
