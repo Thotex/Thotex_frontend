@@ -4,6 +4,9 @@
   <div class="content">
     <router-view/>
   </div>
+  <div class="footer-space">
+
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -28,5 +31,8 @@
 </script>
 
 <style lang="scss" scoped>
-
+  .footer-space {
+    height: 100px;
+  }
+  
 </style>

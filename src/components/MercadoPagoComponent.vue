@@ -26,10 +26,9 @@
 
   onMounted( async () => {
     await loadMercadoPago();
-    const mp = new window.MercadoPago("TEST-b80af940-4547-4360-b1a1-6de6882aa2f6", {
+    const mp = new window.MercadoPago("TEST-aa08c433-8dfb-4dec-a712-829af46bc226", {
       locale: "es",
     });
-    
     const bricksBuilder = mp.bricks();
     const renderPaymentBrick = async (bricksBuilder : any) : Promise<void> => {
       const settings = {
@@ -103,6 +102,7 @@
         );
       };
       renderPaymentBrick(bricksBuilder);
+      
     });
 
   
