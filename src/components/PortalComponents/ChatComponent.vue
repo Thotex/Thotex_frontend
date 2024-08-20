@@ -4,7 +4,9 @@
       <button @click="showModal = true" class="open-chat-button">Abrir Chat</button>
       
       <div v-show="showModal" class="chat-upper-container">
-        <button class="close-button" @click="closeModal">X</button>
+        <div class="chat-header">
+            <button class="close-button" @click="closeModal">X</button>
+        </div>
         <div class="chat-container">
           <ul class="chat-history">
             <li v-for="(message, index) in chatHistory" :key="index" :class="message.role">
@@ -129,8 +131,9 @@ function closeModal() {
     border-radius: 8px;
     background-color: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
+    z-index: 9999; // Asegura que el chat se muestre sobre otros elementos
+    }
+    
   .close-button {
     align-self: flex-end;
     background: #f44336; // Color de fondo del botón cerrar
@@ -206,11 +209,20 @@ function closeModal() {
   }
   
   .chat-input {
+    position: sticky;
+    bottom: 0;
     display: flex;
     padding: 10px;
     border-top: 1px solid #ddd;
     background: #fff;
     align-items: center;
+  }
+
+  .chat-header {
+    display: flex;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
   }
   
   .chat-input input {
