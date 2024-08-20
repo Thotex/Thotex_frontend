@@ -91,7 +91,7 @@ function closeModal() {
       history: chatHistory.value,
     });
   
-    const result = await chatSession.sendMessage(userInput.value);
+    await chatSession.sendMessage(userInput.value);
     userInput.value = ""; // Clear input field
   }
   </script>
@@ -113,6 +113,7 @@ function closeModal() {
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     font-size: 24px; // Tamaño del ícono o texto dentro del botón
+    z-index: 9999; // Asegura que el botón se muestre sobre otros elementos
   
     &:hover {
       background-color: #f5c518; // Color de fondo al pasar el ratón

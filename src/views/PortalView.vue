@@ -5,11 +5,13 @@
             <router-view/>
         </div>
     </div>
+    <ChatComponent/>
 </template>
 
 <script setup lang="ts">
     import SideBarLeft from '@/components/PortalComponents/SideBarLeft.vue';
     import { onMounted } from 'vue';
+    import ChatComponent from '@/components/PortalComponents/ChatComponent.vue';
 
     //Import de las stores
     import { useSalesStore } from '@/stores/sales';
