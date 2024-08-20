@@ -1,5 +1,5 @@
 <template> 
-  <FooterHomepage/>
+  <FooterHomepage class="fott"/>
   <NavBarHomepage :navBarRouterNames="navBarRouterNames"/>
   <div class="content">
     <router-view/>
@@ -35,4 +35,7 @@
     height: 100px;
   }
   
+.fott{
+  border-width: 5px;
+}
 </style>
