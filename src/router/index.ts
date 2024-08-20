@@ -47,7 +47,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'portal',
     redirect: '/portal/tablero', //Corresponde al dashboard 
     component: PortalView,
-    //meta: { requiresAuth: true },
+    meta: { requiresAuth: true },
     children: [
       {
         path: '/portal/tablero',

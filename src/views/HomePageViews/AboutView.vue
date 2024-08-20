@@ -44,9 +44,9 @@
   {
     name: 'Juan David Vásquez Pinzon',
     role: 'Desarrollador Frontend',
-    image: 'https://i.imgur.com/LwOBLeM.png',
-    git: 'https://github.com/MiPinzon',
-    linked: 'https://www.linkedin.com/in/miguel-angel-pinzón-garcia-1771a9267/',
+    image: 'https://i.imgur.com/DBlXSqD.jpeg',
+    git: 'https://github.com/juandvasquezp',
+    linked: 'www.linkedin.com/in/juan-david-vasquez-pinzon',
   },
   {
     name: 'Daniel Santiago Ramírez Rocha',

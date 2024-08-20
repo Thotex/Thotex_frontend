@@ -1,7 +1,7 @@
 <template>
     <div>
         <label><input type="checkbox" v-model="inventario"> inventario</label>
-        <label><input type="checkbox" v-model="ventas"> veentas</label>
+        <label><input type="checkbox" v-model="ventas"> ventas</label>
         <label><input type="checkbox" v-model="compras"> compras</label>      
     </div>
     <div>
