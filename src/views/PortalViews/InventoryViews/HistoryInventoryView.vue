@@ -1,14 +1,14 @@
 <template>
     <div>
         <h1>Historial de inventario</h1>
-        <TableComponent @editCurrentRow="editItem" @deleteCurrentRow="deleteItem" v-if="showTable" :headers="inventoryStore.headers" :data="inventoryStore.dataList"/>
+        <TableComponent @editCurrentRow="editItem" @deleteCurrentRow="deleteItem" v-if="showTable()" :headers="inventoryStore.headers" :data="inventoryStore.dataList"/>
+        <h2 v-else>Todavía no hay inventario, puedes agregar usando los botones de arriba</h2>
     </div>
 </template>
 
 <script setup lang="ts">
     import TableComponent from '@/components/PortalComponents/TableComponent.vue';
     import { useInventoryStore } from '@/stores/inventory';
-    import { onMounted, ref, Ref } from 'vue';
     import { IProduct } from '@/interfaces/IInventory';
     import { useRouter } from 'vue-router';
     import swal from 'sweetalert';
@@ -16,17 +16,12 @@
     const router = useRouter();
 
     const inventoryStore = useInventoryStore();
-    let showTable: Ref<boolean> = ref(false);
 
-    onMounted(() => {
-        if (inventoryStore.dataList.length > 0) {
-            showTable.value = true
-        }
-    })
+    const showTable = () => inventoryStore.showTable
 
     const editItem = async( item: IProduct ) => {
         console.log(item)
-        if ( await inventoryStore.fetchSingleData(item.Emp_codigo)) {
+        if ( await inventoryStore.fetchSingleData(item.Prod_codigo)) {
             router.push({name: 'editInventory', params: {id: inventoryStore.singleData.Emp_codigo}})
             // Actualizar la tabla
             inventoryStore.fetchDataList()

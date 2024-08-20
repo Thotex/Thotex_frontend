@@ -53,7 +53,7 @@
 
     const getClientName = (data: IThirdParty) => {
         console.log("Seleccionado: ", data)
-        saleForm.value.client = data.id
+        saleForm.value.client = data.Cl_codigo
         openClientModal()
     }
 
@@ -66,13 +66,13 @@
     const saleForm : Ref = ref({
         id: currentItem.Ven_codigo,
         subtotal: currentItem.Ven_subtotal,
-        iva: currentItem.Ven_IVA,
+        iva: 0.19,
         date: currentItem.Ven_fechaGeneracion,
         client: currentItem.Cl_codigo
     })
 
     const total: ComputedRef<number> = computed(() => {
-        return Math.ceil((saleForm.value.subtotal * (1 + saleForm.value.iva)) * 100) / 100;
+        return parseFloat((saleForm.value.subtotal * (1 + saleForm.value.iva)).toFixed(2));
     })
 
 

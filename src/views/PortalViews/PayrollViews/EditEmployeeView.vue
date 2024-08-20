@@ -5,7 +5,12 @@
             <form class="form-global" onsubmit="event.preventDefault()">
                 <div class="column">
                     <h2 class="label">Tipo de Identificación</h2>
-                    <input required v-model="employeeForm.typeId" class="input" type="text" placeholder="Tipo de Identificación" />
+                    <select required v-model="employeeForm.typeId" class="input" >
+                        <!-- <option value="" disabled selected>Select your option</option> -->
+                        <option selected value="CC">CC</option>
+                        <option value="CE">CE</option>
+                        <option value="PA">PA</option>
+                    </select>
                     <h2 class="label">Nombre</h2>
                     <input required v-model="employeeForm.name" class="input" type="text" placeholder="Nombre" />
                     <h2 class="label">Correo Electronico</h2>

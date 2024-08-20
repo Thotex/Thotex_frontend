@@ -11,13 +11,23 @@ export const useShoppingStore = defineStore('shopping', {
             {name: 'Subtotal', dbName: 'Com_subtotal'},
             {name: 'Total', dbName: 'Com_precioTotal'},
             {name: 'IVA', dbName: 'Com_IVA'},
-            {name: 'Proveedor', dbName: 'Prov_codigo'},// Cambiar segun la base de datos
+            {name: 'Proveedor', dbName: 'Cl_codigo'},// Cambiar segun la base de datos
         ] as Headers[] ,
         dataList : [] as IShopping[],
         singleData : {} as IShopping,
         cachedData : [] as IShopping[],
         fetchedBefore : false
     }),
+    getters: {
+        showTable: (state) => {
+           if (state.dataList.length > 0) {
+               return true
+           } 
+           else {
+               return false
+           }
+        }
+    },
     actions: {
         async fetchDataList() {
             const fetchService = new FetchService<IShopping>('shopping')
@@ -43,6 +53,7 @@ export const useShoppingStore = defineStore('shopping', {
         },
         async deleteData(data: IShopping) {
             const fetchService = new FetchService<IShopping>('shopping')
+            data.Usr_codigo = 1
             if (await fetchService.deleteData(data.Com_codigo)) {
                 if (await this.fetchDataList()) {
                     return true
@@ -87,7 +98,7 @@ export const useShoppingStore = defineStore('shopping', {
                     Com_subtotal: 80000,
                     Com_precioTotal: 95200,
                     Com_IVA: 15200,
-                    Prov_codigo: 501
+                    Cl_codigo: 501
                 },
                 {
                     Com_codigo: 102,
@@ -95,7 +106,7 @@ export const useShoppingStore = defineStore('shopping', {
                     Com_subtotal: 120000,
                     Com_precioTotal: 142800,
                     Com_IVA: 22800,
-                    Prov_codigo: 502
+                    Cl_codigo: 502
                 },
                 {
                     Com_codigo: 103,
@@ -103,7 +114,7 @@ export const useShoppingStore = defineStore('shopping', {
                     Com_subtotal: 45000,
                     Com_precioTotal: 5300,
                     Com_IVA: 8550,
-                    Prov_codigo: 503
+                    Cl_codigo: 503
                 }
             ]
         }

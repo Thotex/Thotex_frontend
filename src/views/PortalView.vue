@@ -5,11 +5,13 @@
             <router-view/>
         </div>
     </div>
+    <ChatComponent/>
 </template>
 
 <script setup lang="ts">
     import SideBarLeft from '@/components/PortalComponents/SideBarLeft.vue';
     import { onMounted } from 'vue';
+    import ChatComponent from '@/components/PortalComponents/ChatComponent.vue';
 
     //Import de las stores
     import { useSalesStore } from '@/stores/sales';
@@ -27,11 +29,13 @@
         useThirdPartiesStore().fetchDataList();
         console.log("Cargadas las stores")
 
+        /* //Llenado de datos de prueba
         useSalesStore().devFillerData()
         usePayrollStore().devFillerData()
         useShoppingStore().devFillerData()
         useInventoryStore().devFillerData()
         useThirdPartiesStore().devFillerData()
+        */
     })
 </script>
 

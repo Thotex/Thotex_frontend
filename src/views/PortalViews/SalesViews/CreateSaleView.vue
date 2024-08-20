@@ -24,7 +24,7 @@
                 </div>
             </form>
             <div class="flex-centered-button">
-                <button class="button-global btn-center" @click="submitFrom">Crear</button>
+                <button class="button-global btn-center" @click.prevent="submitFrom">Crear</button>
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@
 
     const getClientName = (data: IThirdParty) => {
         console.log("Seleccionado: ", data)
-        saleForm.value.client = data.id
+        saleForm.value.client = data.Cl_codigo
         openClientModal()
     }
 
@@ -69,7 +69,7 @@
     })
 
     const total: ComputedRef<number> = computed(() => {
-        return Math.ceil((saleForm.value.subtotal * (1 + saleForm.value.iva)) * 100) / 100;
+        return parseFloat((saleForm.value.subtotal * (1 + saleForm.value.iva)).toFixed(2));
     })
 
     const submitFrom = async () => {
@@ -83,6 +83,8 @@
         }
 
         if (await saleStore.createData(sale)) {
+            swal("Creado", "Se ha creado la venta", "success")
+            saleStore.fetchDataList();
             router.push({name: 'sales'})
         } else {
             console.log("Error, no se pudo crear la venta")

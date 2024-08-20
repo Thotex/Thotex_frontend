@@ -200,7 +200,7 @@
 
     const verifyPassword = () : boolean => {
         // Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character
-        if (!(
+        if ((
           //lowercase letter
           userForm.value.password.match(/[a-z]/g) &&
           //uppercase letter
@@ -337,7 +337,7 @@
       //TODO : MOVER A UNA INTERFAZ APARTE Y MODIFICAR EL AUTH PARA RECIBIR OBJETO USER
       const response : boolean = await auth.register(userForm.value);
       if (response) {
-        swal("¡Registro exitoso!", "Se ha registrado exitosamente", "success");
+        swal("¡Registro exitoso!", "Por favor confirma tu correo para completar el registro", "success");
         emits('successRegister')
         return true;
       } else {

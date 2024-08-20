@@ -1,28 +1,23 @@
 <template>
     <h1>Historial de ventas</h1>
     <div>
-        <TableComponent v-if="showTable" :headers="salesStore.headers" :data="salesStore.dataList" @deleteCurrentRow="deleteItem" @editCurrentRow="editItem"/>
+        <TableComponent v-if="showTable()" :headers="salesStore.headers" :data="salesStore.dataList" @deleteCurrentRow="deleteItem" @editCurrentRow="editItem"/>
+        <h2 v-else>Todavía no hay ventas, puedes agregar usando los botones de arriba</h2>
     </div>
 </template>
 
 <script setup lang="ts">
     import TableComponent from '@/components/PortalComponents/TableComponent.vue';
     import { useSalesStore } from '@/stores/sales';
-    import { onMounted, ref, Ref } from 'vue';
     import { ISale } from '@/interfaces/ISales';
     import { useRouter } from 'vue-router';
-import swal from 'sweetalert';
+    import swal from 'sweetalert';
 
     const router = useRouter();
 
-    onMounted(() => {
-        if (salesStore.dataList.length > 0) {
-            showTable.value = true
-        }
-    })
-
     const salesStore = useSalesStore();
-    let showTable: Ref<boolean> = ref(false);
+
+    const showTable = () => salesStore.showTable
 
     const editItem = async( item: ISale ) => {
         console.log(item)

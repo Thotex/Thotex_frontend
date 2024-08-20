@@ -5,7 +5,7 @@
             <form class="form-global flex-column">
                 <div>
                     <h2 class="label padding-label">Nombre del tercero</h2>
-                    <input v-model="thirPartyForm.name" required class="input" type="text" placeholder="Nombre del producto">
+                    <input v-model="thirdPartyForm.name" required class="input" type="text" placeholder="Nombre del producto">
                 </div>
                 <div class="flex-centered-button">
                     <button @click.prevent="submitFrom" class="button-global ">Registrar</button>
@@ -16,8 +16,8 @@
         <h1>Lista de terceros</h1>
         </div>
         <div class="card-container">
-                <div v-for="thirdParty in thirdPartiesStore.dataList" :key="thirdParty.id" class="card-global card-size">
-                    <p class="label">{{ thirdParty.name }}</p>
+                <div v-for="thirdParty in thirdPartiesStore.dataList" :key="thirdParty.Cl_codigo" class="card-global card-size">
+                    <p class="label">{{ thirdParty.Cl_nombre }}</p>
                     <div class="buttons">
                         <button class="btn btn-primary" @click="editItem(thirdParty)"><IconifyIcon icon="mdi:pencil" width="20px"/></button>
                         <button class="btn btn-danger" @click="deleteItem(thirdParty)"><IconifyIcon icon="mdi:delete" width="20px" /></button>
@@ -32,7 +32,7 @@
             <form class="form-global flex-column">
                 <div>
                     <h2 class="label padding-label">Nombre del tercero</h2>
-                    <input v-model="thirPartyForm.name" required class="input" type="text" placeholder="Nombre del producto">
+                    <input v-model="editForm.name" required class="input" type="text" placeholder="Nombre del producto">
                 </div>
                 <div class="flex-centered-button">
                     <button @click.prevent="submitEditFrom" class="button-global ">Registrar</button>
@@ -47,23 +47,23 @@
     import { ref } from 'vue';
     import { useThirdPartiesStore } from '@/stores/thirdParties';
     import { IThirdParty } from '@/interfaces/IThirdParties';
-    import { useRouter } from 'vue-router';
     import swal from 'sweetalert';
 
     const thirdPartiesStore = useThirdPartiesStore();
-    const router = useRouter();
 
-    const thirPartyForm = ref({
+    const thirdPartyForm = ref({
         name: '',
     })
 
     const submitFrom = async () => {
         const item : IThirdParty = {
-            id: 0,
-            name: editForm.value.name,
+            Cl_codigo: 0,
+            Cl_nombre: thirdPartyForm.value.name,
         }
         if (await thirdPartiesStore.createData(item)) {
-            router.push({name: 'terceros'})
+            thirdPartiesStore.fetchDataList()
+            swal("¡Genial!", "Se ha registrado exitosamente", "success")
+            thirdPartyForm.value.name = ''
         } else {
             console.log("Error, no se pudo actualizar el tercero")
             swal("Error", "No se pudo actualizar el tercero", "error")
@@ -72,11 +72,13 @@
 
     const submitEditFrom = async () => {
         const item : IThirdParty = {
-            id: 0,
-            name: thirPartyForm.value.name,
+            Cl_codigo: 0,
+            Cl_nombre: editForm.value.name,
         }
         if (await thirdPartiesStore.updateData(item)) {
-            router.push({name: 'terceros'})
+            swal("¡Genial!", "Se ha actualizado exitosamente", "success")
+            clientModal.value = false
+            editForm.value.name = ''
         } else {
             console.log("Error, no se pudo actualizar el tercero")
             swal("Error", "No se pudo actualizar el tercero", "error")
@@ -85,11 +87,10 @@
 
     const editItem = async( item: IThirdParty ) => {
         console.log(item)
-        if ( await thirdPartiesStore.fetchSingleData(item.id)) {
+        if ( await thirdPartiesStore.fetchSingleData(item.Cl_codigo)) {
             // Open modal with the data
             openClientModal(item)
             // Actualizar la tabla
-            thirdPartiesStore.fetchDataList()
         } else {
             console.log("Error, no se pudo obtener el tercero")
         }
@@ -117,7 +118,7 @@
     const clientModal = ref(false)
     const openClientModal = (tercero: IThirdParty) => {
         clientModal.value = !clientModal.value
-        editForm.value.name = tercero.name
+        editForm.value.name = tercero.Cl_nombre
     }
 
     const closeModal = (event : Event ) => {
