@@ -99,7 +99,10 @@ const logout = async () => {
 div.header {
   width: 100%;
   height: $nav-bar-height;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
+  border-width: 2px 10px 5px;
+  border-color: black;
+  z-index: 10;
 }
 
 nav.nav {
@@ -256,8 +259,5 @@ ul.item-container {
 .modal-form {
   z-index: 4;
 }
-.header{
-	box-shadow: 0 24px 4px rgba(0, 0, 0, 0.2); 
-}
-	
+
 </style>

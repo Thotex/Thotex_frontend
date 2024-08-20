@@ -12,8 +12,11 @@
       <li>      
         <label class="mUser" @click="showDialog">Manual de usuario</label>
       </li>
-      <li >
-        <label class="mUser">Contactanos(PQRS)</label>
+      <li>
+        <a @click="scrollToPQR" class="mUser">Contactanos(PQRS)</a>
+      </li>
+      <li>
+        <a @click="scrollToFAQs" class="mUser">Preguntas frecuentes</a>
       </li>
     </ul>
 
@@ -62,13 +65,25 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import MyDialog from '@/components/ui/MyDialog.vue'; 
-
+import MyDialog from '@/components/ui/MyDialog.vue';
 
 const isDialogVisible = ref(false);
 
 function showDialog() {
   isDialogVisible.value = true;
+}
+
+function scrollToPQR() {
+  const element = document.getElementById('pqrFormSection');
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+function scrollToFAQs() {
+  const element = document.getElementById('pqrFormFAQS');
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
 }
 </script>
 
@@ -84,7 +99,7 @@ footer {
   padding: 10px 0;
   z-index: 3;
   flex-wrap: wrap; // Permite que los elementos se ajusten en dispositivos móviles
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .direccion {
@@ -184,7 +199,13 @@ h1 {
 
 .mUser{
   text-decoration: underline;
+  color: white;
 }
-
+.mUser:hover {
+  color: #FFD700; /* Cambia el color al pasar el mouse */
+  font-weight: bold; /* Cambia el peso de la fuente */
+  transform: scale(1.1); /* Aumenta el tamaño del texto */
+  cursor: pointer;
+}
 </style>
 
