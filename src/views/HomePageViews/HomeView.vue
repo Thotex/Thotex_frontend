@@ -347,4 +347,5 @@ body, html {
   animation: fadeIn 2s ease-out; /* Duración y suavidad de la animación */
 }
 
+
 </style>
