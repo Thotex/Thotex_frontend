@@ -35,21 +35,13 @@ import { getAnalytics } from "firebase/analytics";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 const firebaseConfig = {
-
-  apiKey: "AIzaSyCDbTrhmXRxUd3p25xWcPr9aGWItYhG-4s",
-
-  authDomain: "thotex-firebase-implementation.firebaseapp.com",
-
-  projectId: "thotex-firebase-implementation",
-
-  storageBucket: "thotex-firebase-implementation.appspot.com",
-
-  messagingSenderId: "1006552697489",
-
-  appId: "1:1006552697489:web:5ad173566b1046a038cd30",
-
-  measurementId: "G-FXJVNK6L37"
-
+  apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+  authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.VUE_APP_FIREBASE_APP_ID,
+  measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID
 };
 
 

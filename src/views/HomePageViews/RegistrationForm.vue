@@ -26,7 +26,7 @@
                     <input required type="password" placeholder="Confirmar contraseña" v-model="confirmPassword" />
                     <p class="error" v-if="errors.confirmPassword">{{ error_messages.confirmPassword }}</p>
                     <h2>Captcha</h2>
-                    <vue-recaptcha class="captcha" sitekey="6LemvvUpAAAAABGbyf2TRryGns0TnFMWgp5_PYIX" @verify="captcha = true" @fail="captcha = false"/>
+                    <vue-recaptcha class="captcha" sitekey="{{ process.env.VUE_APP_RECAPTCHA }}" @verify="captcha = true" @fail="captcha = false"/>
                     <p class="error" v-if="errors.captcha">{{ error_messages.captcha }}</p>
                     <div>
                         <label class="terms">
