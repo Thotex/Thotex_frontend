@@ -132,7 +132,6 @@ footer {
   background-color: $custom-blue;
   padding: 10px 0;
   z-index: 3;
-  flex-wrap: wrap; // Permite que los elementos se ajusten en dispositivos móviles
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
@@ -143,14 +142,17 @@ footer {
 .informacion {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  width: 200px;
-  background-color: $custom-blue;
+  justify-content: center;
+  align-items: center; 
+  width: auto; 
 }
+
 
 .redes-contenedor {
   display: flex;
-  justify-content: center;
+  justify-content: center; 
+  flex-wrap: nowrap; 
+  overflow: hidden; 
 }
 
 .redes {
@@ -201,7 +203,9 @@ h1 {
     height: auto;
     padding: 20px 0;
   }
-
+  .footer-left{
+    flex-direction: column;
+  }
   .logo {
     justify-content: center;
   }
@@ -236,9 +240,9 @@ h1 {
   color: white;
 }
 .mUser:hover {
-  color: #FFD700; /* Cambia el color al pasar el mouse */
-  font-weight: bold; /* Cambia el peso de la fuente */
-  transform: scale(1.1); /* Aumenta el tamaño del texto */
+  color: #FFD700;
+  font-weight: bold; 
+  transform: scale(1.1); 
   cursor: pointer;
 }
 </style>
