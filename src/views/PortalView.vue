@@ -1,7 +1,7 @@
 <template>
     <div>
         <SideBarLeft/>
-        <div class="content">
+        <div class="content-bg-portal">
             <router-view/>
         </div>
     </div>
@@ -40,8 +40,11 @@
 </script>
 
 <style scoped lang="scss">
-    .content{
+    .content-bg-portal{
         margin-left: $sidebar-left-width;
         padding: 10px;
+        background-color: rgb(216, 216, 216);
+        height: 100vh;
+
     }
 </style>
