@@ -9,6 +9,7 @@
           usuarios a gestionar inventarios,
           controlar la nómina, y realizar un seguimiento detallado de sus operaciones
           económicas.</p>
+          <input type="button" class="login-button" value="Comenzar ahora">
       </section>
       <div class="image">
         <img src="@/assets/ImagenHome.png" alt="Imagen inicio" height="600px" width="600px">
@@ -106,16 +107,10 @@ const submitForm = () => {
 };
 
 const faqs = ref([
-  { question: '¿Qué tipos de usuarios pueden registrarse en Thotex?', answer: 'En Thotex, los usuarios pueden registrarse como personas naturales o empresas, asegurando la seguridad y personalización de sus datos.' },
-  { question: '¿Cómo puedo gestionar el inventario de mi negocio en Thotex?', answer: 'Puedes registrar productos y el inventario se actualizará automáticamente con cada compra o venta, permitiéndote tener un control en tiempo real de tus productos en stock.' },
-  { question: '¿Es posible analizar el rendimiento de mis productos en inventario?', answer: 'Sí, Thotex ofrece un historial detallado del inventario y diversas estadísticas que te permiten analizar el comportamiento de tus productos y tomar decisiones informadas.' },
-  { question: '¿Cómo puedo gestionar las relaciones con mis clientes y proveedores?', answer: 'La plataforma permite gestionar clientes, proveedores, y otros terceros, agilizando los procesos comerciales y facilitando el manejo de tus relaciones comerciales.' },
-  { question: '¿Qué opciones de personalización están disponibles para mi perfil en Thotex?', answer: 'Puedes personalizar tu perfil con varias opciones de configuración, adaptando la plataforma a las necesidades específicas de tu negocio.' },
-  { question: '¿Thotex me ayuda a cumplir con mis obligaciones legales?', answer: 'Sí, puedes registrar eventos importantes en el calendario, incluidos los requeridos por la DIAN, y recibir notificaciones para cumplir con tus obligaciones legales.' },
-  { question: '¿Cómo puedo controlar la nómina y el trabajo de mis empleados?', answer: 'Thotex permite gestionar a tus empleados, registrar sus horas trabajadas y optimizar el control de costos asociados a la nómina.' },
-  { question: '¿Puedo acceder a estadísticas de mis ventas y compras en Thotex?', answer: 'La plataforma ofrece varias estadísticas relacionadas con tus ventas e ingresos, así como con las compras y egresos, para ayudarte a evaluar el rendimiento financiero de tu negocio.' },
-  { question: '¿Qué métodos de pago puedo utilizar para mi suscripción en Thotex?', answer: 'Thotex ofrece flexibilidad en los métodos de pago de la suscripción y te permite controlar tu suscripción, incluyendo opciones para suspender o cancelar.' },
-  { question: '¿Thotex es fácil de usar para alguien sin experiencia en contabilidad?', answer: 'Sí, Thotex está diseñada para ser intuitiva y accesible, incluso para usuarios sin experiencia previa en contabilidad, facilitando la gestión financiera y contable de tu negocio.' }
+  { question: '¿Cuál es la utilidad de un software contable para mi negocio?', answer: 'Un software contable, como Thotex, te ayuda a gestionar y automatizar procesos financieros y contables de tu negocio, como el control de inventarios, la gestión de nómina, y el seguimiento de ventas y compras. Esto te permite ahorrar tiempo, reducir errores, y tener una visión clara de la situación financiera de tu negocio, lo que facilita la toma de decisiones informadas.' },
+  { question: '¿Cómo puede Thotex ayudarme a gestionar mi inventario de manera más eficiente?', answer: 'Thotex facilita la gestión de inventario permitiéndote registrar productos, actualizar automáticamente el stock con cada compra o venta, y visualizar gráficos de barras que muestran el total de ventas y compras realizadas. Estas herramientas te permiten tener un control más preciso del inventario, identificar tendencias, y tomar decisiones basadas en datos para optimizar la gestión de tus productos.' },
+  { question: '¿Cuándo tienes dudas a dónde te puedes comunicar?', answer: 'Tenemos diversos  canales de comunicacón  disponibles para que puedas solicitar información o soporte. Pudes elegir entre nuestras redes sociales, nuestro chat bot o enviarnos un mensaje en la seccion de contactenos del home. Estamos listos para atenderte en el canal que prefieras' },
+  { question: '¿Cómo se realiza el pago de la suscripción de Thotex?', answer: 'El pago de la suscripción se realiza a través de la sección de suscripción en la plataforma, que se encuentra en el perfil. Puedes elegir entre opciones de pago mensual o anual, y proporcionar la información de tu método de pago preferido.' },
 ]);
 
 const activeIndex = ref<number | null>(null);
@@ -344,8 +339,24 @@ body, html {
 }
 
 .title {
-  animation: fadeIn 2s ease-out; /* Duración y suavidad de la animación */
+  animation: fadeIn 2s ease-out; 
 }
-
+.login-button{
+  margin-top: 10px;
+  text-transform: uppercase;
+  outline: 0;
+  border: 0;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: $custom-blue;
+  color: white;
+  &:hover {
+        background-color: #94AAD6;
+        cursor: pointer;
+    }
+}
 
 </style>

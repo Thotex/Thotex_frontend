@@ -34,5 +34,9 @@
 <style scoped>
     .cartas {
         display: flex;
+        @media (max-width: 768px) {
+            flex-direction: column;
+            margin-right: 23px;
+        }
     }
 </style>

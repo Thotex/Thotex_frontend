@@ -132,7 +132,6 @@ footer {
   background-color: $custom-blue;
   padding: 10px 0;
   z-index: 3;
-
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
