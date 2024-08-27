@@ -67,7 +67,6 @@ const props = defineProps({
     }
     .card-image{
         object-fit: contain;
-        border-radius: 100%;
     }
 </style>
 

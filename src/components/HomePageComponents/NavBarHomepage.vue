@@ -102,7 +102,7 @@ div.header {
   background-color: rgb(255, 255, 255);
   border-width: 2px 10px 5px;
   border-color: black;
-  z-index: 10;
+  
 }
 
 nav.nav {
@@ -114,10 +114,10 @@ nav.nav {
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
-
+  
   @media (max-width: 768px) {
     flex-direction: column;
-    padding: 10px;
+    padding: 10px;  
   }
 }
 

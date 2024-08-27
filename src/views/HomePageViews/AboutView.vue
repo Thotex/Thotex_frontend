@@ -3,11 +3,11 @@
     <div class="container">
       <div class="content">
         <h1 class="title">Visión</h1>
-        <p>Thotex será líder para el 2027 ofreciendo servicios contables a pequeños y medianos comercios, siendo una plataforma fiable, de fácil uso y comprensión ayudándoles a nuestros clientes con un enfoque en la transparencia y la excelencia en el servicio.</p>
+        <p class="vision">Thotex será líder para el 2027 ofreciendo servicios contables a pequeños y medianos comercios, siendo una plataforma fiable, de fácil uso y comprensión ayudándoles a nuestros clientes con un enfoque en la transparencia y la excelencia en el servicio.</p>
       </div>
       <div class="content">
         <h1 class="title">Misión</h1>
-        <p>Ofrecer una plataforma para la gestión de nómina e inventario, en la cual pueden gestionar y automatizar procesos financieros y contables, para que nuestros usuarios tomen las mejores decisiones en sus negocios.</p>
+        <p class="vision">Ofrecer una plataforma para la gestión de nómina e inventario, en la cual pueden gestionar y automatizar procesos financieros y contables, para que nuestros usuarios tomen las mejores decisiones en sus negocios.</p>
       </div>
     </div>
     <div class="team-container">
@@ -65,7 +65,7 @@
 
   .container {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-around;
     margin-bottom: 40px;
@@ -176,7 +176,7 @@
 
 .social-links a:hover {
   color: #FFD700;
-
+  
 }
 .team-card-image img {
   width: 100%;
@@ -184,5 +184,7 @@
   object-fit: cover; 
   border-bottom: 2px solid #4D6FB3; 
 }
-
+.vision{
+  text-align: justify;
+}
 </style>
