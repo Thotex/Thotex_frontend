@@ -19,10 +19,13 @@ interface IResponse {
 
 class AuthService {
     // axios: AxiosInstance
+    private url: string
     private jwt: Ref<string>
     private error: Ref<string>
     constructor() {
         // this.axios = axios
+        this.url = process.env.VUE_APP_BACKEND_URL
+        // this.url = 'https://thotex-d214cd515eaf.herokuapp.com/api/v1.0'
         this.jwt = ref('')
         this.error = ref('')
     }
@@ -46,7 +49,7 @@ class AuthService {
         
         try {
             // Cambiar localhost por localhost:8081 y desplegar la API
-            const res : Response = await fetch('https://thotex-d214cd515eaf.herokuapp.com/api/v1.0/login', {
+            const res : Response = await fetch(this.url + '/login', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
@@ -105,7 +108,7 @@ class AuthService {
         
         try {
             // Cambiar localhost por localhost:8081 y desplegar la API
-            const res : Response = await fetch('https://thotex-d214cd515eaf.herokuapp.com/api/v1.0/register', {
+            const res : Response = await fetch(this.url + '/register', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
@@ -133,7 +136,7 @@ class AuthService {
             // if (response.errors !== undefined && response.errors.length > 0) {
             if (response.mensaje) {
                 //this.error = "Login failed"
-                if (response.mensaje == 'Registro exitoso') {
+                if (response.mensaje == 'Por favor confirma tu correo para completar el registro') {
                     return true
                 } else {
                     this.error.value = response.mensaje
@@ -164,7 +167,7 @@ class AuthService {
             // Cambiar localhost por localhost:8081 y desplegar la API
             const {cookies} = useCookies();
             const jwt = cookies.get('jwt');
-            const res : Response = await fetch('https://thotex-d214cd515eaf.herokuapp.com/api/v1.0/logout', {
+            const res : Response = await fetch(this.url + '/logout', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {

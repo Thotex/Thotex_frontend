@@ -1,10 +1,10 @@
 export interface IDepartamento {
-    Dep_codigo: number,
-    Dep_nombre: string
+    Dep_id: number,
+    Dep_nombre: string,
+    municipios: IMunicipio[]
 }
 
 export interface IMunicipio {
-    Dep_codigo: number,
-    Mun_codigo: number,
+    Mun_id: number,
     Mun_nombre: string
 }

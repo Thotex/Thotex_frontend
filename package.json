@@ -10,18 +10,26 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/interaction": "^6.1.15",
+    "@fullcalendar/timegrid": "^6.1.15",
+    "@fullcalendar/vue3": "^6.1.15",
+    "@google/generative-ai": "^0.17.0",
     "@mercadopago/sdk-js": "^0.0.3",
     "chart.js": "^4.4.2",
     "chartjs-plugin-datalabels": "^2.2.0",
     "core-js": "^3.8.3",
+    "deep-chat": "^2.0.1",
+    "firebase": "^10.13.0",
     "pinia": "^2.1.7",
     "register-service-worker": "^1.7.2",
     "sweetalert": "^2.1.2",
     "vue": "^3.4.38",
-    "vue-cal": "^4.8.1",
     "vue-router": "^4.0.3",
     "vue3-cookies": "^1.0.6",
-    "vue3-recaptcha2": "^1.8.0"
+    "vue3-recaptcha2": "^1.8.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "devDependencies": {
     "@iconify/vue": "^4.1.1",

@@ -1,4 +1,5 @@
 export interface IThirdParty {
-    id: number
-    name: string
+    Cl_codigo: number
+    Cl_nombre: string
+    Usr_codigo?: number
 }

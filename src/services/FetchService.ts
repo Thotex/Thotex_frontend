@@ -15,22 +15,23 @@ class FetchService <T extends Epic> {
         this.data = [];
         this.singleData = {} as T
         //this.url = process.env.VUE_APP_API_URL;
-        this.url = "https://thotex-d214cd515eaf.herokuapp.com/api/v1.0"
+        this.url = process.env.VUE_APP_BACKEND_URL
+        // this.url = "https://thotex-d214cd515eaf.herokuapp.com/api/v1.0"
         switch (mode) {
             case 'sales':
-                this.mode = 'sales'
+                this.mode = 'ventas'
                 break
             case 'products':
-                this.mode = 'products'
+                this.mode = 'productos'
                 break
             case 'employees':
                 this.mode = 'empleados'
                 break
             case 'shopping':
-                this.mode = 'shopping'
+                this.mode = 'compras'
                 break
             case 'thirdParties':
-                this.mode = 'terceros' //TODO: Cuadrar esto con la API
+                this.mode = 'clientes' //TODO: Cuadrar esto con la API
                 break
             case 'calendar':
                 this.mode = 'calendar'
@@ -54,7 +55,7 @@ class FetchService <T extends Epic> {
     fetchSingleData = async (id: number) : Promise<boolean> => {
         try {
             const { cookies } = useCookies();
-            const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/" + id, {
+            const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/" + id + "/", {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -67,7 +68,7 @@ class FetchService <T extends Epic> {
                 return false
             }
             else if (response.data) {
-                this.data = response.data
+                this.singleData = response.data
                 return true
             }
             console.log("Maybe the api is not working")
@@ -81,7 +82,7 @@ class FetchService <T extends Epic> {
     fetchData = async () : Promise<boolean> => {
         try {
             const { cookies } = useCookies();
-            const responseRaw : Response = await fetch(this.url + "/" + this.mode, {
+            const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/", {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -108,9 +109,10 @@ class FetchService <T extends Epic> {
     insertData = async ( data : T ) : Promise<boolean> => {
         try {
             const { cookies } = useCookies();
-            const responseRaw : Response = await fetch(this.url + "/" + this.mode, {
+            const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/", {
                 method: 'POST',
                 headers: {
+                    'Content-Type': 'application/json',
                     'Accept': 'application/json',
                     'Authorization': 'Bearer ' + cookies.get('jwt')
                 },
@@ -121,8 +123,9 @@ class FetchService <T extends Epic> {
                 console.log(response.errors)
                 return false
             }
-            else if (response.data) {
-                this.data = response.data
+            else if (response.mensaje) {
+                console.log(response.mensaje)
+                // this.data = response.data
                 return true
             }
             console.log("Maybe the api is not working")
@@ -136,9 +139,10 @@ class FetchService <T extends Epic> {
     updateData = async ( id : number, to : T) : Promise<boolean> => {
         try {
             const { cookies } = useCookies();
-            const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/" + id, {
+            const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/" + id + "/", {
                 method: 'PUT',
                 headers: {
+                    'Content-Type': 'application/json',
                     'Accept': 'application/json',
                     'Authorization': 'Bearer ' + cookies.get('jwt')
                 },
@@ -164,20 +168,24 @@ class FetchService <T extends Epic> {
     deleteData = async ( id : number ) : Promise<boolean> => {
         try {
             const { cookies } = useCookies();
-            const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/" + id, {
+            const responseRaw : Response = await fetch(this.url + "/" + this.mode + "/" + id + "/", {
                 method: 'DELETE',
                 headers: {
                     'Accept': 'application/json',
                     'Authorization': 'Bearer ' + cookies.get('jwt')
                 },
             })
+            console.log(this.url + "/" + this.mode + "/" + id + "/")
+            console.log(responseRaw)
             const response = await responseRaw.json();
+            console.log(response)
             if (response.errors) {
                 console.log(response.errors)
                 return false
             }
-            else if (response.data) {
-                this.data = response.data
+            else if (response.mensaje) {
+                // this.data = response.data
+                console.log(response.mensaje)
                 return true
             }
             console.log("Maybe the api is not working")

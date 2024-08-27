@@ -3,7 +3,7 @@ import { IEmployee, IEmployeeClean, cleanEmployee, formEmployee} from '@/interfa
 import { Headers } from '@/interfaces/IProject'
 import FetchService from '@/services/FetchService'
 
-export const usePayrollStore = defineStore('inventory', {
+export const usePayrollStore = defineStore('payroll', {
     state: () => ({
         headers: [
             { name: 'Código', dbName: 'Emp_codigo' },
@@ -21,6 +21,16 @@ export const usePayrollStore = defineStore('inventory', {
         singleData : {} as IEmployeeClean,
         fectedBefore : false
     }),
+    getters: {
+        showTable: (state) => {
+           if (state.dataList.length > 0) {
+               return true
+           } 
+           else {
+               return false
+           }
+        }
+    },
     actions: {
         async fetchDataList() {
             const fetchService = new FetchService<IEmployee>('employees')
@@ -49,6 +59,7 @@ export const usePayrollStore = defineStore('inventory', {
         async createData(dataRaw:IEmployeeClean) {
             const fetchService = new FetchService<IEmployee>('employees')
             const data = formEmployee(dataRaw)
+            data.Usr_codigo = 1
             if (await fetchService.insertData(data)) {
                 if (await this.fetchDataList()) {
                     return true

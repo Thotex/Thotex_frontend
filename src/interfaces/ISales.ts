@@ -5,4 +5,5 @@ export interface ISale {
     Ven_precioTotal: number
     Ven_IVA: number
     Cl_codigo: number
+    Usr_codigo?: number
 }

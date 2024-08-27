@@ -53,7 +53,7 @@
 
     const getClientName = (data: IThirdParty) => {
         console.log("Seleccionado: ", data)
-        shoppingForm.value.client = data.id
+        shoppingForm.value.client = data.Cl_codigo
         openClientModal()
     }
 
@@ -66,13 +66,13 @@
     const shoppingForm : Ref = ref({
         id: currentItem.Com_codigo,
         subtotal: currentItem.Com_subtotal,
-        iva: currentItem.Com_IVA,
+        iva: 0.19,
         date: currentItem.Com_fechaGeneracion,
-        client: currentItem.Prov_codigo
+        client: currentItem.Cl_codigo
     })
 
     const total: ComputedRef<number> = computed(() => {
-        return Math.ceil((shoppingForm.value.subtotal * (1 + shoppingForm.value.iva)) * 100) / 100;
+        return parseFloat((shoppingForm.value.subtotal * (1 + shoppingForm.value.iva)).toFixed(2));
     })
 
 
@@ -83,7 +83,7 @@
             Com_subtotal: shoppingForm.value.subtotal,
             Com_precioTotal: total.value,
             Com_IVA: shoppingForm.value.iva,
-            Prov_codigo: shoppingForm.value.client
+            Cl_codigo: shoppingForm.value.client
         }
 
         if (await shoppingStore.updateData(sale)) {

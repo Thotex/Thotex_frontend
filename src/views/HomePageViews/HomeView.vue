@@ -111,6 +111,7 @@ const faqs = ref([
   { question: '¿Cómo puede Thotex ayudarme a gestionar mi inventario de manera más eficiente?', answer: 'Thotex facilita la gestión de inventario permitiéndote registrar productos, actualizar automáticamente el stock con cada compra o venta, y visualizar gráficos de barras que muestran el total de ventas y compras realizadas. Estas herramientas te permiten tener un control más preciso del inventario, identificar tendencias, y tomar decisiones basadas en datos para optimizar la gestión de tus productos.' },
   { question: '¿Cuándo tienes dudas a dónde te puedes comunicar?', answer: 'Tenemos diversos  canales de comunicacón  disponibles para que puedas solicitar información o soporte. Pudes elegir entre nuestras redes sociales, nuestro chat bot o enviarnos un mensaje en la seccion de contactenos del home. Estamos listos para atenderte en el canal que prefieras' },
   { question: '¿Cómo se realiza el pago de la suscripción de Thotex?', answer: 'El pago de la suscripción se realiza a través de la sección de suscripción en la plataforma, que se encuentra en el perfil. Puedes elegir entre opciones de pago mensual o anual, y proporcionar la información de tu método de pago preferido.' },
+  { question: '¿Cómo configuro notificaciones para eventos importantes en Thotex?', answer: 'Puedes configurar notificaciones en la sección de calendario. Aquí puedes agregar eventos importantes y establecer recordatorios para recibir notificaciones por correo electrónico o en la plataforma.' },
 ]);
 
 const activeIndex = ref<number | null>(null);

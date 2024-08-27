@@ -2,6 +2,8 @@ import { defineStore } from 'pinia'
 import { IDepartamento, IMunicipio } from '@/interfaces/IPlaces'
 import { useCookies } from 'vue3-cookies';
 
+const url = process.env.VUE_APP_BACKEND_URL
+
 export const usePlacesStore = defineStore('places', {
     state: () => ({
         departamentos: [] as IDepartamento[],
@@ -12,7 +14,8 @@ export const usePlacesStore = defineStore('places', {
             // Aquí no se usa fetcservice porque es muy diferente a las otras
             try {
                 const { cookies } = useCookies();
-                const responseRaw : Response = await fetch('https://thotex-d214cd515eaf.herokuapp.com/api/v1.0/departamentos', {
+                console.log("Fetching departamentos")
+                const responseRaw : Response = await fetch( url + '/departamentos/', {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json',
@@ -20,12 +23,17 @@ export const usePlacesStore = defineStore('places', {
                     }
                 })
                 const response = await responseRaw.json();
+                console.log("Response: ")
+                console.log(response)
                 if (response.errors) {
+                    console.log("Errors: ")
                     console.log(response.errors)
                     return false
                 }
-                else if (response.data) {
-                    this.departamentos = response.data
+                else if (response) {
+                    console.log("Success")
+                    this.departamentos = response
+                    console.log(this.departamentos)
                     return true
                 }
                 console.log("Maybe the api is not working")
@@ -37,7 +45,7 @@ export const usePlacesStore = defineStore('places', {
         async fetchMunicipios( depId : number ) {
             try {
                 const { cookies } = useCookies();
-                const responseRaw : Response = await fetch('https://thotex-d214cd515eaf.herokuapp.com/api/v1.0/departamentos/' + String(depId) + '/municipios', {
+                const responseRaw : Response = await fetch( url + '/departamento/' + String(depId) + '/municipios/', {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json',
@@ -50,7 +58,7 @@ export const usePlacesStore = defineStore('places', {
                     return false
                 }
                 else if (response.data) {
-                    this.municipios = response.data
+                    this.municipios = response.data.municipios
                     return true
                 }
                 console.log("Maybe the api is not working")

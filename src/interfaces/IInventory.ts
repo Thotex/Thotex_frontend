@@ -5,6 +5,7 @@ export interface IProduct {
     Prod_precio: number
     Prod_cantidad: number
     Prod_IVA: number
-    Mun_nombre: string
+    Mun_nombre: number
     Emp_codigo: number
+    Usr_codigo?: number
 }
